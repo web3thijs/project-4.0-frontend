@@ -4,16 +4,19 @@ import { ExampleComponent } from './components/example/example.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { HomeRoutingModule } from './home-routing-module';
+import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 
 
 
 @NgModule({
   declarations: [
-    ExampleComponent
+    ExampleComponent,
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SharedModule,
+    CoreModule
   ]
 })
 export class HomeModule { }

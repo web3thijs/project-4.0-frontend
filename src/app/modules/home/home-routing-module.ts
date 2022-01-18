@@ -4,6 +4,7 @@ import { ExampleComponent } from './components/example/example.component';
 
 const routes: Routes = [
   {path: '', component: ExampleComponent},
+  {path: 'ddd', component: ExampleComponent}
 ];
 
 @NgModule({
