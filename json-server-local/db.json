@@ -1,24 +1,160 @@
 {
-  "articles": [
+  "products": [
       {
-          "id": 1,
-          "title": "Title article",
-          "subtitle": "Subtitle article",
-          "imageUrl": "https://images.pexels.com/photos/1202723/pexels-photo-1202723.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=134",
-          "imageCaption": "caption image",
-          "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptas sequi voluptatum pariatur! Quae cumque quidem dolor maxime enim debitis omnis nemo facilis sequi autem? Quae tenetur, repellat vero deleniti vitae dolores? Cum tempore, mollitia provident placeat fugit earum, sint, quae iusto optio ea officiis consectetur sit necessitatibus itaque explicabo?",
-          "author": "Michaël Cloots",
-          "publishDate": "28/11/2020"
+        "productId": 1,
+        "name": "Product 1",
+        "price": 12.20,
+        "description": "Dit is de beschrijving van product 1",
+        "isActive": true,
+        "amountInStock": 5,
+        "size": "M",
+        "color": "Rood",
+        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
       },
       {
-          "id": 2,
-          "title": "Title article 2",
-          "subtitle": "Subtitle article 2",
-          "imageUrl": "https://images.pexels.com/photos/3422964/pexels-photo-3422964.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=100&w=134",
-          "imageCaption": "caption image",
-          "content": "2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptas sequi voluptatum pariatur! Quae cumque quidem dolor maxime enim debitis omnis nemo facilis sequi autem? Quae tenetur, repellat vero deleniti vitae dolores? Cum tempore, mollitia provident placeat fugit earum, sint, quae iusto optio ea officiis consectetur sit necessitatibus itaque explicabo?",
-          "author": "Florian Smeyers",
-          "publishDate": "30/11/2020"
+        "productId": 2,
+        "name": "Product 2",
+        "price": 15.64,
+        "description": "Dit is de beschrijving van product 2",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Groen",
+        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 3,
+        "name": "Product 3",
+        "price": 6.00,
+        "description": "Dit is de beschrijving van product 3",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Groen",
+        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 4,
+        "name": "Product 4",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 4",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 5,
+        "name": "Product 5",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 5",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 6,
+        "name": "Product 6",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 6",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 7,
+        "name": "Product 7",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 7",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 8,
+        "name": "Product 8",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 8",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 9,
+        "name": "Product 9",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 9",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 10,
+        "name": "Product 10",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 10",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 11,
+        "name": "Product 11",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 11",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+      },
+      {
+        "productId": 12,
+        "name": "Product 12",
+        "price": 20.14,
+        "description": "Dit is de beschrijving van product 12",
+        "isActive": true,
+        "amountInStock": 10,
+        "size": "S",
+        "color": "Blauw",
+        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
       }
+  ],
+  "categories": [
+    {
+      "categoryId": 1,
+      "name": "Schrijfgerief"
+    },
+    {
+      "categoryId": 2,
+      "name": "Eten"
+    },
+    {
+      "categoryId": 3,
+      "name": "Kledij"
+    }
+  ],
+  "organizations": [
+    {
+      "organizationId": 1,
+      "name": "WWF"
+    },
+    {
+      "organizationId": 2,
+      "name": "Pater Damiaan"
+    }
   ]
 }
