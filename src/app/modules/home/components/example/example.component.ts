@@ -7,10 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExampleComponent implements OnInit {
 
-  textBtnConfig = {
-    text: 'Test'
-  };
-
   constructor() { }
 
   ngOnInit(): void {

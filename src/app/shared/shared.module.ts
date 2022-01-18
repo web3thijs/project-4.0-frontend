@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ExamplePipe } from './pipes/example.pipe';
 import { ButtonComponent } from './components/button/button.component';
 import { TitleComponent } from './components/title/title.component';
+import { ProductViewComponent } from './components/product-view/product-view.component';
 
 
 
@@ -10,14 +11,16 @@ import { TitleComponent } from './components/title/title.component';
   declarations: [
     ExamplePipe,
     ButtonComponent,
-    TitleComponent
+    TitleComponent,
+    ProductViewComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
     ButtonComponent,
-    TitleComponent
+    TitleComponent,
+    ProductViewComponent
   ]
 })
 export class SharedModule { }
