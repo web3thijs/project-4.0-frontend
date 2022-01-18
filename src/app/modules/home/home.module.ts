@@ -6,13 +6,15 @@ import { CoreModule } from 'src/app/core/core.module';
 import { HomeRoutingModule } from './home-routing-module';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
+import { ProductComponent } from './components/product/product.component';
 
 
 
 @NgModule({
   declarations: [
     ExampleComponent,
-    HomepageComponent
+    HomepageComponent,
+    ProductComponent
   ],
   imports: [
     CommonModule,

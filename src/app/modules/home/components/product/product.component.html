@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="input-group">
+        <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+          <option selected>Filter op vzw</option>
+          <option *ngFor="let organization of (organizations$ | async)" value="{{organization.organizationId}}">{{organization.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <div class="input-group">
+        <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+          <option selected>Filter op categorie</option>
+          <option *ngFor="let category of (categories$ | async)" value="{{category.categoryId}}">{{category.name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" >
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let product of (products$ | async)">
+      <app-product-view [productImg]="product.imageUrl" [productTitle]="product.name" [productPrice]="product.price"></app-product-view>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
