@@ -12,4 +12,7 @@ export class ExampleComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onClickEventReceived(){
+    // Navigate
+  }
 }

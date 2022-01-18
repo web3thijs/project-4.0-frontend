@@ -10,7 +10,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    SharedModule,
+    CoreModule
   ]
 })
 export class DashboardModule { }

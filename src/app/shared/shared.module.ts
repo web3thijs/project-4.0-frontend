@@ -1,17 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExamplePipe } from './pipes/example.pipe';
-import { ExampleComponent } from './components/example/example.component';
+import { ButtonComponent } from './components/button/button.component';
+import { TitleComponent } from './components/title/title.component';
+import { ProductViewComponent } from './components/product-view/product-view.component';
 
 
 
 @NgModule({
   declarations: [
     ExamplePipe,
-    ExampleComponent
+    ButtonComponent,
+    TitleComponent,
+    ProductViewComponent
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ButtonComponent,
+    TitleComponent,
+    ProductViewComponent
   ]
 })
 export class SharedModule { }
