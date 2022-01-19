@@ -1,6 +1,9 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-3">
+  <div class="alert alert-danger" role="alert" *ngIf="alertIsShown">
+    Let op! Je hebt dit product al aan je winkelmandje toegevoegd!
+  </div>
   <div class="row">
     <div class="col-sm-12 col-lg-6">
       <img src="{{product.imageUrl}}" class="img-fluid" alt="">
@@ -9,7 +12,7 @@
       <p>{{product.organization.name}}</p>
       <h2>{{product.name}}</h2>
       <p>€ {{product.price}}</p>
-        <button type="button" class="btn btn-dark text-left mb-3">
+        <button type="button" class="btn btn-dark text-left mb-3" (click)="AddToShopping()">
           <div class="row">
             <div class="col-10 pr-0">
               In winkelmandje
@@ -30,41 +33,7 @@
         <p>{{product.description}}</p>
 
     </div>
-
-
-
-
-
-
-
-    <div class="col-sm-12">
-      <div class="row">
-        <div class="col-sm-12 col-md-6 order-2">
-
-        </div>
-        <div class="col-sm-12 col-md-6 order-1">
-
-        </div>
-      </div>
-    </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 
