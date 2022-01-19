@@ -4,6 +4,7 @@ import { ExamplePipe } from './pipes/example.pipe';
 import { ButtonComponent } from './components/button/button.component';
 import { TitleComponent } from './components/title/title.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
+import { OrganizationViewComponent } from './components/organization-view/organization-view.component';
 
 
 
@@ -12,7 +13,8 @@ import { ProductViewComponent } from './components/product-view/product-view.com
     ExamplePipe,
     ButtonComponent,
     TitleComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    OrganizationViewComponent
   ],
   imports: [
     CommonModule
@@ -20,7 +22,8 @@ import { ProductViewComponent } from './components/product-view/product-view.com
   exports: [
     ButtonComponent,
     TitleComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    OrganizationViewComponent
   ]
 })
 export class SharedModule { }
