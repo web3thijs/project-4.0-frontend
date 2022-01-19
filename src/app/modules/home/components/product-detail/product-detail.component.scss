@@ -1,0 +1,39 @@
+.details-title {
+  color: #08344B;
+  font-weight: bold;
+}
+
+button{
+  background-color: #08344B;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  width: 290px;
+  height: 38px;
+
+  &:hover{
+    background-color: #184964;
+  }
+}
+
+select {
+  width: 290px;
+}
+
+.select-size {
+  background-color: white;
+  border-color: #08344B;
+  border-radius: 8px;
+  color: #08344B;
+}
+
+option {
+  background-color: #08344B;
+  color: white;
+}
+
+@media (min-width: 992px) {
+  img {
+    width: 75%;
+  }
+}
