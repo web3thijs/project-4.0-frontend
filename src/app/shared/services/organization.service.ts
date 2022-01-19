@@ -16,4 +16,8 @@ export class OrganizationService {
   getOrganizations(): Observable<Organization[]> {
     return this.httpClient.get<Organization[]>(this.baseUrl + "organizations");
   }
+
+  getOrganizationById(id: number): Observable<Organization> {
+    return this.httpClient.get<Organization>(this.baseUrl + "organizations/" + id);
+  }
 }

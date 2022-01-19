@@ -1,5 +1,5 @@
 export interface Organization {
-  organizationId: number;
+  id: number;
   customerId: number;
   name: string;
   companyRegistrationNr: string;

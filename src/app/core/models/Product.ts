@@ -1,5 +1,7 @@
+import { Organization } from "./Organization";
+
 export interface Product {
-  productId: number;
+  id: number;
   categoryId: number;
   organizationId: number;
   name: string;
@@ -7,4 +9,5 @@ export interface Product {
   description: string;
   isActive: boolean;
   imageUrl: string;
+  organization: Organization;
 }
