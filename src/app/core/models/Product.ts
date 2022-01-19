@@ -6,8 +6,5 @@ export interface Product {
   price: number;
   description: string;
   isActive: boolean;
-  amountInStock: number;
-  size: string;
-  color: string;
   imageUrl: string;
 }

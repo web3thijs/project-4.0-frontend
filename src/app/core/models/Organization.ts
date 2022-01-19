@@ -1,6 +1,6 @@
 export interface Organization {
   organizationId: number;
-  userId: number;
+  customerId: number;
   name: string;
   companyRegistrationNr: string;
   vatNr: string;
