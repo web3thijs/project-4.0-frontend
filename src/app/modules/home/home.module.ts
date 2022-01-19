@@ -9,6 +9,7 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomepageComponent,
     ProductComponent,
     ProductDetailComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     CommonModule,

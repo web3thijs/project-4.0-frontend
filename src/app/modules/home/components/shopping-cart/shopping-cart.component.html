@@ -1,0 +1,110 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-3">
+  <app-title [titleText]="'Winkelmandje'"></app-title>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="row text-center mb-3 mt-3">
+        <div class="col-3">
+          <img src="https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="img-fluid" alt="">
+        </div>
+        <div class="col-5">
+          <div class="row">
+            <div class="col-12">
+              <p class="mb-2">Product 10</p>
+              <p class="product-price">€ 12,48</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8">
+              <select class="form-control">
+                <option value="0">0</option>
+                <option selected>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            </div>
+            <div class="col-4">
+              <i class="fas fa-trash-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center mb-3">
+        <div class="col-3">
+          <img src="https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="img-fluid" alt="">
+        </div>
+        <div class="col-5">
+          <div class="row">
+            <div class="col-12">
+              <p class="mb-2">Product 10</p>
+              <p class="product-price">€ 12,48</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-8">
+              <select class="form-control">
+                <option value="0">0</option>
+                <option selected>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            </div>
+            <div class="col-4">
+              <i class="fas fa-trash-alt"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p class="shopping-title">Vrije gift</p>
+        </div>
+        <div class="col-6">
+          <input class="form-control mr-sm-2" type="number" placeholder="Vrije gift" aria-label="VrijeGift">
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="bg-shopping mt-3 mb-3">
+        <p class="shopping-title text-center pb-3 pt-2">Overzicht</p>
+        <div class="row text-center">
+          <div class="col-6">
+            <p>Totaal</p>
+          </div>
+          <div class="col-6">
+            <p>€ 12,48</p>
+          </div>
+          <div class="col-6">
+            <p>Verzendkosten</p>
+          </div>
+          <div class="col-6">
+            <p>€ 5,00</p>
+          </div>
+          <div class="col-6">
+            <p class="total-shopping">Totaal</p>
+          </div>
+          <div class="col-6">
+            <p class="total-shopping">€ 17,48</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="text-center">
+        <app-button [buttonText]="'Bestellen'"></app-button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<app-footer></app-footer>

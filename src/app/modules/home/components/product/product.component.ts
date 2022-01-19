@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-
   products$: Observable<Product[]> = new Observable<Product[]>();
   categories$: Observable<Category[]> = new Observable<Category[]>();
   organizations$: Observable<Organization[]> = new Observable<Organization[]>();
@@ -22,12 +21,13 @@ export class ProductComponent implements OnInit {
   constructor(private productService: ProductService, private categoryService: CategoryService, private organizationService: OrganizationService, private router: Router) { }
 
   ngOnInit(): void {
+
     this.products$ = this.productService.getProducts();
     this.categories$ = this.categoryService.getCategories();
     this.organizations$ = this.organizationService.getOrganizations();
   }
 
-  onClick(productId: number) {
+  onClick(productId: string) {
     this.router.navigate(['/products', productId])
   }
 
