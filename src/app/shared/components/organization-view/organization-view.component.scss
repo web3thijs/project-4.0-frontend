@@ -1,0 +1,17 @@
+img{
+  border-radius: 1rem;
+}
+
+p{
+  padding: 0;
+  margin: 0;
+
+  &#product-title{
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+}
+
+.card {
+  border: 0px;
+}
