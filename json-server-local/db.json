@@ -8,7 +8,30 @@
         "price": 12.20,
         "description": "Dit is de beschrijving van product 1",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "1",
+            "organizationName": "WWF",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "wwf@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "wwf@mail.be",
+                "password": "wwf",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "2",
@@ -18,7 +41,30 @@
         "price": 15.64,
         "description": "Dit is de beschrijving van product 2",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "2",
+            "organizationName": "Pater Damiaan",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "paterdamiaan@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "paterdamiaan@mail.be",
+                "password": "paterdamiaan",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "3",
@@ -28,7 +74,30 @@
         "price": 6.00,
         "description": "Dit is de beschrijving van product 3",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "1",
+            "organizationName": "WWF",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "wwf@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "wwf@mail.be",
+                "password": "wwf",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "4",
@@ -38,7 +107,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 4",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "2",
+            "organizationName": "Pater Damiaan",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "paterdamiaan@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "paterdamiaan@mail.be",
+                "password": "paterdamiaan",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "5",
@@ -48,7 +140,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 5",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "1",
+            "organizationName": "WWF",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "wwf@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "wwf@mail.be",
+                "password": "wwf",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "6",
@@ -58,7 +173,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 6",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "1",
+            "organizationName": "WWF",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "wwf@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "wwf@mail.be",
+                "password": "wwf",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "7",
@@ -68,7 +206,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 7",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "2",
+            "organizationName": "Pater Damiaan",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "paterdamiaan@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "paterdamiaan@mail.be",
+                "password": "paterdamiaan",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "8",
@@ -78,7 +239,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 8",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "2",
+            "organizationName": "Pater Damiaan",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "paterdamiaan@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "paterdamiaan@mail.be",
+                "password": "paterdamiaan",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "9",
@@ -88,7 +272,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 9",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "1",
+            "organizationName": "WWF",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "wwf@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "wwf@mail.be",
+                "password": "wwf",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "10",
@@ -98,7 +305,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 10",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "1",
+            "organizationName": "WWF",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "wwf@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "wwf@mail.be",
+                "password": "wwf",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "11",
@@ -108,7 +338,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 11",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "2",
+            "organizationName": "Pater Damiaan",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "paterdamiaan@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "paterdamiaan@mail.be",
+                "password": "paterdamiaan",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "13",
@@ -118,7 +371,30 @@
         "price": 20.14,
         "description": "Dit is de beschrijving van product 12",
         "isActive": true,
-        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        "imageUrl": "https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
+        "organization": [
+          {
+            "id": "2",
+            "organizationName": "Pater Damiaan",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "paterdamiaan@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "paterdamiaan@mail.be",
+                "password": "paterdamiaan",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          }
+        ]
       }
   ],
   "categories": [
@@ -137,24 +413,46 @@
   ],
   "organizations": [
     {
-      "id": 1,
-      "customerId": 1,
-      "name": "WWF",
-      "companyRegistrationNr": "123456",
-      "vatNr": "123456",
-      "about": "Over",
-      "supportPhoneNr": "123456",
-      "supportEmail": "wwf@mail.be"
-    },
+            "id": "1",
+            "organizationName": "WWF",
+            "companyRegistrationNr": "123456",
+            "vatNr": "123456",
+            "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+            "supportPhoneNr": "123456",
+            "supportEmail": "wwf@mail.be",
+            "user": [
+              {
+                "id": "1",
+                "email": "wwf@mail.be",
+                "password": "wwf",
+                "phoneNr": "123456",
+                "address": "teststraat 15",
+                "postalCode": "2440",
+                "country": "België",
+                "role": "organization"
+              }
+            ]
+          },
     {
-      "id": 2,
-      "customerId": 1,
-      "name": "Pater Damiaan",
+      "id": "2",
+      "organizationName": "Pater Damiaan",
       "companyRegistrationNr": "123456",
       "vatNr": "123456",
-      "about": "Over",
+      "about": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
       "supportPhoneNr": "123456",
-      "supportEmail": "paterdamiaan@mail.be"
+      "supportEmail": "paterdamiaan@mail.be",
+      "user": [
+        {
+          "id": "1",
+          "email": "paterdamiaan@mail.be",
+          "password": "paterdamiaan",
+          "phoneNr": "123456",
+          "address": "teststraat 15",
+          "postalCode": "2440",
+          "country": "België",
+          "role": "organization"
+        }
+      ]
     }
   ]
 }

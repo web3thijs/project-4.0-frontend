@@ -9,9 +9,11 @@
       <img src="{{product.imageUrl}}" class="img-fluid" alt="">
     </div>
     <div class="col-sm-12 col-lg-6">
-      <p>{{product.organization.name}}</p>
+      <p>{{product.organization.organizationName}}</p>
       <h2>{{product.name}}</h2>
       <p>€ {{product.price}}</p>
+      <p class="mb-0">Aantal</p>
+      <input class="form-control mr-sm-2 input-size mb-3" type="number" id="aantal" name="aantal" value="{{valueProduct}}" (change)="amountChange()">
         <button type="button" class="btn btn-dark text-left mb-3" (click)="AddToShopping()">
           <div class="row">
             <div class="col-10 pr-0">

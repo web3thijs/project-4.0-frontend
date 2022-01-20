@@ -16,8 +16,13 @@ button{
   }
 }
 
-select {
+select, input {
   width: 290px;
+}
+
+.input-size {
+  border-radius: 8px;
+  border-color: #08344B;
 }
 
 .select-size {
