@@ -1,7 +1,7 @@
 export interface Stock {
-  stockId: number;
-  sizeId: number;
-  colorId: number;
-  productId: number;
+  id: string;
+  sizeId: string;
+  colorId: string;
+  productId: string;
   amountInStock: number;
 }

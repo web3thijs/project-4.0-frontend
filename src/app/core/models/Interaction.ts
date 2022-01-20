@@ -1,7 +1,7 @@
 export interface Interaction {
-  interactionId: number;
-  productId: number;
-  customerId: number;
+  id: string;
+  productId: string;
+  customerId: string;
   amountClicks: number;
-  reviewId: number;
+  reviewId: string;
 }
