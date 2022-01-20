@@ -1,12 +1,9 @@
+import { User } from './User';
+
 export interface Customer {
-  customerId: number;
+  id: string;
   firstName: string;
   lastName: string;
-  email: string;
-  password: string;
-  phoneNr: string;
-  address: string;
-  postalCode: string;
-  country: string;
-  isAdmin: boolean;
+  isAdmin: string;
+  user: User;
 }

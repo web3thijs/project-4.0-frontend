@@ -2,8 +2,8 @@ import { Organization } from "./Organization";
 
 export interface Product {
   id: string;
-  categoryId: number;
-  organizationId: number;
+  categoryId: string;
+  organizationId: string;
   name: string;
   price: number;
   description: string;
