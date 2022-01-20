@@ -11,7 +11,7 @@
       <div class="input-group">
         <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
           <option selected>Filter op vzw</option>
-          <option *ngFor="let organization of (organizations$ | async)" value="{{organization.id}}">{{organization.name}}</option>
+          <option *ngFor="let organization of (organizations$ | async)" value="{{organization.id}}">{{organization.organizationName}}</option>
         </select>
       </div>
     </div>

@@ -4,72 +4,41 @@
   <app-title [titleText]="'Winkelmandje'"></app-title>
   <div class="row">
     <div class="col-lg-6">
-      <div class="row text-center mb-3 mt-3">
+      <div *ngIf="itemsInCart > 0">
+      <div class="row text-center mb-3 mt-3" *ngFor="let item of shoppingCart">
         <div class="col-3">
-          <img src="https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="img-fluid" alt="">
+          <img src="{{item.imageUrl}}" class="img-fluid" alt="">
         </div>
         <div class="col-5">
           <div class="row">
             <div class="col-12">
-              <p class="mb-2">Product 10</p>
-              <p class="product-price">€ 12,48</p>
+              <p class="mb-2">{{item.name}}</p>
+              <p class="product-price">€ {{item.price}}</p>
             </div>
           </div>
         </div>
         <div class="col-4">
           <div class="row">
             <div class="col-8">
-              <select class="form-control">
-                <option value="0">0</option>
-                <option selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
+              <input class="form-control mr-sm-2" type="number" id="aantal" name="aantal" value="{{item.valueProduct}}">
             </div>
             <div class="col-4">
-              <i class="fas fa-trash-alt"></i>
+              <p id="{{item.id}}"><i class="fas fa-trash-alt" (click)="delete(item.id)"></i></p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row text-center mb-3">
-        <div class="col-3">
-          <img src="https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="img-fluid" alt="">
-        </div>
-        <div class="col-5">
-          <div class="row">
-            <div class="col-12">
-              <p class="mb-2">Product 10</p>
-              <p class="product-price">€ 12,48</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="row">
-            <div class="col-8">
-              <select class="form-control">
-                <option value="0">0</option>
-                <option selected>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-            </div>
-            <div class="col-4">
-              <i class="fas fa-trash-alt"></i>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div *ngIf="itemsInCart == 0">
+      <p class="shopping-title text-center empty-basket mb-0">Je winkelmandje is leeg!</p>
+      <p class="text-center mb-5">Wil je liever een vrijge gift doen? Dat kan hieronder!</p>
+    </div>
       <div class="row">
         <div class="col-6">
           <p class="shopping-title">Vrije gift</p>
         </div>
         <div class="col-6">
-          <input class="form-control mr-sm-2" type="number" placeholder="Vrije gift" aria-label="VrijeGift">
+          <input class="form-control mr-sm-2" type="number" placeholder="Vrije gift" min="0" value="{{donation}}" (keyup.enter)="onEnter()" (change)="amountChange()" on aria-label="VrijeGift">
         </div>
       </div>
     </div>
@@ -81,19 +50,26 @@
             <p>Totaal</p>
           </div>
           <div class="col-6">
-            <p>€ 12,48</p>
+            <p>€ {{totalPrice}}</p>
+          </div>
+          <div class="col-6">
+            <p>Vrije gift</p>
+          </div>
+          <div class="col-6">
+            <p>€ {{totalDonation}}</p>
           </div>
           <div class="col-6">
             <p>Verzendkosten</p>
           </div>
           <div class="col-6">
-            <p>€ 5,00</p>
+            <p *ngIf="totalPrice < 30 && totalDonation == 0">€ 5,00</p>
+            <p *ngIf="totalPrice > 30 || totalDonation > 0">GRATIS</p>
           </div>
           <div class="col-6">
             <p class="total-shopping">Totaal</p>
           </div>
           <div class="col-6">
-            <p class="total-shopping">€ 17,48</p>
+            <p class="total-shopping">€ {{totalOrderPrice}}</p>
           </div>
         </div>
 

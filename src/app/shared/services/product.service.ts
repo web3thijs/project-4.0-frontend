@@ -17,7 +17,7 @@ export class ProductService {
     return this.httpClient.get<Product[]>(this.baseUrl + "products");
   }
 
-  getProductById(id: number): Observable<Product> {
-    return this.httpClient.get<Product>(this.baseUrl + "products/" + id + "?_expand=organization");
+  getProductById(id: string): Observable<Product> {
+    return this.httpClient.get<Product>(this.baseUrl + "products/" + id);
   }
 }
