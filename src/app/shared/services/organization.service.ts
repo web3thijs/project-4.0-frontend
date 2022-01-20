@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Organization } from 'src/app/core/models/Organization';
 
 @Injectable({
@@ -12,6 +12,7 @@ export class OrganizationService {
   constructor(private httpClient: HttpClient) { }
 
   baseUrl = "http://localhost:3000/"
+  public search = new BehaviorSubject<string>("");
 
   getOrganizations(): Observable<Organization[]> {
     return this.httpClient.get<Organization[]>(this.baseUrl + "organizations");

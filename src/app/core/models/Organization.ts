@@ -8,5 +8,6 @@ export interface Organization {
   about: string;
   supportPhoneNr: string;
   supportEmail: string;
+  imageUrl: string;
   user: User;
 }
