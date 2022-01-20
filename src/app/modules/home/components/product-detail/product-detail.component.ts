@@ -17,7 +17,7 @@ import { User } from 'src/app/core/models/User';
 export class ProductDetailComponent implements OnInit {
   user: User = {id: "", email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   user$: Subscription = new Subscription();
-  organization: Organization = {id: "", organizationName: "", companyRegistrationNr: "", vatNr: "", about: "", supportPhoneNr:"", supportEmail: "", user:this.user};
+  organization: Organization = {id: "", organizationName: "", companyRegistrationNr: "", vatNr: "", about: "", supportPhoneNr:"", supportEmail: "", imageUrl: "", user:this.user};
   organization$: Subscription = new Subscription();
   product: Product = {id: "", categoryId: "", organizationId: "", name: "", price: 0, description: "", isActive: false, imageUrl: "", organization:this.organization};
   product$: Subscription = new Subscription();
