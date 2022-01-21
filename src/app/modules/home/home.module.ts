@@ -11,6 +11,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { HttpClientModule } from '@angular/common/http';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrganizationComponent } from './components/organization/organization.component';
+import { OrganizationDetailComponent } from './components/organization-detail/organization-detail.component';
 
 
 
@@ -22,6 +23,7 @@ import { OrganizationComponent } from './components/organization/organization.co
     ProductDetailComponent,
     ShoppingCartComponent,
     OrganizationComponent,
+    OrganizationDetailComponent,
   ],
   imports: [
     CommonModule,

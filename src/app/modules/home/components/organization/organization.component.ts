@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Organization } from 'src/app/core/models/Organization';
 import { OrganizationService } from 'src/app/shared/services/organization.service';
@@ -13,10 +14,14 @@ export class OrganizationComponent implements OnInit {
 
 
 
-  constructor(private organizationService: OrganizationService) { }
+  constructor(private organizationService: OrganizationService, private router: Router) { }
 
   ngOnInit(): void {
     this.organizations$ = this.organizationService.getOrganizations();
+  }
+
+  onClick(organizationId: string) {
+    this.router.navigate(['/organizations', organizationId]);
   }
 
 }

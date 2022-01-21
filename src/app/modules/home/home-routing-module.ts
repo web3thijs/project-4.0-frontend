@@ -5,6 +5,7 @@ import { OrganizationComponent } from './components/organization/organization.co
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductComponent } from './components/product/product.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { OrganizationDetailComponent } from './components/organization-detail/organization-detail.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailComponent },
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'organizations', component: OrganizationComponent},
+  { path: 'organizations/:id', component: OrganizationDetailComponent},
 ];
 
 @NgModule({
