@@ -6,6 +6,9 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { ProductComponent } from './components/product/product.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { OrganizationDetailComponent } from './components/organization-detail/organization-detail.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterCustomerComponent } from './components/register-customer/register-customer.component';
+import { RegisterOrganizationComponent } from './components/register-organization/register-organization.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -14,6 +17,9 @@ const routes: Routes = [
   { path: 'shoppingcart', component: ShoppingCartComponent},
   { path: 'organizations', component: OrganizationComponent},
   { path: 'organizations/:id', component: OrganizationDetailComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterCustomerComponent},
+  { path: 'register-organization', component: RegisterOrganizationComponent},
 ];
 
 @NgModule({

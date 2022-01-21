@@ -1,0 +1,16 @@
+button{
+  background-color: #08344B;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  width: 290px;
+  height: 38px;
+
+  &:hover{
+    background-color: #184964;
+  }
+}
+
+.progress-bar {
+  background-color: #08344B;
+}
