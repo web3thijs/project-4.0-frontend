@@ -42,7 +42,7 @@ export class OrganizationDetailComponent implements OnInit {
   }
 
   onClick(productId: string) {
-    this.router.navigate(['/products', productId])
+    this.router.navigate(['/producten', productId])
   }
 
 }
