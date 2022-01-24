@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-3">
+  <app-title [titleText]="'Dashboard'"></app-title>
+
+  <h5 class="mb-3">Overzicht</h5>
+  <div class="row mb-5 mx-auto">
+    <div class="col-sm-12 col-md-6 col-lg-4 mx-auto mb-2">
+      <div class="card shadow-lg" style="width: 18rem;" (click)="toOrganizationProduct()">
+        <div class="card-body">
+          <div class="row mt-2 mb-2">
+            <div class="col">
+              <p class="bigger-font mb-0">12</p>
+            </div>
+            <div class="col text-right">
+              <i class="fas fa-tshirt fa-lg p-2 fa-border rounded"></i>
+            </div>
+            <div class="col-12">
+              <p>Producten</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 mx-auto mb-2">
+      <div class="card shadow-lg" style="width: 18rem;" (click)="toOrganizationOrder()">
+        <div class="card-body">
+          <div class="row mt-2 mb-2">
+            <div class="col">
+              <p class="bigger-font mb-0">12</p>
+            </div>
+            <div class="col text-right">
+              <i class="fas fa-shopping-cart fa-lg p-2 fa-border rounded"></i>
+            </div>
+            <div class="col-12">
+              <p>Bestellingen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 mx-auto mb-2">
+      <div class="card shadow-lg" style="width: 18rem;" (click)="toOrganizationDonation()">
+        <div class="card-body">
+          <div class="row mt-2 mb-2">
+            <div class="col">
+              <p class="bigger-font mb-0">12</p>
+            </div>
+            <div class="col text-right">
+              <i class="fas fa-gift fa-lg p-2 fa-border rounded"></i>
+            </div>
+            <div class="col-12">
+              <p>Vrije giften</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h5 class="mb-2">Meest verkochte producten</h5>
+  <div class="table-responsive">
+    <table class="table mt-3 text-center table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Afbeelding</th>
+        <th scope="col">Naam</th>
+        <th scope="col">Prijs</th>
+        <th scope="col">Besteld</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><img src="https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" class="img-fluid" alt=""></td>
+        <td>Product 1</td>
+        <td>12.25</td>
+        <td>15</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+</div>
+
+<app-footer></app-footer>
