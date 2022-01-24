@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-3">
+  <app-title [titleText]="'Bestellingen'"></app-title>
+
+  <!--<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>-->
+  <div class="table-responsive">
+  <table class="table mt-3 text-center table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Datum</th>
+      <th scope="col">Aantal producten</th>
+      <th scope="col">Prijs</th>
+      <th scope="col">Bekijken</th>
+    </tr>
+    </thead>
+    <!--<tbody>
+    <tr *ngFor="let product of products">
+      <th scope="row">{{product.id}}</th>
+      <td>{{product.name}}</td>
+      <td>{{product.price}}</td>
+      <td><i *ngIf="product.isActive" class="fas fa-check"></i><i *ngIf="!product.isActive" class="fas fa-times"></i></td>
+      <td>
+        <button type="button" class="btn btn-success mr-2" (click)="edit(product.id)"><i class="fas fa-edit"></i></button>
+        <button type="button" class="btn btn-danger mr-2" (click)="delete(product.id)"><i class="far fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    </tbody>-->
+  </table>
+  </div>
+
+
+</div>
+
+<app-footer></app-footer>s

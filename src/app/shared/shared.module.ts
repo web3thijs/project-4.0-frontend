@@ -5,6 +5,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { TitleComponent } from './components/title/title.component';
 import { ProductViewComponent } from './components/product-view/product-view.component';
 import { OrganizationViewComponent } from './components/organization-view/organization-view.component';
+import { ButtonAddComponent } from './components/button-add/button-add.component';
 
 
 
@@ -14,7 +15,8 @@ import { OrganizationViewComponent } from './components/organization-view/organi
     ButtonComponent,
     TitleComponent,
     ProductViewComponent,
-    OrganizationViewComponent
+    OrganizationViewComponent,
+    ButtonAddComponent
   ],
   imports: [
     CommonModule
@@ -23,7 +25,8 @@ import { OrganizationViewComponent } from './components/organization-view/organi
     ButtonComponent,
     TitleComponent,
     ProductViewComponent,
-    OrganizationViewComponent
+    OrganizationViewComponent,
+    ButtonAddComponent
   ]
 })
 export class SharedModule { }
