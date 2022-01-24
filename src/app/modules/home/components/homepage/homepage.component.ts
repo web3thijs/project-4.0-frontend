@@ -14,7 +14,7 @@ export class HomepageComponent implements OnInit {
   }
 
   onClick(productId: number) {
-    this.router.navigate(['/products', productId])
+    this.router.navigate(['/producten', productId])
   }
 
 }

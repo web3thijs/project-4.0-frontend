@@ -21,7 +21,7 @@ export class OrganizationComponent implements OnInit {
   }
 
   onClick(organizationId: string) {
-    this.router.navigate(['/organizations', organizationId]);
+    this.router.navigate(['/organisaties', organizationId]);
   }
 
 }

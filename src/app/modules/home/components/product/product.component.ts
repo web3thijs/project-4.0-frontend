@@ -28,7 +28,7 @@ export class ProductComponent implements OnInit {
   }
 
   onClick(productId: string) {
-    this.router.navigate(['/products', productId])
+    this.router.navigate(['/producten', productId])
   }
 
 }

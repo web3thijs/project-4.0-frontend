@@ -12,14 +12,14 @@ import { RegisterOrganizationComponent } from './components/register-organizatio
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
-  { path: 'products', component: ProductComponent },
-  { path: 'products/:id', component: ProductDetailComponent },
-  { path: 'shoppingcart', component: ShoppingCartComponent},
-  { path: 'organizations', component: OrganizationComponent},
-  { path: 'organizations/:id', component: OrganizationDetailComponent},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterCustomerComponent},
-  { path: 'register-organization', component: RegisterOrganizationComponent},
+  { path: 'producten', component: ProductComponent },
+  { path: 'producten/:id', component: ProductDetailComponent },
+  { path: 'winkelmandje', component: ShoppingCartComponent},
+  { path: 'organisaties', component: OrganizationComponent},
+  { path: 'organisaties/:id', component: OrganizationDetailComponent},
+  { path: 'inloggen', component: LoginComponent},
+  { path: 'registreren', component: RegisterCustomerComponent},
+  { path: 'registreren-organisaties', component: RegisterOrganizationComponent},
 ];
 
 @NgModule({
