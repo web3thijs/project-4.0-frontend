@@ -4,4 +4,5 @@ export interface UserResponse {
   token: string;
   id: string;
   email: string;
+  message: string;
 }

@@ -2,6 +2,9 @@
 
 <div class="container mt-3">
   <app-title [titleText]="'Inloggen'"></app-title>
+  <div class="alert alert-danger" *ngIf="errorMessage != ''">
+    <span>{{ errorMessage }}</span>
+  </div>
   <form class="mt-2" (ngSubmit)="onSubmit()">
     <div class="form-group mb-4">
       <label for="exampleInputEmail1">E-mail</label>
@@ -22,9 +25,6 @@
         <a routerLink="/registreren-organisaties">Registreren als vzw</a>
       </div>
     </div>
-
-
-
   </form>
   <div class="row">
     <div class="col-sm-12 col-md-6">

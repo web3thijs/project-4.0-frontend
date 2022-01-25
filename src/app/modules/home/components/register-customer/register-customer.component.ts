@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-customer.component.scss']
 })
 export class RegisterCustomerComponent implements OnInit {
+  isSubmitted: boolean = false;
+  errorMessage: string = '';
 
   constructor() { }
 

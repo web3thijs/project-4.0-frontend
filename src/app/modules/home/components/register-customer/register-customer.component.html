@@ -2,22 +2,47 @@
 
 <div class="container mt-3">
   <app-title [titleText]="'Registreren'"></app-title>
+  <div class="alert alert-danger" *ngIf="errorMessage != ''">
+    <span>{{ errorMessage }}</span>
+  </div>
   <form class="mt-2">
     <div class="form-group mb-4">
-      <label for="email">E-mail</label>
-      <input type="email" placeholder="Vul hier je e-mail in" class="form-control" id="email">
+      <label for="voornaam">Email</label>
+      <input type="text" placeholder="Vul hier je e-mail in" class="form-control" id="email">
     </div>
+
     <div class="form-group mb-4">
-      <label for="exampleInputPassword1">Wachtwoord</label>
+      <label for="voornaam">Voornaam</label>
+      <input type="text" placeholder="Vul hier je e-mail in" class="form-control" id="email">
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="exampleInputPassword1">Achternaam</label>
       <input type="password" placeholder="Vul hier je wachtwoord in" class="form-control" id="exampleInputPassword1">
     </div>
+
     <div class="form-group mb-4">
-      <label for="exampleInputPassword1">Bevestig wachtwoord</label>
+      <label for="exampleInputPassword1">Land</label>
       <input type="password" placeholder="Bevestig hier je wachtwoord" class="form-control" id="exampleInputPassword1">
     </div>
+
+    <div class="form-group mb-4">
+      <label for="exampleInputPassword1">Postcode</label>
+      <input type="password" placeholder="Bevestig hier je wachtwoord" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="exampleInputPassword1">Adres</label>
+      <input type="password" placeholder="Bevestig hier je wachtwoord" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <div class="form-group mb-4">
+      <label for="exampleInputPassword1">Telefoonnummer</label>
+      <input type="password" placeholder="Bevestig hier je wachtwoord" class="form-control" id="exampleInputPassword1">
+    </div>
+
     <button type="button" class="btn btn-dark text-left mb-3 text-center">Registreren</button>
     </form>
     <a routerLink="/registreren-organisaties">Registreren als vzw</a>
     </div>
-
 <app-footer></app-footer>

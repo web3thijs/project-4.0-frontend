@@ -19,18 +19,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    console.log("ds")
     this.isSubmitted = true;
       this.authService.authenticate(this.user).subscribe(result => {
         this.errorMessage = '';
         // save access token localstorage
         localStorage.setItem('token', result.token);
-        console.log(result)
         localStorage.setItem('id', result.id.toString());
         localStorage.setItem('email', result.email);
         this.router.navigate(['']);
       }, error => {
-        this.errorMessage = 'Email/password not correct!';
+        this.errorMessage = 'Email of wachtwoord is niet juist.';
         this.isSubmitted = false;
       });
     }

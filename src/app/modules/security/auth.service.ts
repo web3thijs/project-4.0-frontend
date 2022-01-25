@@ -3,11 +3,14 @@ import {HttpClient} from '@angular/common/http';
 import {User} from './user';
 import {Observable} from 'rxjs';
 import {UserResponse} from './user-response';
+import { Customer } from 'src/app/core/models/Customer';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+ baseUrl: String = "http://localhost:8081/";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -35,10 +38,10 @@ export class AuthService {
   }
 
   authenticate(user: User): Observable<UserResponse> {
-    return this.httpClient.post<UserResponse>('https://project-4-0-backend.herokuapp.com/api/authenticate', user);
+    return this.httpClient.post<UserResponse>(this.baseUrl + 'api/authenticate', user);
   }
 
-  register(user: User): Observable<UserResponse> {
-    return this.httpClient.post<UserResponse>('http://localhost:3000/register', user);
+  registerCustomer(customer: Customer): Observable<Customer> {
+    return this.httpClient.post<Customer>(this.baseUrl + 'api/register/customer', customer);
   }
 }
