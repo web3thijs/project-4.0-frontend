@@ -2,18 +2,18 @@
 
 <div class="container mt-3">
   <app-title [titleText]="'Inloggen'"></app-title>
-  <form class="mt-2">
+  <form class="mt-2" (ngSubmit)="onSubmit()">
     <div class="form-group mb-4">
       <label for="exampleInputEmail1">E-mail</label>
-      <input type="email" placeholder="Vul hier je e-mail in" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="email" placeholder="Vul hier je e-mail in" class="form-control" name="exampleInputEmail1" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="user.email" required>
     </div>
     <div class="form-group mb-4">
       <label for="exampleInputPassword1">Wachtwoord</label>
-      <input type="password" placeholder="Vul hier je wachtwoord in" class="form-control" id="exampleInputPassword1">
+      <input type="password" placeholder="Vul hier je wachtwoord in" class="form-control" name="exampleInputPassword1" id="exampleInputPassword1" [(ngModel)]="user.password" required>
     </div>
     <div class="row text-center">
       <div class="col-sm-12 col-md-6">
-        <button type="button" class="btn btn-dark text-left mb-3 text-center">Inloggen</button>
+        <button type="submit" class="btn btn-dark text-left mb-3 text-center">Inloggen</button>
       </div>
       <div class="col-sm-12 col-md-6">
         <button type="button" class="btn btn-dark text-left mb-3 text-center" routerLink="/register">Registreren</button>

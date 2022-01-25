@@ -15,6 +15,7 @@ import { OrganizationDetailComponent } from './components/organization-detail/or
 import { LoginComponent } from './components/login/login.component';
 import { RegisterCustomerComponent } from './components/register-customer/register-customer.component';
 import { RegisterOrganizationComponent } from './components/register-organization/register-organization.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -36,7 +37,8 @@ import { RegisterOrganizationComponent } from './components/register-organizatio
     HomeRoutingModule,
     SharedModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class HomeModule { }
