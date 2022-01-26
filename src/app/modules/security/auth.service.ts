@@ -41,7 +41,7 @@ export class AuthService {
     return this.httpClient.post<UserResponse>(this.baseUrl + 'api/authenticate', user);
   }
 
-  registerCustomer(customer: Customer): Observable<Customer> {
+  registerCustomer(customer: Omit<Customer, 'id'|'role'>): Observable<Customer> {
     return this.httpClient.post<Customer>(this.baseUrl + 'api/register/customer', customer);
   }
 }

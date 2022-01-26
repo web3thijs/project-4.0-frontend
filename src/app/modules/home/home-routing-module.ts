@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'organisaties/:id', component: OrganizationDetailComponent},
   { path: 'inloggen', component: LoginComponent},
   { path: 'registreren', component: RegisterCustomerComponent},
-  { path: 'registreren-organisaties', component: RegisterOrganizationComponent},
+  { path: 'registreren/organisatie', component: RegisterOrganizationComponent},
 ];
 
 @NgModule({
