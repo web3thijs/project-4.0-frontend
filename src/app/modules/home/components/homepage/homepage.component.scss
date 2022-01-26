@@ -1,7 +1,3 @@
-.title {
-  color: #08344B;
-}
-
 .card {
   border: 0px !important;
 }
@@ -11,10 +7,29 @@
 }
 
 .banner {
-  background-color: #08344B;
-  height: 150px;
+  background-color: #f2f2f2;
+  height: auto;
 }
 
 .bg-blue {
   background-color: #08344B;
+}
+
+.parallax {
+  background-image: url("../../../../../assets/homepage.jpg");
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+
+.filter {
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.subtitle {
+  color: #08344B;
 }
