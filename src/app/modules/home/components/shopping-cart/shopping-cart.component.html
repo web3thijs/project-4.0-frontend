@@ -20,7 +20,7 @@
         <div class="col-4">
           <div class="row">
             <div class="col-8">
-              <input class="form-control mr-sm-2" type="number" id="aantal" name="aantal" value="{{item.valueProduct}}">
+              <input class="form-control mr-sm-2" type="number" id="{{item.id}}" name="aantal" value="{{item.valueProduct}}" (change)="amountChange(item.id)">
             </div>
             <div class="col-4">
               <p id="{{item.id}}"><i class="fas fa-trash-alt" (click)="delete(item.id)"></i></p>
@@ -33,14 +33,63 @@
       <p class="shopping-title text-center empty-basket mb-0">Je winkelmandje is leeg!</p>
       <p class="text-center mb-5">Wil je liever een vrijge gift doen? Dat kan hieronder!</p>
     </div>
-      <div class="row">
-        <div class="col-6">
+      <div class="row mb-4">
+        <div class="col-5">
           <p class="shopping-title">Vrije gift</p>
         </div>
-        <div class="col-6">
-          <input class="form-control mr-sm-2" type="number" placeholder="Vrije gift" min="0" value="{{donation}}" (keyup.enter)="onEnter()" (change)="amountChange()" on aria-label="VrijeGift">
+        <div class="col-7">
+          <div class="row">
+            <div class="col-sm-7">
+              <input class="form-control mr-sm-2" type="number" id="donation" placeholder="Vrije gift" min="0" value="{{donation}}"  (change)="donationChange()" on aria-label="VrijeGift" step="1">
+            </div>
+            <div class="col-sm-5">
+              <div class="row">
+                <div class="col-sm-6">
+                  <i class="fas fa-plus-circle" (click)="donationAdd()"></i>
+                </div>
+                <div class="col-sm-6">
+                  <p><i class="fas fa-trash-alt" (click)="deleteDonation()"></i></p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div class="row" *ngIf="donationIsAdded">
+        <div class="col-5">
+          <p class="shopping-title">Kies een vzw</p>
+        </div>
+        <div class="col-7">
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="form-group">
+                <select class="form-control" id="donationOrganizations">
+                  <option value="WWF">WWF</option>
+                  <option value="Damiaan Actie">Damiaan Actie</option>
+                  <option value="Rode Kruis Vlaanderen">Rode Kruis Vlaanderen</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="row">
+                <div class="col-sm-12">
+                  <i class="fas fa-plus-circle" (click)="organizationAdd()"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <p>Je koos voor: {{chosenOrganization}}</p>
+        </div>
+      </div>
+
+
+
+
+
+
     </div>
     <div class="col-lg-6">
       <div class="bg-shopping mt-3 mb-3">
@@ -62,8 +111,8 @@
             <p>Verzendkosten</p>
           </div>
           <div class="col-6">
-            <p *ngIf="totalPrice < 30 && totalDonation == 0">€ 5,00</p>
-            <p *ngIf="totalPrice > 30 || totalDonation > 0">GRATIS</p>
+            <p *ngIf="totalPrice > 30 || totalPrice == 0">€ 0,00</p>
+            <p *ngIf="totalPrice < 30 && totalDonation == 0 && totalPrice > 1 || totalPrice < 30 && totalDonation > 0 && totalPrice > 1">€ 5,00</p>
           </div>
           <div class="col-6">
             <p class="total-shopping">Totaal</p>
