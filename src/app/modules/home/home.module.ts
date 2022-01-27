@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterCustomerComponent } from './components/register-customer/register-customer.component';
 import { RegisterOrganizationComponent } from './components/register-organization/register-organization.component';
 import { FaqComponent } from './components/faq/faq.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -38,7 +39,9 @@ import { FaqComponent } from './components/faq/faq.component';
     HomeRoutingModule,
     SharedModule,
     CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class HomeModule { }
