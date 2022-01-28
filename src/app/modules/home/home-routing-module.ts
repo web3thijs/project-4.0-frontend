@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'organisaties/:id', component: OrganizationDetailComponent},
   { path: 'inloggen', component: LoginComponent},
   { path: 'registreren', component: RegisterCustomerComponent},
-  { path: 'registreren-organisaties', component: RegisterOrganizationComponent},
+  { path: 'registreren/organisatie', component: RegisterOrganizationComponent},
   { path: 'faq', component: FaqComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'retourneren', component: RetourFormComponent},

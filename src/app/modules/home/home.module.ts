@@ -15,6 +15,9 @@ import { OrganizationDetailComponent } from './components/organization-detail/or
 import { LoginComponent } from './components/login/login.component';
 import { RegisterCustomerComponent } from './components/register-customer/register-customer.component';
 import { RegisterOrganizationComponent } from './components/register-organization/register-organization.component';
+import { StepComponent } from './components/register-organization/step/step.component';
+import { StepDirective } from './components/register-organization/step.directive';
+import { FormComponent } from './components/register-organization/form/form.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -34,6 +37,9 @@ import { RetourFormComponent } from './components/retour-form/retour-form.compon
     LoginComponent,
     RegisterCustomerComponent,
     RegisterOrganizationComponent,
+    StepComponent,
+    StepDirective,
+    FormComponent,
     FaqComponent,
     ContactComponent,
     RetourFormComponent,

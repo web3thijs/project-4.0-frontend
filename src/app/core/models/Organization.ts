@@ -1,7 +1,6 @@
 import { User } from "./User";
 
-export interface Organization {
-  id: string;
+export interface Organization extends User {
   organizationName: string;
   companyRegistrationNr: string;
   vatNr: string;
@@ -9,5 +8,4 @@ export interface Organization {
   supportPhoneNr: string;
   supportEmail: string;
   imageUrl: string;
-  user: User;
 }
