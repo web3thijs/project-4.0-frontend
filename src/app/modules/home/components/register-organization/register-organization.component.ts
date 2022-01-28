@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Organization } from 'src/app/core/models/Organization';
+import { AuthService } from 'src/app/modules/security/auth.service';
+import { User } from 'src/app/modules/security/user';
+import { FormComponent } from './form/form.component';
 
 @Component({
   selector: 'app-register-organization',
@@ -6,60 +11,75 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register-organization.component.scss']
 })
 export class RegisterOrganizationComponent implements OnInit {
-  formPartOneIsShown = true;
-  formPartTwoIsShown = false;
-  formPartThreeIsShown = false;
+  organization: Omit<Organization, 'id'|'role'> = {
+    organizationName: '',
+    companyRegistrationNr: '',
+    vatNr: '',
+    about: '',
+    supportPhoneNr: '',
+    supportEmail: '',
+    imageUrl: '',
+    email: '',
+    password: '',
+    phoneNr: '',
+    address: '',
+    postalCode: '',
+    country: ''
+  }
 
-  organizationName = '';
-  companyNumber = '';
-  phoneNumber = '';
-  address = '';
-  phoneNumberSupport = '';
-  emailSupport = '';
-  email = '';
-  password = '';
-  confirmPassword = '';
+  user: User = {
+    id: '',
+    email: '',
+    password: '',
+    token: ''
+  }
 
-  constructor() { }
+  isSubmitted: boolean = false;
+  errorMessage: string = '';
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  toFormStep2() {
-    this.formPartOneIsShown = false;
-    this.formPartTwoIsShown = true;
-
-    this.organizationName = (<HTMLInputElement>document.getElementById("vzwnaam")).value;
-    this.companyNumber = (<HTMLInputElement>document.getElementById("ondernemingsnummer")).value;
-    this.phoneNumber = (<HTMLInputElement>document.getElementById("telefoonnummer")).value;
-    this.address = (<HTMLInputElement>document.getElementById("adres")).value;
-    /*
-    */
-
-    console.log("Naam vzw = " + this.organizationName);
-    console.log("Ondernemingsnummer = " + this.companyNumber);
-    console.log("Telefoonnummer = " + this.phoneNumber);
-    console.log("Adres = " + this.address);
+  goNext(progress: FormComponent) {
+    progress.next();
   }
 
-  toFormStep3() {
-    this.formPartTwoIsShown = false;
-    this.formPartThreeIsShown = true;
-
-    this.phoneNumberSupport = (<HTMLInputElement>document.getElementById("telefoonnummersupport")).value;
-    this.emailSupport = (<HTMLInputElement>document.getElementById("emailsupport")).value;
-
-    console.log("Telefoonnummer support = " + this.phoneNumberSupport);
-    console.log("E-mail support = " + this.emailSupport);
+  goPrev(progress: FormComponent) {
+    progress.prev();
   }
 
-  registerOrganization() {
-    this.email = (<HTMLInputElement>document.getElementById("email")).value;
-    this.password = (<HTMLInputElement>document.getElementById("wachtwoord")).value;
-    this.confirmPassword = (<HTMLInputElement>document.getElementById("wachtwoordbevestiging")).value;
-
-    console.log("E-mail = " + this.email);
-    console.log("Wachtwoord = " + this.password);
-    console.log("Bevestiging wachtwoord = " + this.confirmPassword);
+  onStateChange(event: any) {
+    console.log(event);
   }
+
+  ngAfterViewInit() {}
+
+  async onSubmit(): Promise<void> {
+    this.isSubmitted = true;
+    this.user.email = this.organization.email
+    this.user.password = this.organization.password
+
+      this.authService.registerOrganization(this.organization).subscribe(result => {
+        this.errorMessage = '';
+
+        this.authService.authenticate(this.user).subscribe(result => {
+          this.errorMessage = '';
+          // save access token localstorage
+          localStorage.setItem('token', result.token);
+          localStorage.setItem('id', result.id.toString());
+          localStorage.setItem('email', result.email);
+
+          this.router.navigate(['']);
+        }, error => {
+          this.errorMessage = 'Authenticate failed.';
+          this.isSubmitted = false;
+        });
+      }, (error: any) => {
+        this.errorMessage = 'Register failed.';
+        this.isSubmitted = false;
+        return;
+      });
+    }
 }

@@ -13,7 +13,23 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class OrganizationProductComponent implements OnInit {
   user: User = {id: "", email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
-  organization: Organization = {id: "", organizationName: "", companyRegistrationNr: "", vatNr: "", about: "", supportPhoneNr:"", supportEmail: "", imageUrl: "", user:this.user};
+  organization: Organization = {
+    organizationName: '',
+    companyRegistrationNr: '',
+    vatNr: '',
+    about: '',
+    supportPhoneNr: '',
+    supportEmail: '',
+    imageUrl: '',
+    id: '',
+    email: '',
+    password: '',
+    phoneNr: '',
+    address: '',
+    postalCode: '',
+    country: '',
+    role: ''
+  };
   product: Product = {id: "", categoryId: "", organizationId: "", name: "", price: 0, description: "", isActive: false, imageUrl: "", organization:this.organization};
 
 

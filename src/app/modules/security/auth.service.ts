@@ -4,6 +4,7 @@ import {User} from './user';
 import {Observable} from 'rxjs';
 import {UserResponse} from './user-response';
 import { Customer } from 'src/app/core/models/Customer';
+import { Organization } from 'src/app/core/models/Organization';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,9 @@ export class AuthService {
 
   registerCustomer(customer: Omit<Customer, 'id'|'role'>): Observable<Customer> {
     return this.httpClient.post<Customer>(this.baseUrl + 'api/register/customer', customer);
+  }
+
+  registerOrganization(organization: Omit<Organization, 'id'|'role'>): Observable<Organization> {
+    return this.httpClient.post<Organization>(this.baseUrl + 'api/register/customer', organization);
   }
 }
