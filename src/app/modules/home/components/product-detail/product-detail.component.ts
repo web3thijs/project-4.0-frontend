@@ -99,6 +99,8 @@ export class ProductDetailComponent implements OnInit {
       };
       productsAdd.push(productAdd);
       localStorage.setItem("productsInCart", JSON.stringify(productsAdd));
+      localStorage.setItem('totalOrderPrice', JSON.stringify(0));
+      localStorage.setItem('shippingCost', JSON.stringify(0));
       location.reload();
     }
 

@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-3">
+  <app-title [titleText]="'Contact'"></app-title>
+  <form action="https://formspree.io/f/mayvqggq" method="post" class="mt-3">
+    <div class="form-group mb-4">
+      <label for="name">Naam<sup class="font-weight-bold">*</sup></label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Naam" minlength="2" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="email">E-mail<sup class="font-weight-bold">*</sup></label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" minlength="2" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="subject">Onderwerp<sup class="font-weight-bold">*</sup></label>
+      <input type="text" class="form-control" id="subject" name="subject" placeholder="Onderwerp" minlength="2" maxlength="100" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="message">Bericht<sup class="font-weight-bold">*</sup></label>
+      <textarea class="form-control" id="message" placeholder="Bericht" rows="3" maxlength="500" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-dark">Verzend</button>
+  </form>
+</div>
+
+<app-footer></app-footer>

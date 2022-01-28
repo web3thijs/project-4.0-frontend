@@ -19,6 +19,10 @@ import { FormsModule } from '@angular/forms';
 import { StepComponent } from './components/register-organization/step/step.component';
 import { StepDirective } from './components/register-organization/step.directive';
 import { FormComponent } from './components/register-organization/form/form.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RetourFormComponent } from './components/retour-form/retour-form.component';
 
 
 
@@ -37,6 +41,9 @@ import { FormComponent } from './components/register-organization/form/form.comp
     StepComponent,
     StepDirective,
     FormComponent,
+    FaqComponent,
+    ContactComponent,
+    RetourFormComponent,
   ],
   imports: [
     CommonModule,
@@ -44,7 +51,8 @@ import { FormComponent } from './components/register-organization/form/form.comp
     SharedModule,
     CoreModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }
