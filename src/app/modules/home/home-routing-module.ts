@@ -11,6 +11,7 @@ import { RegisterCustomerComponent } from './components/register-customer/regist
 import { RegisterOrganizationComponent } from './components/register-organization/register-organization.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { RetourFormComponent } from './components/retour-form/retour-form.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'registreren-organisaties', component: RegisterOrganizationComponent},
   { path: 'faq', component: FaqComponent},
   { path: 'contact', component: ContactComponent},
+  { path: 'retourneren', component: RetourFormComponent},
 ];
 
 @NgModule({

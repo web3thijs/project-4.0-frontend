@@ -18,6 +18,7 @@ import { RegisterOrganizationComponent } from './components/register-organizatio
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RetourFormComponent } from './components/retour-form/retour-form.component';
 
 
 
@@ -35,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterOrganizationComponent,
     FaqComponent,
     ContactComponent,
+    RetourFormComponent,
   ],
   imports: [
     CommonModule,
