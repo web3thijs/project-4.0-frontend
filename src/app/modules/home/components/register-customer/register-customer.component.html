@@ -1,6 +1,4 @@
-<app-navbar></app-navbar>
-
-<div class="container mt-3">
+<div class="container mt-4">
   <app-title [titleText]="'Registreren'"></app-title>
   <div class="alert alert-danger" *ngIf="errorMessage != ''">
     <span>{{ errorMessage }}</span>
@@ -39,28 +37,28 @@
 
       <div class="form-group mb-4 col-4">
         <label for="telefoonnummer">Telefoonnummer</label>
-        <input type="text" class="form-control" id="telefoonnummer" name="telefoonnummer" [(ngModel)]="customer.phoneNr">
+        <input type="text" class="form-control" id="telefoonnummer" name="telefoonnummer"
+          [(ngModel)]="customer.phoneNr">
       </div>
 
       <div class="form-group mb-4 col-4">
         <label for="wachtwoord">Wachtwoord</label>
-        <input type="password" class="form-control" name="wachtwoord"
-          id="wachtwoord" required [(ngModel)]="customer.password">
+        <input type="password" class="form-control" name="wachtwoord" id="wachtwoord" required
+          [(ngModel)]="customer.password">
       </div>
 
       <div class="form-group mb-4 col-4">
         <label for="wachtwoordRepeat">Wachtwoord (herhaling)</label>
-        <input type="password" class="form-control" name="wachtwoordRepeat"
-          id="wachtwoordRepeat" required [(ngModel)]="customer.password">
+        <input type="password" class="form-control" name="wachtwoordRepeat" id="wachtwoordRepeat" required
+          [(ngModel)]="customer.password">
       </div>
     </div>
 
-      <div class="row">
-        <div class="col-12">
-          <button type="submit" class="btn btn-dark text-left mb-3 text-center">Registreren</button>
-        </div>
+    <div class="row">
+      <div class="col-12">
+        <button type="submit" class="btn btn-dark text-left mb-3 text-center">Registreren</button>
       </div>
+    </div>
   </form>
   <a routerLink="/registreren-organisaties">Registreren als vzw</a>
 </div>
-<app-footer></app-footer>

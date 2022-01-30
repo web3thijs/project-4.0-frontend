@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExampleComponent } from './components/example/example.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { HomeRoutingModule } from './home-routing-module';
@@ -22,12 +21,13 @@ import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RetourFormComponent } from './components/retour-form/retour-form.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
-    ExampleComponent,
     HomepageComponent,
     ProductComponent,
     ProductDetailComponent,
@@ -46,9 +46,9 @@ import { RetourFormComponent } from './components/retour-form/retour-form.compon
   ],
   imports: [
     CommonModule,
+    RouterModule,
     HomeRoutingModule,
     SharedModule,
-    CoreModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule

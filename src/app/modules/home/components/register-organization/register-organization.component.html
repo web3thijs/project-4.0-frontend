@@ -1,6 +1,4 @@
-<app-navbar></app-navbar>
-
-<div class="container mt-5">
+<div class="container mt-4">
   <app-title [titleText]="'Registreren'"></app-title>
   <div class="alert alert-danger" *ngIf="errorMessage != ''">
     <span>{{ errorMessage }}</span>
@@ -15,12 +13,14 @@
             </div>
             <div class="form-group mb-4 col-12 col-md-8 mt-3">
               <label for="organizationName">VZW-naam</label>
-              <input type="text" class="form-control" id="organizationName" name="organizationName" [(ngModel)]="organization.organizationName">
+              <input type="text" class="form-control" id="organizationName" name="organizationName"
+                [(ngModel)]="organization.organizationName">
             </div>
 
             <div class="form-group mb-4 col-12 col-md-8 mt-3">
               <label for="companyRegistrationNr">Ondernemingsnummer</label>
-              <input type="text" class="form-control" id="companyRegistrationNr" name="companyRegistrationNr" [(ngModel)]="organization.companyRegistrationNr">
+              <input type="text" class="form-control" id="companyRegistrationNr" name="companyRegistrationNr"
+                [(ngModel)]="organization.companyRegistrationNr">
             </div>
 
             <div class="form-group mb-4 col-12 col-md-8 mt-3">
@@ -73,14 +73,14 @@
 
             <div class="form-group mb-4 col-4">
               <label for="wachtwoord">Wachtwoord</label>
-              <input type="password" class="form-control" name="wachtwoord"
-                id="wachtwoord" required [(ngModel)]="organization.password">
+              <input type="password" class="form-control" name="wachtwoord" id="wachtwoord" required
+                [(ngModel)]="organization.password">
             </div>
 
             <div class="form-group mb-4 col-4">
               <label for="wachtwoordRepeat">Wachtwoord (herhaling)</label>
-              <input type="password" class="form-control" name="wachtwoordRepeat"
-                id="wachtwoordRepeat" required [(ngModel)]="organization.password">
+              <input type="password" class="form-control" name="wachtwoordRepeat" id="wachtwoordRepeat" required
+                [(ngModel)]="organization.password">
             </div>
             <div class="btn-group" role=group>
               <app-button-back [buttonText]="'Vorige stap'" (click)="goPrev(progress)" ngClass="pr-3"></app-button-back>
