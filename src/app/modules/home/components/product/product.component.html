@@ -1,6 +1,4 @@
-<app-navbar></app-navbar>
-
-<div class="container mt-3">
+<div class="container mt-4">
   <div class="row">
     <div class="col-sm-12 col-md-4">
       <form class="form-inline my-2 my-lg-0">
@@ -11,7 +9,8 @@
       <div class="input-group">
         <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
           <option selected>Filter op vzw</option>
-          <option *ngFor="let organization of (organizations$ | async)" value="{{organization.id}}">{{organization.organizationName}}</option>
+          <option *ngFor="let organization of (organizations$ | async)" value="{{organization.id}}">
+            {{organization.organizationName}}</option>
         </select>
       </div>
     </div>
@@ -24,7 +23,6 @@
       </div>
     </div>
   </div>
-
   <div class="row" >
     <div class="col-sm-6 col-lg-4" *ngFor="let product of (products$ | async)">
 
@@ -32,5 +30,3 @@
      </div>
   </div>
 </div>
-
-<app-footer></app-footer>

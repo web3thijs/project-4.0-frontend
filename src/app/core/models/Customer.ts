@@ -1,9 +1,6 @@
 import { User } from './User';
 
-export interface Customer {
-  id: string;
+export interface Customer extends User {
   firstName: string;
   lastName: string;
-  isAdmin: string;
-  user: User;
 }

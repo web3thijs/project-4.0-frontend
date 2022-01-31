@@ -1,0 +1,10 @@
+button{
+  background-color: transparent;
+  outline: none;
+  border: 3px #08344B solid;
+  border-radius: 8px;
+
+  &:hover{
+    background-color: #184964;
+  }
+}

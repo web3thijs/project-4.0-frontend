@@ -1,0 +1,37 @@
+<div class="container mt-4">
+
+  <app-title [titleText]="'Retourneren'"></app-title>
+  <form method="post" class="mt-3">
+    <div class="form-group mb-4">
+      <label for="name">Naam<sup class="font-weight-bold">*</sup></label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Naam" minlength="2" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="email">E-mail<sup class="font-weight-bold">*</sup></label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="E-mail" minlength="2" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="reasonRetour">Reden van retour<sup class="font-weight-bold">*</sup></label>
+      <select class="form-control" id="reasonRetour" required>
+        <option selected>Kies een reden van retour</option>
+        <option>Beschadiging producten</option>
+        <option>Foute levering</option>
+      </select>
+    </div>
+    <div class="form-group mb-4">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="solution" id="refund" value="option1" checked>
+        <label class="form-check-label" for="refund">
+          Volledige terugbetaling
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="solution" id="delivery" value="option2">
+        <label class="form-check-label" for="delivery">
+          Nieuwe levering
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark">Verzend</button>
+  </form>
+</div>

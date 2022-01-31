@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExampleComponent } from './components/example/example.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CoreModule } from 'src/app/core/core.module';
 import { HomeRoutingModule } from './home-routing-module';
@@ -15,12 +14,20 @@ import { OrganizationDetailComponent } from './components/organization-detail/or
 import { LoginComponent } from './components/login/login.component';
 import { RegisterCustomerComponent } from './components/register-customer/register-customer.component';
 import { RegisterOrganizationComponent } from './components/register-organization/register-organization.component';
+import { StepComponent } from './components/register-organization/step/step.component';
+import { StepDirective } from './components/register-organization/step.directive';
+import { FormComponent } from './components/register-organization/form/form.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RetourFormComponent } from './components/retour-form/retour-form.component';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
-    ExampleComponent,
     HomepageComponent,
     ProductComponent,
     ProductDetailComponent,
@@ -30,13 +37,21 @@ import { RegisterOrganizationComponent } from './components/register-organizatio
     LoginComponent,
     RegisterCustomerComponent,
     RegisterOrganizationComponent,
+    StepComponent,
+    StepDirective,
+    FormComponent,
+    FaqComponent,
+    ContactComponent,
+    RetourFormComponent,
   ],
   imports: [
     CommonModule,
+    RouterModule,
     HomeRoutingModule,
     SharedModule,
-    CoreModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

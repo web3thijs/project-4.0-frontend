@@ -14,7 +14,25 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./organization-detail.component.scss']
 })
 export class OrganizationDetailComponent implements OnInit {
-  organization: Organization = {id: "", email: "", phoneNr: "", address: "", postalCode: "", country: "", role: "", organizationName: "", companyRegistrationNr: "", vatNr: "", who: "", what: "", help: "", supportPhoneNr:"", supportEmail: "", imageUrl: ""};
+  user: User = {id: "", email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
+  user$: Subscription = new Subscription();
+  organization: Organization = {
+    organizationName: '',
+    companyRegistrationNr: '',
+    vatNr: '',
+    about: '',
+    supportPhoneNr: '',
+    supportEmail: '',
+    imageUrl: '',
+    id: '',
+    email: '',
+    password: '',
+    phoneNr: '',
+    address: '',
+    postalCode: '',
+    country: '',
+    role: ''
+  };
   organization$: Subscription = new Subscription();
   products$: Observable<Product[]>;
 

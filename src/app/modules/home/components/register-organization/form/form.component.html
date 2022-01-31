@@ -1,0 +1,29 @@
+<div class="step-progress mt-3">
+  <div class="container" #container>
+    <div class="row">
+      <div class="col-12 d-flex">
+        <ng-container *ngFor="let item of itemProgressList; index as i">
+          <div class="check-box" [ngClass]="{
+              complete: item.status === 'completed',
+              active: item.status === 'in progress'
+            }">
+            <i id="checkbox" class="far fa-circle ml-2 mr-2 fa-lg"></i>
+            <i id="checkboxChecked" class="far fa-check-circle ml-2 mr-2 fa-lg"></i>
+            <div [ngClass]="{
+                complete: item.status === 'completed',
+                active: item.status === 'in progress'
+              }" class="progress-line" *ngIf="i !== itemLength - 1">
+              <div class="progress-percent"></div>
+            </div>
+            <div class="info">
+              <span class="step">stap {{ i + 1 }}</span>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="step-content">
+  <ng-content select="app-step"></ng-content>
+</div>

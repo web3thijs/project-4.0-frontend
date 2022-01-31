@@ -12,6 +12,8 @@ import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,11 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
+    CoreModule,
+    HomeModule,
+    DashboardModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule
   ],

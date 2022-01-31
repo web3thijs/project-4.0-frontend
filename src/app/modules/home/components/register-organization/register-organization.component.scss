@@ -3,14 +3,9 @@ button{
   outline: none;
   border: none;
   border-radius: 8px;
-  width: 290px;
-  height: 38px;
+  border: 3px #08344B solid;
 
   &:hover{
     background-color: #184964;
   }
-}
-
-.progress-bar {
-  background-color: #08344B;
 }

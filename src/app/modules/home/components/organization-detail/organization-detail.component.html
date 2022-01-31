@@ -1,7 +1,6 @@
-<app-navbar></app-navbar>
-
-<div class="container mt-3 text-center">
-  <img src="{{organization.imageUrl[0]}}" class="img-fluid" alt="">
+<div class="container mt-4">
+  <div class="text-center">
+    <img src="{{organization.imageUrl[0]}}" class="img-fluid" alt="">
   <h4 class="blue-title mt-4 mb-3">{{organization.organizationName}}</h4>
   <div class="mb-5">
     <i class="fab fa-facebook fa-lg blue-title mr-2"></i>
@@ -15,39 +14,37 @@
           <h2>Producten</h2>
           <hr class="mx-auto" width="50px">
         </div>
+        </div>
       </div>
-    </div>
-    <div class="col-6" *ngIf="!shopIsShown">
-      <div class="row">
-        <div class="col-12" (click)="products()">
-          <h2>Producten</h2>
+      <div class="col-6" *ngIf="!shopIsShown">
+        <div class="row">
+          <div class="col-12" (click)="products()">
+            <h2>Producten</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="aboutIsShown">
+        <div class="row">
+          <div class="col-12" (click)="about()">
+            <h2>Over</h2>
+            <hr class="mx-auto" width="50px">
+          </div>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="!aboutIsShown">
+        <div class="row">
+          <div class="col-12" (click)="about()">
+            <h2>Over</h2>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-6" *ngIf="aboutIsShown">
-      <div class="row">
-        <div class="col-12" (click)="about()">
-          <h2>Over</h2>
-          <hr class="mx-auto" width="50px">
-        </div>
+    <div class="row" *ngIf="shopIsShown">
+      <div class="col-sm-6 col-md-4" *ngFor="let product of (products$ | async)">
+        <app-product-view [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price"
+          (click)="onClick(product.id)"></app-product-view>
       </div>
     </div>
-    <div class="col-6" *ngIf="!aboutIsShown">
-      <div class="row">
-        <div class="col-12" (click)="about()">
-          <h2>Over</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row" *ngIf="shopIsShown">
-    <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let product of (products$ | async)">
-      <app-product-view [productImg]="product.imageUrl[0]"
-[productTitle]="product.name"
-[productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
-    </div>
-  </div>
 
   <div class="row d-sm-block d-md-none" *ngIf="aboutIsShown">
     <div class="col-sm-12 mb-3 mx-auto">
@@ -74,6 +71,7 @@
         </div>
       </div>
     </div>
+
   </div>
   <div class="row d-none d-md-block mt-4" *ngIf="aboutIsShown">
     <div class="mb-5">
@@ -102,4 +100,3 @@
     </div>
   </div>
 </div>
-<app-footer></app-footer>

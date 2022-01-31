@@ -1,63 +1,94 @@
-<app-navbar></app-navbar>
-
-<div class="container mt-3">
+<div class="container mt-4">
   <app-title [titleText]="'Registreren'"></app-title>
-  <form class="mt-2" *ngIf="formPartOneIsShown">
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100">33%</div>
-    </div>
-    <div class="form-group mb-4 mt-4">
-      <label for="vzwnaam">Naam vzw</label>
-      <input type="text" placeholder="Naam vzw" class="form-control" id="vzwnaam">
-    </div>
-    <div class="form-group mb-4">
-      <label for="ondernemingsnummer">Ondernemingsnummer</label>
-      <input type="text" placeholder="Ondernemingsnummer" class="form-control" id="ondernemingsnummer">
-    </div>
-    <div class="form-group mb-4">
-      <label for="telefoonnummer">Telefoonnummer</label>
-      <input type="text" placeholder="Telefoonnummer" class="form-control" id="telefoonnummer">
-    </div>
-    <div class="form-group mb-4">
-      <label for="adres">Adres</label>
-      <input type="text" placeholder="Adres" class="form-control" id="adres">
-    </div>
-    <button type="button" class="btn btn-dark text-left mb-3 text-center" (click)="toFormStep2()">Volgende stap</button>
-  </form>
+  <div class="alert alert-danger" *ngIf="errorMessage != ''">
+    <span>{{ errorMessage }}</span>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form class="mt-2" (ngSubmit)="onSubmit()">
+        <app-form #progress (stateChange)="onStateChange($event)">
+          <app-step>
+            <div class="col-12">
+              <h5>Bedrijfsgegevens</h5>
+            </div>
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="organizationName">VZW-naam</label>
+              <input type="text" class="form-control" id="organizationName" name="organizationName"
+                [(ngModel)]="organization.organizationName">
+            </div>
 
-  <form class="mt-2" *ngIf="formPartTwoIsShown">
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100">66%</div>
-    </div>
-    <div class="form-group mb-4 mt-4">
-      <label for="telefoonnummersupport">Telefoonnummer support</label>
-      <input type="text" placeholder="Telefoonnummer support" class="form-control" id="telefoonnummersupport" >
-    </div>
-    <div class="form-group mb-4">
-      <label for="emailsupport">E-mail support</label>
-      <input type="text" placeholder="E-mail support" class="form-control" id="emailsupport">
-    </div>
-    <button type="button" class="btn btn-dark text-left mb-3 text-center" (click)="toFormStep3()">Volgende stap</button>
-  </form>
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="companyRegistrationNr">Ondernemingsnummer</label>
+              <input type="text" class="form-control" id="companyRegistrationNr" name="companyRegistrationNr"
+                [(ngModel)]="organization.companyRegistrationNr">
+            </div>
 
-  <form class="mt-2" *ngIf="formPartThreeIsShown">
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
-    </div>
-    <div class="form-group mb-4 mt-4">
-      <label for="email">E-mail</label>
-      <input type="text" placeholder="E-mail" class="form-control" id="email" >
-    </div>
-    <div class="form-group mb-4">
-      <label for="wachtwoord">Wachtwoord</label>
-      <input type="password" placeholder="Wachtwoord" class="form-control" id="wachtwoord">
-    </div>
-    <div class="form-group mb-4">
-      <label for="wachtwoordbevestiging">Bevestig wachtwoord</label>
-      <input type="password" placeholder="Bevestig wachtwoord" class="form-control" id="wachtwoordbevestiging">
-    </div>
-    <button type="button" class="btn btn-dark text-left mb-3 text-center" (click)="registerOrganization()">Registreren</button>
-  </form>
-    </div>
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="vatNr">BTW-nummer</label>
+              <input type="text" class="form-control" id="vatNr" name="vatNr" [(ngModel)]="organization.vatNr">
+            </div>
 
-<app-footer></app-footer>
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="tel">Telefoonnummer</label>
+              <input type="text" class="form-control" id="tel" name="tel" [(ngModel)]="organization.phoneNr">
+            </div>
+
+            <app-button [buttonText]="'Volgende stap'" (click)="goNext(progress)"></app-button>
+          </app-step>
+
+          <app-step>
+            <div class="col-12">
+              <h5>Adresgegevens</h5>
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="country">Land</label>
+              <input type="text" class="form-control" id="country" name="country" [(ngModel)]="organization.country">
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="postal">Postcode</label>
+              <input type="text" class="form-control" id="postal" name="postal" [(ngModel)]="organization.postalCode">
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="adres">Adres</label>
+              <input type="text" class="form-control" id="adres" name="adres" [(ngModel)]="organization.address">
+            </div>
+
+            <div class="btn-group" role=group>
+              <app-button-back [buttonText]="'Vorige stap'" (click)="goPrev(progress)" ngClass="pr-3"></app-button-back>
+              <app-button [buttonText]="'Volgende stap'" (click)="goNext(progress)"></app-button>
+            </div>
+
+          </app-step>
+          <app-step>
+            <div class="col-12">
+              <h5>Logingegevens</h5>
+            </div>
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="voornaam">Email</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="organization.email">
+            </div>
+
+            <div class="form-group mb-4 col-4">
+              <label for="wachtwoord">Wachtwoord</label>
+              <input type="password" class="form-control" name="wachtwoord" id="wachtwoord" required
+                [(ngModel)]="organization.password">
+            </div>
+
+            <div class="form-group mb-4 col-4">
+              <label for="wachtwoordRepeat">Wachtwoord (herhaling)</label>
+              <input type="password" class="form-control" name="wachtwoordRepeat" id="wachtwoordRepeat" required
+                [(ngModel)]="organization.password">
+            </div>
+            <div class="btn-group" role=group>
+              <app-button-back [buttonText]="'Vorige stap'" (click)="goPrev(progress)" ngClass="pr-3"></app-button-back>
+              <app-button [buttonText]="'Registreren'" (click)="onSubmit()"></app-button>
+            </div>
+          </app-step>
+        </app-form>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,4 @@
-<app-navbar></app-navbar>
-
-<div class="container mt-3">
+<div class="container mt-4">
   <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
     {{errorMessage}}
   </div>
@@ -22,21 +20,21 @@
       <input type="text" class="form-control" id="description" name="description" placeholder="Description" formControlName="description" minlength="2">
     </div>
     <!--<div class="form-group">
-      <label for="image">Image</label>
-      <input
-        id="image"
-        type="file"
-        class="form-control"
-        autocomplete="off"
-        (change)="onImageSelected($event)"
-        accept=".png,.jpg">
-      <div *ngIf="isSubmitted && uploadProgress">
-        <progress max="100" [value]="(uploadProgress)"></progress>
+        <label for="image">Image</label>
+        <input
+          id="image"
+          type="file"
+          class="form-control"
+          autocomplete="off"
+          (change)="onImageSelected($event)"
+          accept=".png,.jpg">
+        <div *ngIf="isSubmitted && uploadProgress">
+          <progress max="100" [value]="(uploadProgress)"></progress>
+        </div>
       </div>
-    </div>
-    <div *ngIf="isEdit && imageSrc">
-      <img src="{{imageSrc}}" alt="article image">
-    </div>-->
+      <div *ngIf="isEdit && imageSrc">
+        <img src="{{imageSrc}}" alt="article image">
+      </div>-->
     <div class="form-group">
       <input type="checkbox" formControlName="active" id="active" class="mr-2">
       <label for="active">Actief</label>
@@ -53,6 +51,5 @@
     <button type="submit" class="btn btn-blue" *ngIf="isAdd" [disabled]="!productForm.valid || isSubmitted">Toevoegen</button>
     <button type="submit" class="btn btn-blue" *ngIf="isEdit" [disabled]="!productForm.valid || isSubmitted">Opslaan</button>
   </form>
-</div>
 
-<app-footer></app-footer>
+</div>
