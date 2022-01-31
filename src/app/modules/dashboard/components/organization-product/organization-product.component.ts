@@ -20,7 +20,9 @@ export class OrganizationProductComponent implements OnInit {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
-    about: '',
+    who: '',
+    what: '',
+    help: '',
     supportPhoneNr: '',
     supportEmail: '',
     imageUrl: '',
@@ -34,7 +36,7 @@ export class OrganizationProductComponent implements OnInit {
     role: ''
   };
   category: Category = { id: "", name: ""};
-  product: Product = {id: "", name: "", price: 0, description: "", active: false, imageUrl: "", organization:this.organization, category: this.category}; 
+  product: Product = {id: "", name: "", price: 0, description: "", active: false, imageUrl: "", organization:this.organization, category: this.category};
 
   organization$: Subscription = new Subscription();
   //products$: Subscription = new Subscription();
