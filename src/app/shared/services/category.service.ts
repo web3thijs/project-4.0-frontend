@@ -11,10 +11,10 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl = "http://localhost:3000/"
+  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
 
-  getCategories(): Observable<Category[]> {
-    return this.httpClient.get<Category[]>(this.baseUrl + "categories");
+  getCategories(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "categories");
   }
 
   getCategoryById(id: string): Observable<Category> {

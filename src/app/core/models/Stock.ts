@@ -1,7 +1,11 @@
+import { Color } from "./Color";
+import { Product } from "./Product";
+import { Size } from "./Size";
+
 export interface Stock {
-  id: string;
-  sizeId: string;
-  colorId: string;
-  productId: string;
-  amountInStock: number;
+    id: string;
+    size: Size;
+    color: Color;
+    product: Product;
+    amountInStock: number;
 }

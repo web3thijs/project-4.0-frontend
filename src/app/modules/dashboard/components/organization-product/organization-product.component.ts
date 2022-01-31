@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Category } from 'src/app/core/models/Category';
 import { Organization } from 'src/app/core/models/Organization';
 import { Product } from 'src/app/core/models/Product';
 import { User } from 'src/app/core/models/User';
+import { OrganizationService } from 'src/app/shared/services/organization.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -17,7 +20,9 @@ export class OrganizationProductComponent implements OnInit {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
-    about: '',
+    who: '',
+    what: '',
+    help: '',
     supportPhoneNr: '',
     supportEmail: '',
     imageUrl: '',
@@ -30,30 +35,28 @@ export class OrganizationProductComponent implements OnInit {
     country: '',
     role: ''
   };
-  product: Product = {id: "", categoryId: "", organizationId: "", name: "", price: 0, description: "", isActive: false, imageUrl: "", organization:this.organization};
+  category: Category = { id: "", name: ""};
+  product: Product = {id: "", name: "", price: 0, description: "", active: false, imageUrl: "", organization:this.organization, category: this.category};
 
-
-
-
-  user$: Subscription = new Subscription();
   organization$: Subscription = new Subscription();
-  products$: Subscription = new Subscription();
-  products: Product[] = [];
+  //products$: Subscription = new Subscription();
+  products$: Observable<Product[]>;
   deleteProduct$: Subscription = new Subscription();
 
   errorMessage: string = '';
+  id = '61f3ef6a16ddaf3ee1252080';
 
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private organizationService: OrganizationService, private router: Router) { }
 
   ngOnInit(): void {
     this.getProducts();
   }
 
-  ngOnDestroy(): void {
+  /*ngOnDestroy(): void {
     this.products$.unsubscribe();
     this.deleteProduct$.unsubscribe();
-  }
+  }*/
 
   add() {
     this.router.navigate(['/dashboard/organisatie/product/form'], {state: {mode: 'add'}});
@@ -74,7 +77,10 @@ export class OrganizationProductComponent implements OnInit {
   }
 
   getProducts() {
-    this.products$ = this.productService.getProducts().subscribe(result => this.products = result);
+    this.products$ = this.organizationService.getProductsByOrganization(this.id).pipe(
+      map(response => response.content)
+    );
+
   }
 
 }

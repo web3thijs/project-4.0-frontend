@@ -26,13 +26,15 @@ export class OrganizationProductFormComponent implements OnInit {
 
   //reactive form
   productForm = new FormGroup({
-    categoryId: new FormControl(0),
-    organizationId: new FormControl(0),
     name: new FormControl(''),
     price: new FormControl(0),
     description: new FormControl(''),
-    isActive: new FormControl(''),
-    imageUrl: new FormControl('')
+    active: new FormControl('')
+  });
+
+  stockForm = new FormGroup({
+    amountInStock: new FormControl(0),
+    new: new FormControl('')
   });
 
   // Uploading image
@@ -51,14 +53,10 @@ export class OrganizationProductFormComponent implements OnInit {
     if(this.productId != null) {
       this.product$ = this.productService.getProductById(this.productId.toString()).subscribe(result => {
         this.productForm.setValue({
-          categoryId: result.categoryId,
-          organizationId: result.organizationId,
-          organization: result.organization,
           name: result.name,
           price: result.price,
           description: result.description,
-          isActive: result.isActive,
-          imageUrl: result.imageUrl
+          active: result.active
         });
       });
     }

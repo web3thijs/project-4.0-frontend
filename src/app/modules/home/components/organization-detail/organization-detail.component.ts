@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Organization } from 'src/app/core/models/Organization';
 import { User } from 'src/app/core/models/User';
@@ -19,7 +20,9 @@ export class OrganizationDetailComponent implements OnInit {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
-    about: '',
+    who: '',
+    what: '',
+    help: '',
     supportPhoneNr: '',
     supportEmail: '',
     imageUrl: '',
@@ -33,7 +36,7 @@ export class OrganizationDetailComponent implements OnInit {
     role: ''
   };
   organization$: Subscription = new Subscription();
-  products$: Observable<Product[]> = new Observable<Product[]>();
+  products$: Observable<Product[]>;
 
   shopIsShown = true;
   aboutIsShown = false;
@@ -43,8 +46,9 @@ export class OrganizationDetailComponent implements OnInit {
   ngOnInit(): void {
     let id = this.route.snapshot.params.id;
     this.organizationService.getOrganizationById(id).subscribe(result => (this.organization = result));
-    this.products$ = this.productService.getProducts();
-    console.log(this.products$);
+    this.products$ = this.organizationService.getProductsByOrganization(id).pipe(
+      map(response => response.content)
+    );
   }
 
   products() {
@@ -60,5 +64,4 @@ export class OrganizationDetailComponent implements OnInit {
   onClick(productId: string) {
     this.router.navigate(['/producten', productId])
   }
-
 }
