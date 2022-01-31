@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container mt-3 text-center">
-  <img src="../../../../../assets/{{organization.imageUrl}}" class="img-fluid" alt="">
+  <img src="{{organization.imageUrl[0]}}" class="img-fluid" alt="">
   <h4 class="blue-title mt-4 mb-3">{{organization.organizationName}}</h4>
   <div class="mb-5">
     <i class="fab fa-facebook fa-lg blue-title mr-2"></i>
@@ -42,40 +42,64 @@
   </div>
 
   <div class="row" *ngIf="shopIsShown">
-    <div class="col-sm-6 col-md-4" *ngFor="let product of (products$ | async)">
-      <app-product-view [productImg]="product.imageUrl"
+    <div class="col-sm-6 col-md-6 col-lg-4" *ngFor="let product of (products$ | async)">
+      <app-product-view [productImg]="product.imageUrl[0]"
 [productTitle]="product.name"
 [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
     </div>
   </div>
 
-  <div class="row" *ngIf="aboutIsShown">
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
-      <div class="card mx-auto" style="width: 18rem;">
+  <div class="row d-sm-block d-md-none" *ngIf="aboutIsShown">
+    <div class="col-sm-12 mb-3 mx-auto">
+      <div class="card mx-auto" style="width: 15rem;">
         <div class="card-body">
           <h5 class="card-title" id="product-title">Wie zijn we?</h5>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>{{organization.who}}</p>
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
-      <div class="card mx-auto" style="width: 18rem;">
+    <div class="col-sm-12 mb-3 mx-auto">
+      <div class="card mx-auto" style="width: 15rem;">
         <div class="card-body">
           <h5 class="card-title" id="product-title">Wat doen we?</h5>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>{{organization.what}}</p>
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
-      <div class="card mx-auto" style="width: 18rem;">
+    <div class="col-sm-12 mb-3 mx-auto">
+      <div class="card mx-auto" style="width: 15rem;">
         <div class="card-body">
           <h5 class="card-title" id="product-title">Wie helpen we?</h5>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>{{organization.help}}</p>
         </div>
       </div>
     </div>
   </div>
-
+  <div class="row d-none d-md-block mt-4" *ngIf="aboutIsShown">
+    <div class="mb-5">
+      <div class="col-sm-12">
+        <p class="aboutTitle">Wie zijn we?</p>
+      </div>
+      <div class="col-sm-12">
+        <p>{{organization.who}}</p>
+      </div>
+    </div>
+    <div class="mb-5">
+      <div class="col-sm-12">
+        <p class="aboutTitle">Wat doen we?</p>
+      </div>
+      <div class="col-sm-12">
+        <p>{{organization.what}}</p>
+      </div>
+    </div>
+    <div>
+      <div class="col-sm-12">
+        <p class="aboutTitle">Wie helpen we?</p>
+      </div>
+      <div class="col-sm-12">
+        <p>{{organization.help}}</p>
+      </div>
+    </div>
+  </div>
 </div>
-
 <app-footer></app-footer>

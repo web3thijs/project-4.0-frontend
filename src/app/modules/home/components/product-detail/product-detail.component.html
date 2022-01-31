@@ -5,10 +5,10 @@
     Let op! Je hebt dit product al aan je winkelmandje toegevoegd!
   </div>
   <div class="row">
-    <div class="col-sm-12 col-lg-6">
-      <img src="{{product.imageUrl}}" class="img-fluid" alt="">
+    <div class="col-sm-12 col-md-6">
+      <img src="{{product.imageUrl[0]}}" class="img-fluid" alt="">
     </div>
-    <div class="col-sm-12 col-lg-6">
+    <div class="col-sm-12 col-md-6">
       <p>{{product.organization.organizationName}}</p>
       <h2>{{product.name}}</h2>
       <p>€ {{product.price}}</p>
@@ -26,14 +26,10 @@
            </button>
            <select class="form-control select-size mb-3">
             <option>Kies een maat</option>
-            <option value="1">S</option>
-            <option value="2">M</option>
-            <option value="3">L</option>
-            <option value="4">XL</option>
+            <option *ngFor="let stock of (stocks$ | async)">{{stock.size.name}}</option>
           </select>
         <p class="details-title">Details</p>
         <p>{{product.description}}</p>
-
     </div>
   </div>
 </div>

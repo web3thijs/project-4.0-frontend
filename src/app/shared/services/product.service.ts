@@ -11,15 +11,18 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl = "http://localhost:3000/"
+  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
 
-  getProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.baseUrl + "products");
+  getProducts(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "products?page=1");
   }
 
   getProductById(id: string): Observable<Product> {
     return this.httpClient.get<Product>(this.baseUrl + "products/" + id);
   }
+
+
+  //https://project-4-0-backend.herokuapp.com/api/products/organization/61efca4eed676a4390618ad1
 
   postProduct(product: Product): Observable<Product> {
     let headers = new HttpHeaders();
