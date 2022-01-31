@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/models/Product';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Category } from 'src/app/core/models/Category';
 import { CategoryService } from 'src/app/shared/services/category.service';
 import { Organization } from 'src/app/core/models/Organization';
 import { OrganizationService } from 'src/app/shared/services/organization.service';
 import { User } from 'src/app/core/models/User';
+import { Stock } from 'src/app/core/models/Stock';
+import { Color } from 'src/app/core/models/Color';
+import { Size } from 'src/app/core/models/Size';
+import { StockService } from 'src/app/shared/services/stock.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,7 +26,9 @@ export class ProductDetailComponent implements OnInit {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
-    about: '',
+    who: '',
+    what: '',
+    help: '',
     supportPhoneNr: '',
     supportEmail: '',
     imageUrl: '',
@@ -35,8 +42,17 @@ export class ProductDetailComponent implements OnInit {
     role: ''
   };
   organization$: Subscription = new Subscription();
-  product: Product = {id: "", categoryId: "", organizationId: "", name: "", price: 0, description: "", isActive: false, imageUrl: "", organization:this.organization};
+  category: Category = {id: "", name: ""};
+  category$: Subscription = new Subscription();
+  product: Product = {id: "", name: "", price: 0, description: "", active: false, imageUrl: "", organization: this.organization, category: this.category};
   product$: Subscription = new Subscription();
+  color: Color = {id: "", name: ""};
+  color$: Subscription = new Subscription();
+  size: Size = {id: "", name: ""};
+  size$: Subscription = new Subscription();
+  /*stock: Stock = {id: "", size: this.size, color: this.color, product: this.product, amountInStock: 0};
+  stock$: Subscription = new Subscription();*/
+  stocks$: Observable<Stock[]>;
 
   shoppingCart = JSON.parse(localStorage.getItem('productsInCart') || "[]");
   itemsInCart = 0;
@@ -46,13 +62,19 @@ export class ProductDetailComponent implements OnInit {
   valueProduct = 0;
 
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private categoryService: CategoryService, private organizationService: OrganizationService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private categoryService: CategoryService, private organizationService: OrganizationService, private stockService: StockService) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.params.id;
+    this.stocks$ = this.stockService.getStocksByProductId(id).pipe(
+      map(response => response)
+    );
+    //this.stockService.getStocksByProductId(id).subscribe(console.log);
+
+
     this.productService.getProductById(id).subscribe(result => (this.product = result));
-    this.getOrganizationById();
     this.amountChange();
+    console.log("ID: " + id);
 
     if(this.shoppingCart != null){
       this.itemsInCart = JSON.parse(localStorage.productsInCart).length;
@@ -65,7 +87,6 @@ export class ProductDetailComponent implements OnInit {
       this.productsIdsInCart.push(this.shoppingCart[i].id);
     }
 
-    console.log("Test " + this.product.organization.organizationName);
     console.log("Shoppingcart " + this.shoppingCart);
     console.log("Items in cart: " + this.itemsInCart);
     console.log("ProductIDS " + this.productsIdsInCart);
@@ -77,10 +98,6 @@ export class ProductDetailComponent implements OnInit {
     console.log("Value " + this.valueProduct);
   }
 
-  getOrganizationById() {
-    this.organization$ = this.organizationService.getOrganizationById(this.product.organizationId).subscribe(result => this.organization = result);
-  }
-
   AddToShopping() {
     var productsAdd = JSON.parse(localStorage.getItem("productsInCart") || "[]");
     if(this.productsIdsInCart.includes(this.product.id)) {
@@ -88,13 +105,11 @@ export class ProductDetailComponent implements OnInit {
     } else {
       var productAdd = {
         id: this.product.id,
-        categoryId: this.product.categoryId,
-        organizationId: this.product.organizationId,
         name: this.product.name,
         price: this.product.price,
         description: this.product.description,
-        isActive: this.product.isActive,
-        imageUrl: this.product.imageUrl,
+        isActive: this.product.active,
+        imageUrl: this.product.imageUrl[0],
         valueProduct: this.valueProduct
       };
       productsAdd.push(productAdd);
