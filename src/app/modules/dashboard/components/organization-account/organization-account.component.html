@@ -1,0 +1,78 @@
+<div class="container mt-4">
+  <app-title [titleText]="'Profiel'"></app-title>
+  <div class="row mb-5">
+    <form class="col-12">
+      <div class="row">
+      <div class="form-group mb-4 col-12 col-md-6">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" id="email" placeholder="E-mail">
+      </div>
+      <div class="form-group mb-4 col-12 col-md-6">
+        <label for="phoneNr">Telefoonnummer</label>
+        <input type="text" class="form-control" id="phoneNr" placeholder="Telefoonnummer">
+      </div>
+      <div class="form-group mb-4 col-12">
+        <label for="address">Adres</label>
+        <input type="text" class="form-control" id="address" placeholder="Adres">
+      </div>
+      <div class="form-group mb-4 col-12 col-md-6">
+        <label for="postalCode">Postcode</label>
+        <input type="text" class="form-control" id="postalCode" placeholder="Postcode">
+      </div>
+      <div class="form-group mb-4 col-12 col-md-6">
+        <label for="country">Land</label>
+        <input type="text" class="form-control" id="country" placeholder="Land">
+      </div>
+      <div class="form-group mb-4 col-12">
+        <label for="organizationName">vzw-naam</label>
+        <input type="text" class="form-control" id="organizationName" placeholder="vzw-naam">
+      </div>
+      <div class="form-group mb-4 col-12 col-md-6">
+        <label for="companyRegistrationNr">Ondernemingsnummer</label>
+        <input type="text" class="form-control" id="companyRegistrationNr" placeholder="Ondernemingsnummer">
+      </div>
+      <div class="form-group mb-4 col-12 col-md-6">
+        <label for="vatNr">BTW-nummer</label>
+        <input type="text" class="form-control" id="vatNr" placeholder="BTW-nummer">
+      </div>
+      <div class="form-group mb-4 col-12">
+        <label for="who">Wie zijn we?</label>
+        <textarea class="form-control" id="who" rows="3"></textarea>
+      </div>
+      <div class="form-group mb-4 col-12">
+        <label for="what">Wat doen we?</label>
+        <textarea class="form-control" id="what" rows="3"></textarea>
+      </div>
+      <div class="form-group mb-4 col-12">
+        <label for="help">Wie helpen we?</label>
+        <textarea class="form-control" id="help" rows="3"></textarea>
+      </div>
+      <div class="form-group mb-4 col-12 col-md-6">
+        <label for="supportPhoneNr">Telefoonnummer support</label>
+        <input type="text" class="form-control" id="supportPhoneNr" placeholder="Telefoonnummer support">
+      </div>
+      <div class="form-group mb-4 col-12 col-md-6">
+        <label for="supportEmail">E-mail</label>
+        <input type="email" class="form-control" id="supportEmail" placeholder="E-mail support">
+      </div>
+          <!--<div class="form-group">
+          <label for="image">Image</label>
+          <input
+            id="image"
+            type="file"
+            class="form-control"
+            autocomplete="off"
+            (change)="onImageSelected($event)"
+            accept=".png,.jpg">
+          <div *ngIf="isSubmitted && uploadProgress">
+            <progress max="100" [value]="(uploadProgress)"></progress>
+          </div>
+        </div>
+        <div *ngIf="isEdit && imageSrc">
+          <img src="{{imageSrc}}" alt="article image">
+        </div>-->
+      </div>
+      <button type="submit" class="btn btn-dark">Opslaan</button>
+    </form>
+  </div>
+</div>
