@@ -1,126 +1,106 @@
-<div class="container mt-4">
-  <app-title [titleText]="'Winkelmandje'"></app-title>
+<div class="container mt-5">
   <div class="row">
-    <div class="col-lg-6">
-      <div *ngIf="itemsInCart > 0">
-        <div class="row text-center mb-3 mt-3" *ngFor="let item of shoppingCart">
-          <div class="col-3">
-            <img src="{{item.imageUrl}}" class="img-fluid" alt="">
-          </div>
-          <div class="col-5">
-            <div class="row">
-              <div class="col-12">
-                <p class="mb-2">{{item.name}}</p>
-                <p class="product-price">€ {{item.price}}</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="row">
-              <div class="col-8">
-                <input class="form-control mr-sm-2" type="number" id="{{item.id}}" name="aantal"
-                  value="{{item.valueProduct}}" (change)="amountChange(item.id)">
-              </div>
-              <div class="col-4">
-                <p id="{{item.id}}"><i class="fas fa-trash-alt" (click)="delete(item.id)"></i></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="itemsInCart == 0">
-        <p class="shopping-title text-center empty-basket mb-0">Je winkelmandje is leeg!</p>
-        <p class="text-center mb-5">Wil je liever een vrijge gift doen? Dat kan hieronder!</p>
-      </div>
-      <div class="row mb-4">
-        <div class="col-5">
-          <p class="shopping-title">Vrije gift</p>
-        </div>
-        <div class="col-7">
+    <div class="col-12">
+      <app-title [titleText]="'Winkelmandje'"></app-title>
+      <div class="row mt-5">
+        <div class="col-12 col-lg-8 pr-5">
           <div class="row">
-            <div class="col-sm-7">
-              <input class="form-control mr-sm-2" type="number" id="donation" placeholder="Vrije gift" min="0"
-                value="{{donation}}" (change)="donationChange()" on aria-label="VrijeGift" step="1">
-            </div>
-            <div class="col-sm-5">
-              <div class="row">
-                <div class="col-sm-6">
-                  <i class="fas fa-plus-circle" (click)="donationAdd()"></i>
+            <div class="col-12">
+              <div class="row align-items-center">
+                <div class="col-2 d-flex">
+                  <img src="https://via.placeholder.com/100" alt="">
                 </div>
-                <div class="col-sm-6">
-                  <p><i class="fas fa-trash-alt" (click)="deleteDonation()"></i></p>
+                <div class="col-3">
+                  <h5>Product</h5>
+                  <span>Size</span>
+                </div>
+                <div class="col-3 d-flex align-items-center">
+                  <i class="fas fa-minus mr-3"></i>
+                  <span>1</span>
+                  <i class="fas fa-plus ml-3"></i>
+                </div>
+                <div class="col-3">
+                  <span>$ 12.50</span>
+                </div>
+                <div class="col-1">
+                  <i class="fas fa-times"></i>
                 </div>
               </div>
+              <hr class="mt-4">
+            </div>
+            <div class="col-12">
+              <div class="row align-items-center">
+                <div class="col-2 d-flex">
+                  <img src="https://via.placeholder.com/100" alt="">
+                </div>
+                <div class="col-3">
+                  <h5>Product</h5>
+                  <span>Size</span>
+                </div>
+                <div class="col-3 d-flex align-items-center">
+                  <i class="fas fa-minus mr-3"></i>
+                  <span>1</span>
+                  <i class="fas fa-plus ml-3"></i>
+                </div>
+                <div class="col-3">
+                  <span>$ 12.50</span>
+                </div>
+                <div class="col-1">
+                  <i class="fas fa-times"></i>
+                </div>
+              </div>
+              <hr class="mt-4">
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="row" *ngIf="donationIsAdded">
-        <div class="col-5">
-          <p class="shopping-title">Kies een vzw</p>
-        </div>
-        <div class="col-7">
+        <div class="col-12 col-lg-4 pl-4 pr-4 pt-3 pb-3" id="total_card">
+          <div class="text-center">
+            <span class="font-weight-bold">
+              Vrije giften
+            </span>
+          </div>
           <div class="row">
-            <div class="col-sm-7">
-              <div class="form-group">
-                <select class="form-control" id="donationOrganizations">
-                  <option value="WWF">WWF</option>
-                  <option value="Damiaan Actie">Damiaan Actie</option>
-                  <option value="Rode Kruis Vlaanderen">Rode Kruis Vlaanderen</option>
-                </select>
+            <div class="col-12 bg-white mt-3">
+              <div class="row align-items-center">
+                <div class="col-2 d-flex pl-0">
+                  <img src="https://via.placeholder.com/50" alt="">
+                </div>
+                <div class="col-5 font-weight-bold">
+                  <span>Pater damiaanactie</span>
+                </div>
+                <div class="col-4">
+                  <div class="input-group">
+                    <span class="input-group-addon d-flex align-items-center mr-2">$</span>
+                    <input type="text" class="form-control" placeholder="0.00">
+                  </div>
+                </div>
+                <div class="col-1">
+                  <i class="fas fa-times"></i>
+                </div>
               </div>
             </div>
-            <div class="col-sm-5">
-              <div class="row">
-                <div class="col-sm-12">
-                  <i class="fas fa-plus-circle" (click)="organizationAdd()"></i>
+
+            <div class="col-12 bg-white mt-3">
+              <div class="row align-items-center">
+                <div class="col-2 d-flex pl-0">
+                  <img src="https://via.placeholder.com/50" alt="">
+                </div>
+                <div class="col-5 font-weight-bold">
+                  <span>Pater damiaanactie</span>
+                </div>
+                <div class="col-4 ">
+                  <div class="input-group">
+                    <span class="input-group-addon d-flex align-items-center mr-2">$</span>
+                    <input type="text" class="form-control" placeholder="0.00">
+                  </div>
+                </div>
+                <div class="col-1">
+                  <i class="fas fa-times"></i>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-12">
-          <p>Je koos voor: {{chosenOrganization}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div class="bg-shopping mt-3 mb-3">
-        <p class="shopping-title text-center pb-3 pt-2">Overzicht</p>
-        <div class="row text-center">
-          <div class="col-6">
-            <p>Totaal</p>
-          </div>
-          <div class="col-6">
-            <p>€ {{totalPrice}}</p>
-          </div>
-          <div class="col-6">
-            <p>Vrije gift</p>
-          </div>
-          <div class="col-6">
-            <p>€ {{totalDonation}}</p>
-          </div>
-          <div class="col-6">
-            <p>Verzendkosten</p>
-          </div>
-          <div class="col-6">
-            <p *ngIf="totalPrice > 30 || totalPrice == 0">€ 0,00</p>
-            <p
-              *ngIf="totalPrice < 30 && totalDonation == 0 && totalPrice > 1 || totalPrice < 30 && totalDonation > 0 && totalPrice > 1">
-              € 5,00</p>
-          </div>
-          <div class="col-6">
-            <p class="total-shopping">Totaal</p>
-          </div>
-          <div class="col-6">
-            <p class="total-shopping">€ {{totalOrderPrice}}</p>
-          </div>
-        </div>
-
-      </div>
-      <div class="text-center">
-        <app-button [buttonText]="'Bestellen'"></app-button>
       </div>
     </div>
   </div>
