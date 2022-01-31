@@ -1,81 +1,85 @@
-<app-navbar></app-navbar>
+<div class="container mt-4">
+  <div class="text-center">
+    <img src="../../../../../assets/{{organization.imageUrl}}" class="img-fluid" alt="">
+    <h4 class="blue-title mt-4 mb-3">{{organization.organizationName}}</h4>
+    <div class="mb-5">
+      <i class="fab fa-facebook fa-lg blue-title mr-2"></i>
+      <i class="fab fa-instagram fa-lg blue-title mr-2"></i>
+      <i class="fas fa-globe-europe fa-lg blue-title"></i>
+    </div>
+    <div class="row">
+      <div class="col-6" *ngIf="shopIsShown">
+        <div class="row">
+          <div class="col-12" (click)="products()">
+            <h2>Producten</h2>
+            <hr class="mx-auto" width="50px">
+          </div>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="!shopIsShown">
+        <div class="row">
+          <div class="col-12" (click)="products()">
+            <h2>Producten</h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="aboutIsShown">
+        <div class="row">
+          <div class="col-12" (click)="about()">
+            <h2>Over</h2>
+            <hr class="mx-auto" width="50px">
+          </div>
+        </div>
+      </div>
+      <div class="col-6" *ngIf="!aboutIsShown">
+        <div class="row">
+          <div class="col-12" (click)="about()">
+            <h2>Over</h2>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="container mt-3 text-center">
-  <img src="../../../../../assets/{{organization.imageUrl}}" class="img-fluid" alt="">
-  <h4 class="blue-title mt-4 mb-3">{{organization.organizationName}}</h4>
-  <div class="mb-5">
-    <i class="fab fa-facebook fa-lg blue-title mr-2"></i>
-    <i class="fab fa-instagram fa-lg blue-title mr-2"></i>
-    <i class="fas fa-globe-europe fa-lg blue-title"></i>
-  </div>
-  <div class="row">
-    <div class="col-6" *ngIf="shopIsShown">
-      <div class="row">
-        <div class="col-12" (click)="products()">
-          <h2>Producten</h2>
-          <hr class="mx-auto" width="50px">
-        </div>
+    <div class="row" *ngIf="shopIsShown">
+      <div class="col-sm-6 col-md-4" *ngFor="let product of (products$ | async)">
+        <app-product-view [productImg]="product.imageUrl" [productTitle]="product.name" [productPrice]="product.price"
+          (click)="onClick(product.id)"></app-product-view>
       </div>
     </div>
-    <div class="col-6" *ngIf="!shopIsShown">
-      <div class="row">
-        <div class="col-12" (click)="products()">
-          <h2>Producten</h2>
-        </div>
-      </div>
-    </div>
-    <div class="col-6" *ngIf="aboutIsShown">
-      <div class="row">
-        <div class="col-12" (click)="about()">
-          <h2>Over</h2>
-          <hr class="mx-auto" width="50px">
-        </div>
-      </div>
-    </div>
-    <div class="col-6" *ngIf="!aboutIsShown">
-      <div class="row">
-        <div class="col-12" (click)="about()">
-          <h2>Over</h2>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="row" *ngIf="shopIsShown">
-    <div class="col-sm-6 col-md-4" *ngFor="let product of (products$ | async)">
-      <app-product-view [productImg]="product.imageUrl"
-[productTitle]="product.name"
-[productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
+    <div class="row" *ngIf="aboutIsShown">
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
+        <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title" id="product-title">Wie zijn we?</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
+        <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title" id="product-title">Wat doen we?</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
+        <div class="card mx-auto" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title" id="product-title">Wie helpen we?</h5>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+              industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+              scrambled it to make a type specimen book.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="row" *ngIf="aboutIsShown">
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
-      <div class="card mx-auto" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="product-title">Wie zijn we?</h5>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
-      <div class="card mx-auto" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="product-title">Wat doen we?</h5>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mx-auto">
-      <div class="card mx-auto" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title" id="product-title">Wie helpen we?</h5>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>
-
-<app-footer></app-footer>

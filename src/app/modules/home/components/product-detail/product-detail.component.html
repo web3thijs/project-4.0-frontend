@@ -1,6 +1,4 @@
-<app-navbar></app-navbar>
-
-<div class="container mt-3">
+<div class="container mt-4">
   <div class="alert alert-danger" role="alert" *ngIf="alertIsShown">
     Let op! Je hebt dit product al aan je winkelmandje toegevoegd!
   </div>
@@ -13,30 +11,27 @@
       <h2>{{product.name}}</h2>
       <p>€ {{product.price}}</p>
       <p class="mb-0">Aantal</p>
-      <input class="form-control mr-sm-2 input-size mb-3" type="number" id="aantal" name="aantal" value="{{valueProduct}}" (change)="amountChange()">
-        <button type="button" class="btn btn-dark text-left mb-3" (click)="AddToShopping()">
-          <div class="row">
-            <div class="col-10 pr-0">
-              In winkelmandje
-            </div>
-            <div class="col-2 p-0">
-              <i class="fas fa-shopping-cart"></i>
-            </div>
+      <input class="form-control mr-sm-2 input-size mb-3" type="number" id="aantal" name="aantal" value="{{valueProduct}}"
+        (change)="amountChange()">
+      <button type="button" class="btn btn-dark text-left mb-3" (click)="AddToShopping()">
+        <div class="row">
+          <div class="col-10 pr-0">
+            In winkelmandje
           </div>
-           </button>
-           <select class="form-control select-size mb-3">
-            <option>Kies een maat</option>
-            <option value="1">S</option>
-            <option value="2">M</option>
-            <option value="3">L</option>
-            <option value="4">XL</option>
-          </select>
-        <p class="details-title">Details</p>
-        <p>{{product.description}}</p>
-
+          <div class="col-2 p-0">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+        </div>
+      </button>
+      <select class="form-control select-size mb-3">
+        <option>Kies een maat</option>
+        <option value="1">S</option>
+        <option value="2">M</option>
+        <option value="3">L</option>
+        <option value="4">XL</option>
+      </select>
+      <p class="details-title">Details</p>
+      <p>{{product.description}}</p>
     </div>
   </div>
 </div>
-
-
-<app-footer></app-footer>
