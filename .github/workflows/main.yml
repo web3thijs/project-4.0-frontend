@@ -16,6 +16,6 @@ jobs:
       run: mvn clean verify -Dtestng.dtd.http=true
       
     - name: OWASP ZAP Full Scan
-    - uses: zaproxy/action-baseline@v0.4.0
+      uses: zaproxy/action-baseline@v0.4.0
       with:
         target: "https://lourdauxbob.sinners.be/"
