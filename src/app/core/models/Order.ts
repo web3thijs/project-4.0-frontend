@@ -1,5 +1,9 @@
+import { Customer } from "./Customer";
+
 export interface Order {
-  id: string;
-  customerId: string;
-  date: string;
+  id: number;
+  date: Date;
+  completed: boolean;
+  customerId: number;
+  customer: Customer;
 }

@@ -15,7 +15,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./organization-product.component.scss']
 })
 export class OrganizationProductComponent implements OnInit {
-  user: User = {id: "", email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
+  user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   organization: Organization = {
     organizationName: '',
     companyRegistrationNr: '',
@@ -26,7 +26,7 @@ export class OrganizationProductComponent implements OnInit {
     supportPhoneNr: '',
     supportEmail: '',
     imageUrl: '',
-    id: '',
+    id: 0,
     email: '',
     password: '',
     phoneNr: '',
@@ -35,8 +35,8 @@ export class OrganizationProductComponent implements OnInit {
     country: '',
     role: ''
   };
-  category: Category = { id: "", name: ""};
-  product: Product = {id: "", name: "", price: 0, description: "", active: false, imageUrl: "", organization:this.organization, category: this.category};
+  category: Category = { id: 0, name: ""};
+  product: Product = {id: 0, name: "", price: 0, description: "", isActive: false, imageUrl: "", categoryId: 0, organizationId: 0, organization:this.organization, category: this.category};
 
   organization$: Subscription = new Subscription();
   //products$: Subscription = new Subscription();
@@ -44,13 +44,13 @@ export class OrganizationProductComponent implements OnInit {
   deleteProduct$: Subscription = new Subscription();
 
   errorMessage: string = '';
-  id = '61f3ef6a16ddaf3ee1252080';
+  id = JSON.stringify(localStorage.getItem('id')|| '');
 
 
   constructor(private productService: ProductService, private organizationService: OrganizationService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    //this.getProducts();
   }
 
   /*ngOnDestroy(): void {
@@ -59,28 +59,28 @@ export class OrganizationProductComponent implements OnInit {
   }*/
 
   add() {
-    this.router.navigate(['/dashboard/organisatie/product/form'], {state: {mode: 'add'}});
+    this.router.navigate(['organisatie/product/form'], {state: {mode: 'add'}});
   }
 
-  edit(id: string) {
-    this.router.navigate(['/dashboard/organisatie/product/form'], {state: {id: id, mode: 'edit'}});
+  edit(id: number) {
+    this.router.navigate(['organisatie/product/form'], {state: {id: id, mode: 'edit'}});
   }
 
-  delete(id: string) {
+  delete(id: number) {
     this.deleteProduct$ = this.productService.deleteProduct(id).subscribe(result => {
       //all went well
-      this.getProducts();
+      //this.getProducts();
     }, error => {
       //error
       this.errorMessage = error.message;
     });
   }
 
-  getProducts() {
+  /*getProducts() {
     this.products$ = this.organizationService.getProductsByOrganization(this.id).pipe(
       map(response => response.content)
     );
 
-  }
+  }*/
 
 }

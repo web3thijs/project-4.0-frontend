@@ -14,7 +14,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./organization-detail.component.scss']
 })
 export class OrganizationDetailComponent implements OnInit {
-  user: User = {id: "", email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
+  user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   user$: Subscription = new Subscription();
   organization: Organization = {
     organizationName: '',
@@ -26,7 +26,7 @@ export class OrganizationDetailComponent implements OnInit {
     supportPhoneNr: '',
     supportEmail: '',
     imageUrl: '',
-    id: '',
+    id: 0,
     email: '',
     password: '',
     phoneNr: '',
@@ -61,7 +61,7 @@ export class OrganizationDetailComponent implements OnInit {
     this.shopIsShown = false;
   }
 
-  onClick(productId: string) {
+  onClick(productId: number) {
     this.router.navigate(['/producten', productId])
   }
 }

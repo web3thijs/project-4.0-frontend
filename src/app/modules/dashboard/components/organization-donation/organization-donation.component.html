@@ -1,32 +1,60 @@
-<div class="container mt-4">
-  <app-title [titleText]="'Vrije giften'"></app-title>
+<div class="row">
+  <div class="col-12 col-md-4 col-lg-2 sidebar">
+    <div class="col-12 mt-4 pt-2 pb-2 ml-2 rounded">
+      <i class="fas fa-chart-line mr-2"></i> Dashboard
+    </div>
+    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/product">
+      <i class="fas fa-tshirt mr-2"></i> Producten
+    </div>
+    <div class="col-12 mt-3 rounded ml-2" routerLink="/organisatie/bestelling">
+      <i class="fas fa-shopping-cart mr-2"></i> Bestellingen
+    </div>
+    <div class="col-12 mt-3 pt-2 pb-2 rounded ml-2 bg-blue" routerLink="/organisatie/vrije-gift">
+      <i class="fas fa-gift mr-2"></i> Vrije giften
+    </div>
+    <div class="col-12 mt-3 pb-2 rounded ml-2">
+      <i class="fas fa-question mr-2"></i> Contact
+    </div>
+    <div class="col-12 mt-3 pb-2 rounded ml-2">
+      <i class="fas fa-user-alt mr-2"></i> Profiel
+    </div>
+    <div class="col-12 mt-3 pb-2 rounded ml-2">
+      <i class="fas fa-sign-out-alt mr-2"></i> Uitloggen
+    </div>
 
-<!--<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-    {{errorMessage}}
-  </div>-->
-<div class="table-responsive">
-  <table class="table mt-3 text-center table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Datum</th>
-        <th scope="col">Prijs</th>
-        <th scope="col">Bekijken</th>
-      </tr>
-    </thead>
-    <!--<tbody>
-      <tr *ngFor="let product of products">
-        <th scope="row">{{product.id}}</th>
-        <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
-        <td><i *ngIf="product.isActive" class="fas fa-check"></i><i *ngIf="!product.isActive" class="fas fa-times"></i></td>
-        <td>
-          <button type="button" class="btn btn-success mr-2" (click)="edit(product.id)"><i class="fas fa-edit"></i></button>
-          <button type="button" class="btn btn-danger mr-2" (click)="delete(product.id)"><i class="far fa-trash-alt"></i></button>
-        </td>
-      </tr>
-      </tbody>-->
-  </table>
-</div>
+  </div>
+  <div class="col-12 col-md-8 col-lg-10">
+    <div class="container mt-4">
+      <app-title [titleText]="'Vrije giften'"></app-title>
 
+    <!--<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>-->
+    <div class="table-responsive">
+      <table class="table mt-3 text-center table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Datum</th>
+            <th scope="col">Prijs</th>
+            <th scope="col">Bekijken</th>
+          </tr>
+        </thead>
+        <!--<tbody>
+          <tr *ngFor="let product of products">
+            <th scope="row">{{product.id}}</th>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td><i *ngIf="product.isActive" class="fas fa-check"></i><i *ngIf="!product.isActive" class="fas fa-times"></i></td>
+            <td>
+              <button type="button" class="btn btn-success mr-2" (click)="edit(product.id)"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-danger mr-2" (click)="delete(product.id)"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          </tbody>-->
+      </table>
+    </div>
+
+    </div>
+  </div>
 </div>

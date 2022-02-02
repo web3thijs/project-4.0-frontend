@@ -1,7 +1,16 @@
+import { Customer } from "./Customer";
+import { Product } from "./Product";
+import { Review } from "./Review";
+
 export interface Interaction {
-  id: string;
-  productId: string;
-  customerId: string;
+  id: number;
   amountClicks: number;
-  reviewId: string;
+  amountCart: number;
+  amountBought: number;
+  reviewId: number;
+  productId: number;
+  customerId: number;
+  review: Review;
+  product: Product;
+  customer: Customer;
 }
