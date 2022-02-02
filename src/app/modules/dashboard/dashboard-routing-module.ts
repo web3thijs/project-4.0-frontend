@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import { OrganizationAccountComponent } from './components/organization-account/organization-account.component';
 import { OrganizationDonationComponent } from './components/organization-donation/organization-donation.component';
 import { OrganizationOrderComponent } from './components/organization-order/organization-order.component';
 import { OrganizationProductFormComponent } from './components/organization-product-form/organization-product-form.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'organisatie/bestelling', component: OrganizationOrderComponent},
   { path: 'organisatie/vrije-gift', component: OrganizationDonationComponent},
   { path: 'organisatie/stock/form', component: OrganizationStockFormComponent},
+  { path: 'organisatie/account', component: OrganizationAccountComponent},
 ];
 
 @NgModule({

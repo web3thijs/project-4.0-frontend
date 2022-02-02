@@ -14,6 +14,7 @@ import { OrganizationComponent } from './components/organization/organization.co
 import { OrganizationOrderComponent } from './components/organization-order/organization-order.component';
 import { OrganizationDonationComponent } from './components/organization-donation/organization-donation.component';
 import { OrganizationStockFormComponent } from './components/organization-stock-form/organization-stock-form.component';
+import { OrganizationAccountComponent } from './components/organization-account/organization-account.component';
 
 
 
@@ -25,6 +26,7 @@ import { OrganizationStockFormComponent } from './components/organization-stock-
     OrganizationOrderComponent,
     OrganizationDonationComponent,
     OrganizationStockFormComponent
+    OrganizationAccountComponent
   ],
   imports: [
     CommonModule,
