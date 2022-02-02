@@ -14,6 +14,7 @@ import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     HomeModule,
     DashboardModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
