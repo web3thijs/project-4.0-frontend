@@ -19,11 +19,11 @@ export class OrganizationService {
     return this.httpClient.get<any>(this.baseUrl + "organizations");
   }
 
-  getProductsByOrganization(id: string): Observable<any> {
+  getProductsByOrganization(id: number): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "products/organization/" + id);
   }
 
-  getOrganizationById(id: string): Observable<Organization> {
+  getOrganizationById(id: number): Observable<Organization> {
     return this.httpClient.get<Organization>(this.baseUrl + "organizations/" + id);
   }
 }

@@ -11,7 +11,7 @@ import { Organization } from 'src/app/core/models/Organization';
 })
 export class AuthService {
 
- baseUrl: String = "http://localhost:8081/";
+ baseUrl: String = "https://project-4-0-backend.herokuapp.com/";
 
   constructor(private httpClient: HttpClient) {
   }

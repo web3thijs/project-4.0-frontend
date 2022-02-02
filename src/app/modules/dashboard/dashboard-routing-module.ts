@@ -4,6 +4,7 @@ import { OrganizationDonationComponent } from './components/organization-donatio
 import { OrganizationOrderComponent } from './components/organization-order/organization-order.component';
 import { OrganizationProductFormComponent } from './components/organization-product-form/organization-product-form.component';
 import { OrganizationProductComponent } from './components/organization-product/organization-product.component';
+import { OrganizationStockFormComponent } from './components/organization-stock-form/organization-stock-form.component';
 import { OrganizationComponent } from './components/organization/organization.component';
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'organisatie', component: OrganizationComponent },
   { path: 'organisatie/bestelling', component: OrganizationOrderComponent},
   { path: 'organisatie/vrije-gift', component: OrganizationDonationComponent},
+  { path: 'organisatie/stock/form', component: OrganizationStockFormComponent},
 ];
 
 @NgModule({
