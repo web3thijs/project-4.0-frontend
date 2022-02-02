@@ -13,6 +13,8 @@ import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 import { OrganizationComponent } from './components/organization/organization.component';
 import { OrganizationOrderComponent } from './components/organization-order/organization-order.component';
 import { OrganizationDonationComponent } from './components/organization-donation/organization-donation.component';
+import { OrganizationStockFormComponent } from './components/organization-stock-form/organization-stock-form.component';
+import { OrganizationAccountComponent } from './components/organization-account/organization-account.component';
 
 
 
@@ -22,7 +24,9 @@ import { OrganizationDonationComponent } from './components/organization-donatio
     OrganizationProductFormComponent,
     OrganizationComponent,
     OrganizationOrderComponent,
-    OrganizationDonationComponent
+    OrganizationDonationComponent,
+    OrganizationStockFormComponent
+    OrganizationAccountComponent
   ],
   imports: [
     CommonModule,

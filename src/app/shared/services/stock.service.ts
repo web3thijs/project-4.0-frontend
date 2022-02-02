@@ -17,7 +17,7 @@ export class StockService {
     return this.httpClient.get<any>(this.baseUrl + "stocks");
   }
 
-  getStocksByProductId(id: string): Observable<any> {
+  getStocksByProductId(id: number): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "stocks/product/" + id);
   }
 }

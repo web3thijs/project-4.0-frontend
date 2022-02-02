@@ -49,7 +49,7 @@ export class ProductComponent implements OnInit {
     )
   }
 
-  onClick(productId: string) {
+  onClick(productId: number) {
     this.router.navigate(['/producten', productId])
   }
 
