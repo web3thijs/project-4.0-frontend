@@ -7,7 +7,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: OWASP ZAP Full Scan
       uses: zaproxy/action-baseline@v0.4.0
       with:
