@@ -6,10 +6,9 @@ export interface Product {
   name: string;
   price: number;
   description: string;
-  imageUrl: string;
-  isActive: boolean;
-  categoryId: number;
-  organizationId: number;
+  imageUrl: string[];
+  active: boolean;
   category: Category;
-  organization: Organization;
+  organization: Omit<Organization, "role">;
+
 }

@@ -22,7 +22,7 @@ import { StockService } from 'src/app/shared/services/stock.service';
 export class ProductDetailComponent implements OnInit {
   user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   user$: Subscription = new Subscription();
-  organization: Organization = {
+  organization: Omit<Organization, "role"> = {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
@@ -38,13 +38,12 @@ export class ProductDetailComponent implements OnInit {
     phoneNr: '',
     address: '',
     postalCode: '',
-    country: '',
-    role: '',
+    country: ''
   };
   organization$: Subscription = new Subscription();
   category: Category = {id: 0, name: ""};
   category$: Subscription = new Subscription();
-  product: Product = {id: 0, name: "", price: 0, description: "", isActive: false, imageUrl: "", categoryId: 0, organizationId: 0, organization: this.organization, category: this.category};
+  product: Product = {id: 0, name: "", price: 0, description: "", active: false, imageUrl: [], organization: this.organization, category: this.category};
   product$: Subscription = new Subscription();
   color: Color = {id: 0, name: ""};
   color$: Subscription = new Subscription();
@@ -108,8 +107,8 @@ export class ProductDetailComponent implements OnInit {
         name: this.product.name,
         price: this.product.price,
         description: this.product.description,
-        isActive: this.product.isActive,
-        imageUrl: this.product.imageUrl[0],
+        isActive: this.product.active,
+        imageUrl: this.product.imageUrl,
         valueProduct: this.valueProduct
       };
       productsAdd.push(productAdd);

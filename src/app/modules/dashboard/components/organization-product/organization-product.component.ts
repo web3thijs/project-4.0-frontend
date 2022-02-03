@@ -6,6 +6,7 @@ import { Category } from 'src/app/core/models/Category';
 import { Organization } from 'src/app/core/models/Organization';
 import { Product } from 'src/app/core/models/Product';
 import { User } from 'src/app/core/models/User';
+import { AuthService } from 'src/app/modules/security/auth.service';
 import { OrganizationService } from 'src/app/shared/services/organization.service';
 import { ProductService } from 'src/app/shared/services/product.service';
 
@@ -16,7 +17,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 })
 export class OrganizationProductComponent implements OnInit {
   user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
-  organization: Organization = {
+  organization: Omit<Organization, "role"> = {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
@@ -32,11 +33,10 @@ export class OrganizationProductComponent implements OnInit {
     phoneNr: '',
     address: '',
     postalCode: '',
-    country: '',
-    role: ''
+    country: ''
   };
   category: Category = { id: 0, name: ""};
-  product: Product = {id: 0, name: "", price: 0, description: "", isActive: false, imageUrl: "", categoryId: 0, organizationId: 0, organization:this.organization, category: this.category};
+  product: Product = {id: 0, name: "", price: 0, description: "", active: false, imageUrl: [], organization:this.organization, category: this.category};
 
   organization$: Subscription = new Subscription();
   //products$: Subscription = new Subscription();
@@ -47,10 +47,10 @@ export class OrganizationProductComponent implements OnInit {
   id = JSON.stringify(localStorage.getItem('id')|| '');
 
 
-  constructor(private productService: ProductService, private organizationService: OrganizationService, private router: Router) { }
+  constructor(private productService: ProductService, private organizationService: OrganizationService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    //this.getProducts();
+    this.getProducts();
   }
 
   /*ngOnDestroy(): void {
@@ -66,21 +66,18 @@ export class OrganizationProductComponent implements OnInit {
     this.router.navigate(['organisatie/product/form'], {state: {id: id, mode: 'edit'}});
   }
 
-  delete(id: number) {
-    this.deleteProduct$ = this.productService.deleteProduct(id).subscribe(result => {
-      //all went well
-      //this.getProducts();
-    }, error => {
-      //error
-      this.errorMessage = error.message;
-    });
-  }
 
-  /*getProducts() {
-    this.products$ = this.organizationService.getProductsByOrganization(this.id).pipe(
+
+  getProducts() {
+    this.products$ = this.productService.getProductsByOrganizationId(parseInt(this.authService.getUser()!.id)).pipe(
       map(response => response.content)
     );
 
-  }*/
+
+    /*this.organizationService.getProductsByOrganization(this.id).pipe(
+      map(response => response.content)
+    );*/
+
+  }
 
 }

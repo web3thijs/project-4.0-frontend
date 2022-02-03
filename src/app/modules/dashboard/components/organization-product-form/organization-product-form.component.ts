@@ -10,6 +10,9 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 import { StockService } from 'src/app/shared/services/stock.service';
 import { OrganizationService } from 'src/app/shared/services/organization.service';
 import { Organization } from 'src/app/core/models/Organization';
+import { Product} from 'src/app/core/models/Product';
+import { AuthService } from 'src/app/modules/security/auth.service';
+import { Stock } from 'src/app/core/models/Stock';
 
 @Component({
   selector: 'app-organization-product-form',
@@ -20,6 +23,8 @@ export class OrganizationProductFormComponent implements OnInit {
   isAdd: boolean = false;
   isEdit: boolean = false;
   isSubmitted: boolean = false;
+
+  testOrganization$: Subscription = new Subscription();
 
   //Uploading image
   imageSrc: string = '';
@@ -33,11 +38,16 @@ export class OrganizationProductFormComponent implements OnInit {
 
   productId: number = 0;
   errorMessage: string = '';
-  //authOrganization = JSON.parse(localStorage.getItem('id') || '');
+
+  stocks$: Observable<Stock[]>;
 
   categories$: Observable<Category[]>;
+  category: Category = {
+    id: 0,
+    name: ''
+  }
 
-  organization: Organization = {
+  organization: Omit<Organization, "role"> = {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
@@ -53,9 +63,29 @@ export class OrganizationProductFormComponent implements OnInit {
     phoneNr: '',
     address: '',
     postalCode: '',
-    country: '',
-    role: ''
+    country: ''
   };
+
+  product: Omit<Product, "id"> = {
+    name: '',
+    price: 0,
+    description: '',
+    imageUrl: [],
+    active: false,
+    category: this.category,
+    organization: this.organization
+  }
+
+  productPut: Product = {
+    id: 0,
+    name: '',
+    price: 0,
+    description: '',
+    imageUrl: [],
+    active: false,
+    category: this.category,
+    organization: this.organization
+  }
 
 
   product$: Subscription = new Subscription();
@@ -63,26 +93,16 @@ export class OrganizationProductFormComponent implements OnInit {
   organization$: Subscription = new Subscription();
   postProduct$: Subscription = new Subscription();
   putProduct$: Subscription = new Subscription();
+  deleteStock$: Subscription = new Subscription();
 
   //reactive forms
   productForm = new FormGroup({
     name: new FormControl(''),
-    price: new FormControl(0),
     description: new FormControl(''),
-    isActive: new FormControl(''),
-    categoryId: new FormControl(''),
-    organizationId: new FormControl(''),
-    //categoryId: new FormControl(''),
-    //organizationId: new FormControl(this.organizationService.getOrganizationById(this.authOrganization).subscribe()),
+    price: new FormControl(0),
+    active: new FormControl('true'),
+    category: new FormControl(0),
     imageUrl: new FormControl('')
-  });
-
-  stockForm = new FormGroup({
-    amountInStock: new FormControl(0),
-    new: new FormControl(''),
-    sizeId: new FormControl(''),
-    colorId: new FormControl(''),
-    productId: new FormControl('')
   });
 
   constructor(private router: Router,
@@ -90,7 +110,8 @@ export class OrganizationProductFormComponent implements OnInit {
     private angularFireStorage: AngularFireStorage,
     private categoryService: CategoryService,
     private stockService: StockService,
-    private organizationService: OrganizationService) {
+    private organizationService: OrganizationService,
+    private authService: AuthService) {
     this.isAdd = this.router.getCurrentNavigation()?.extras.state?.mode === 'add';
     this.isEdit = this.router.getCurrentNavigation()?.extras.state?.mode === 'edit';
     this.productId = this.router.getCurrentNavigation()?.extras.state?.id;
@@ -99,7 +120,8 @@ export class OrganizationProductFormComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.getCategories()
+    this.getCategories();
+    this.getStocks();
     //this.organization$ = this.organizationService.getOrganizationById(this.authOrganization).subscribe(result => this.organization= result);
   }
 
@@ -109,31 +131,55 @@ export class OrganizationProductFormComponent implements OnInit {
     this.putProduct$.unsubscribe();
   }
 
+  getStocks() {
+    this.stocks$ = this.stockService.getStocksByProductId(this.productId).pipe(
+      map(response => response)
+    );
+  }
+
+  edit(id: number) {
+    this.router.navigate(['organisatie/stock/form'], {state: {id: id, mode: 'edit'}});
+  }
+
+  delete(id: number) {
+    this.deleteStock$ = this.stockService.deleteStock(id).subscribe(result => {
+      this.getStocks();
+    },
+    error => {
+      this.errorMessage = error.message;
+    });
+  }
+
   async getProduct(){
     if (this.productId != null) {
       this.product$ = await this.productService.getProductById(this.productId).subscribe(result => {
         this.organization$;
         this.productForm.setValue({
           name: result.name,
-          price: result.price,
           description: result.description,
-          active: result.isActive,
-          organization: this.organization,
-          //categoryId: result.category,
-          //organization: this.organizationService.getOrganizationById(this.authOrganization).subscribe(),
-          imageUrl: result.imageUrl
+          price: result.price,
+          active: result.active,
+          category: result.category,
+          imageUrl: result.imageUrl[0]
         });
-      });
-      this.stock$ = await this.stockService.getStocksByProductId(this.productId).subscribe(result => {
-        this.stockForm.setValue({
-          amountInStock: result.amountInStock
-        });
+        console.log(result.imageUrl);
       });
     }
   }
 
   async updateProduct() {
-    this.putProduct$ = await this.productService.putProduct(this.productId, this.productForm.value).subscribe(result => {
+    this.organization.id = parseInt(this.authService.getUser()!.id);
+    this.category.id = parseInt(this.productForm.controls['category'].value);
+    this.productPut.id = this.productId;
+    this.productPut.name = this.productForm.controls['name'].value;
+    this.productPut.description = this.productForm.controls['description'].value;
+    this.productPut.price = this.productForm.controls['price'].value;
+    this.productPut.active = JSON.parse(this.productForm.controls['active'].value);
+    this.productPut.imageUrl = [this.productForm.controls['imageUrl'].value];
+    this.productPut.category = this.category;
+    this.productPut.organization = this.organization;
+    console.log(this.productId);
+    this.putProduct$ = await this.productService.putProduct(this.productPut).subscribe(result => {
         this.router.navigateByUrl("/organisatie/product");
       },
       error => {
@@ -142,7 +188,16 @@ export class OrganizationProductFormComponent implements OnInit {
   }
 
   async addProduct(){
-    this.postProduct$ = await this.productService.postProduct(this.productForm.value).subscribe(result => {
+    this.organization.id = parseInt(this.authService.getUser()!.id);
+    this.category.id = parseInt(this.productForm.controls['category'].value);
+    this.product.name = this.productForm.controls['name'].value;
+    this.product.description = this.productForm.controls['description'].value;
+    this.product.price = this.productForm.controls['price'].value;
+    this.product.active = JSON.parse(this.productForm.controls['active'].value);
+    this.product.imageUrl = [this.imageSrc];
+    this.product.category = this.category;
+    this.product.organization = this.organization;
+    this.postProduct$ = await this.productService.postProduct(this.product).subscribe(result => {
         this.router.navigateByUrl("/organisatie/product");
       },
       error => {
@@ -176,10 +231,12 @@ onSubmit(): void {
       this.task = this.angularFireStorage.upload(this.filePath, this.imageFile);
       this.task.snapshotChanges().subscribe(result => {
         this.ref?.getDownloadURL().subscribe(url => {
+          console.log(url);
           this.productForm.patchValue({
             imageUrl: url
           });
           this.imageSrc = url
+          console.log("ImageSrc " + this.imageSrc);
           if(url !== undefined) {
             this.submitData();
           }
@@ -207,7 +264,7 @@ hideShowPhoto() {
 }
 
 addStock() {
-  this.router.navigate(['organisatie/stock/form']);
+  this.router.navigate(['organisatie/stock/form'], {state: {mode: 'add'}});
 }
 
 }
