@@ -25,8 +25,8 @@ import { OrganizationAccountComponent } from './components/organization-account/
     OrganizationComponent,
     OrganizationOrderComponent,
     OrganizationDonationComponent,
-    OrganizationStockFormComponent
-    OrganizationAccountComponent
+    OrganizationStockFormComponent,
+    OrganizationAccountComponent,
   ],
   imports: [
     CommonModule,

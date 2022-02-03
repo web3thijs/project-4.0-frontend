@@ -45,6 +45,13 @@
           <label for="description">Beschrijving</label>
           <input type="text" class="form-control" id="description" name="description" placeholder="Description" formControlName="description" minlength="2">
         </div>
+        <div class="form-group">
+          <label for="category">Categorie</label>
+          <select class="form-control" formControlName="category" id="category">
+            <option value="" disabled>Kies een categorie</option>
+            <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
+          </select>
+        </div>
         <!--<div class="form-group">
           <label for="categoryId">Categorie</label>
           <select class="form-control" formControlName="categoryId" id="categoryId">
@@ -73,14 +80,39 @@
             <img src="{{imageSrc}}" alt="article image">
           </div>
         <div class="form-group">
-          <input type="checkbox" formControlName="isActive" id="isActive" class="mr-2">
-          <label for="isActive">Actief</label>
+          <input type="checkbox" formControlName="active" id="active" class="mr-2">
+          <label for="active">Actief</label>
         </div>
         <button type="submit" class="btn btn-blue" *ngIf="isAdd" [disabled]="!productForm.valid || isSubmitted">Toevoegen</button>
         <button type="submit" class="btn btn-blue" *ngIf="isEdit" [disabled]="!productForm.valid || isSubmitted">Opslaan</button>
       </form>
       <h4>Stock toevoegen</h4>
       <app-button-add [buttonText]="'Stock toevoegen'" (click)="addStock()"></app-button-add>
+      <div class="table-responsive">
+        <table class="table mt-3 text-center table-hover">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">Naam</th>
+            <th scope="col">Aantal in stock</th>
+            <th scope="col">Maat</th>
+            <th scope="col">Kleur</th>
+            <th scope="col">Acties</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let stock of (stocks$ | async)">
+            <td>{{stock.product.name}}</td>
+            <td>{{stock.amountInStock}}</td>
+            <td>{{stock.size.name}}</td>
+            <td>{{stock.color.name}}</td>
+            <td>
+              <button type="button" class="btn btn-success mr-2" title="Bewerken: {{stock.product.id}}" (click)="edit(stock.id)"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-danger" (click)="delete(stock.id)"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        </div>
     </div>
   </div>
 

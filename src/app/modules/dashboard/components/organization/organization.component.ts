@@ -14,15 +14,15 @@ export class OrganizationComponent implements OnInit {
   }
 
   toOrganizationProduct() {
-    this.router.navigate(['/dashboard/organisatie/product']);
+    this.router.navigate(['organisatie/product']);
   }
 
   toOrganizationOrder() {
-    this.router.navigate(['/dashboard/organisatie/bestelling']);
+    this.router.navigate(['organisatie/bestelling']);
   }
 
   toOrganizationDonation() {
-    this.router.navigate(['/dashboard/organisatie/vrije-gift']);
+    this.router.navigate(['organisatie/vrije-gift']);
   }
 
 }
