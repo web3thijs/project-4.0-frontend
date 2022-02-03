@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent implements OnInit {
-  @Input() productImg: string = "";
+  @Input() productImg: string[];
   @Input() productTitle: string = "";
   @Input() productPrice: number = 0;
 

@@ -12,31 +12,32 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
+  baseUrl = "https://backend-jolien.herokuapp.com/api/"
 
   getProducts(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + "products?page=1");
+    return this.httpClient.get<any>(this.baseUrl + "products");
   }
 
   getProductById(id: number): Observable<Product> {
     return this.httpClient.get<Product>(this.baseUrl + "products/" + id);
   }
 
+  getProductsByOrganizationId(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "products/organization/" + id);
+  }
 
-  //https://project-4-0-backend.herokuapp.com/api/products/organization/61efca4eed676a4390618ad1
-
-  postProduct(product: Product): Observable<Product> {
+  postProduct(product: Omit<Product, "id">): Observable<Product> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.token );
 
     return this.httpClient.post<Product>(this.baseUrl + "products", product, {headers: headers});
   }
 
-  putProduct(id: number, product: Product): Observable<Product> {
+  putProduct(product: Product): Observable<Product> {
     let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.token );
 
-    return this.httpClient.put<Product>(this.baseUrl + "products/" + id, product, {headers: headers});
+    return this.httpClient.put<Product>(this.baseUrl + "products", product, {headers: headers});
   }
 
   deleteProduct(id: number): Observable<Product> {

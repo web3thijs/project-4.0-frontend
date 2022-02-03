@@ -16,7 +16,7 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class OrganizationDetailComponent implements OnInit {
   user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   user$: Subscription = new Subscription();
-  organization: Organization = {
+  organization: Omit<Organization, "role"> = {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
@@ -32,8 +32,7 @@ export class OrganizationDetailComponent implements OnInit {
     phoneNr: '',
     address: '',
     postalCode: '',
-    country: '',
-    role: ''
+    country: ''
   };
   organization$: Subscription = new Subscription();
   products$: Observable<Product[]>;

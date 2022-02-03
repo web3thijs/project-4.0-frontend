@@ -11,7 +11,8 @@ export class StockService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/";
+  token: string = localStorage.getItem('token') ?? ''
+  baseUrl = "https://backend-jolien.herokuapp.com/api/";
 
   getStocks(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "stocks");
@@ -19,5 +20,30 @@ export class StockService {
 
   getStocksByProductId(id: number): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "stocks/product/" + id);
+  }
+
+  getStocksById(id: number): Observable<Stock> {
+    return this.httpClient.get<Stock>(this.baseUrl + "stocks/" + id);
+  }
+
+  postStock(stock: Omit<Stock, "id">): Observable<Stock> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.token );
+
+    return this.httpClient.post<Stock>(this.baseUrl + "stocks", stock, {headers: headers});
+  }
+
+  putStock(stock: Stock): Observable<Stock> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.token );
+
+    return this.httpClient.put<Stock>(this.baseUrl + "stocks", stock, {headers: headers});
+  }
+
+  deleteStock(id: number): Observable<Stock> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.token );
+
+    return this.httpClient.delete<Stock>(this.baseUrl + "stocks/" + id, {headers: headers});
   }
 }

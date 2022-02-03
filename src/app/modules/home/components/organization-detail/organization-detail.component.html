@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="text-center">
-    <img src="{{organization.imageUrl[0]}}" class="img-fluid" alt="">
+    <img src="{{organization.imageUrl}}" class="img-fluid" alt="">
   <h4 class="blue-title mt-4 mb-3">{{organization.organizationName}}</h4>
   <div class="mb-5">
     <i class="fab fa-facebook fa-lg blue-title mr-2"></i>
@@ -41,7 +41,7 @@
     </div>
     <div class="row" *ngIf="shopIsShown">
       <div class="col-sm-6 col-md-4" *ngFor="let product of (products$ | async)">
-        <app-product-view [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price"
+        <app-product-view [productImg]="product.imageUrl" [productTitle]="product.name" [productPrice]="product.price"
           (click)="onClick(product.id)"></app-product-view>
       </div>
     </div>
