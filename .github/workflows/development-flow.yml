@@ -1,0 +1,24 @@
+name: Build, test and deliver container
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest        
+    
+    name: test & deploy
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        with:
+          ref: main
+  
+      - name: Deploy to Heroku
+        uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.DEV_HEROKU_API_KEY}}
+          heroku_email: ${{secrets.DEV_HEROKU_EMAIL}}
+          heroku_app_name: ${{secrets.DEV_HEROKU_APP}}
