@@ -7,6 +7,7 @@ import { ProductViewComponent } from './components/product-view/product-view.com
 import { OrganizationViewComponent } from './components/organization-view/organization-view.component';
 import { ButtonAddComponent } from './components/button-add/button-add.component';
 import { ButtonBackComponent } from './components/button-back/button-back.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,9 @@ import { ButtonBackComponent } from './components/button-back/button-back.compon
     ButtonBackComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     ButtonComponent,

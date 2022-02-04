@@ -12,6 +12,7 @@ import { RegisterOrganizationComponent } from './components/register-organizatio
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RetourFormComponent } from './components/retour-form/retour-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -29,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), FormsModule, ReactiveFormsModule],
   exports: [RouterModule]
 })
 export class HomeRoutingModule {

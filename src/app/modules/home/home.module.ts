@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RetourFormComponent } from './components/retour-form/retour-form.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
@@ -46,11 +47,11 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule,
     HomeRoutingModule,
     SharedModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule
   ]
 })
