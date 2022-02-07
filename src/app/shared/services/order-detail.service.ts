@@ -10,7 +10,7 @@ export class OrderDetailService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
+  baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
   token: string = localStorage.getItem('token') ?? ''
 
   postOrderDetail(orderDetail: Omit<OrderDetail, "id">): Observable<OrderDetail> {

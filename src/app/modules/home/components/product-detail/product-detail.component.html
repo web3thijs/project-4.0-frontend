@@ -11,8 +11,7 @@
       <h2>{{product.name}}</h2>
       <p>€ {{product.price}}</p>
       <p class="mb-0">Aantal</p>
-      <input class="form-control mr-sm-2 input-size mb-3" type="number" id="aantal" name="aantal" value="{{valueProduct}}"
-        (change)="amountChange()">
+      <input class="form-control mr-sm-2 input-size mb-3" type="number" id="aantal" name="aantal" value="{{valueProduct}}">
       <button type="button" class="btn btn-dark text-left mb-3" (click)="addToCart()">
         <div class="row">
           <div class="col-10 pr-0">
@@ -25,7 +24,7 @@
           </button>
            <select class="form-control select-size mb-3" formControlName="stockId">
             <option>Kies een maat</option>
-            <option *ngFor="let stock of stocks" [value]="stock.id">{{stock.size.name}}</option>
+            <option *ngFor="let stock of (stocks$ | async)" [value]="stock.id">{{stock.size.name}}</option>
           </select>
         <p class="details-title">Details</p>
     </div>

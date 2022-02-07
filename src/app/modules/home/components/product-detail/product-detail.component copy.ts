@@ -22,7 +22,7 @@ import { Order } from 'src/app/core/models/Order';
   styleUrls: ['./product-detail.component.scss']
 })
 export class ProductDetailComponent implements OnInit {
-  user: User = {id: "", email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
+  user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   user$: Subscription = new Subscription();
   organization: Organization = {
     organizationName: '',
@@ -34,7 +34,7 @@ export class ProductDetailComponent implements OnInit {
     supportPhoneNr: '',
     supportEmail: '',
     imageUrl: '',
-    id: '',
+    id: 0,
     email: '',
     password: '',
     phoneNr: '',
@@ -44,15 +44,15 @@ export class ProductDetailComponent implements OnInit {
     role: ''
   };
   organization$: Subscription = new Subscription();
-  category: Category = {id: "", name: ""};
+  category: Category = {id: 0, name: ""};
   category$: Subscription = new Subscription();
-  product: Product = {id: "", name: "", price: 0, description: "", active: false, imageUrl: "", organization: this.organization, category: this.category};
+  product: Product = {id: 0, name: "", price: 0, description: "", active: false, imageUrl: "", organization: this.organization, category: this.category};
   product$: Subscription = new Subscription();
-  color: Color = {id: "", name: ""};
+  color: Color = {id: 0, name: ""};
   color$: Subscription = new Subscription();
-  size: Size = {id: "", name: ""};
+  size: Size = {id: 0, name: ""};
   size$: Subscription = new Subscription();
-  /*stock: Stock = {id: "", size: this.size, color: this.color, product: this.product, amountInStock: 0};
+  /*stock: Stock = {id: 0, size: this.size, color: this.color, product: this.product, amountInStock: 0};
   stock$: Subscription = new Subscription();*/
   stocks$: Observable<Stock[]>;
 

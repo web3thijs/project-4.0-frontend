@@ -11,7 +11,7 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
-  baseUrl = "https://backend-jolien.herokuapp.com/api/"
+  baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
 
   getCustomerById(id: string): Observable<Customer> {
     let headers = new HttpHeaders();
