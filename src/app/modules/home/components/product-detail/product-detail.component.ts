@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/models/Product';
 import { ProductService } from 'src/app/shared/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -24,7 +24,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnDestroy{
   user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   user$: Subscription = new Subscription();
   organization: Organization = {
@@ -54,7 +54,7 @@ export class ProductDetailComponent implements OnInit {
     amount: 50
   }
 
-  updateOrderDetail$: Subscription = new Subscription();
+  updateOrderDetail: Observable<UpdateOrderDetailDTO>;
 
   category: Category = {id: 0, name: ""};
   product: Product = {id: 0, name: "", price: 0, description: "", active: false, imageUrl: [""], organization: this.organization, category: this.category};
@@ -83,14 +83,16 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProductById(id).subscribe(result => (this.product = result));
   }
 
+  ngOnDestroy(): void {
+  }
+
   async addToCart(){
     if(!this.authService.isLoggedIn()){
       this.router.navigate(["/login"]);
       return
     }
 
-    await this.cartService.addProductToOrder(this.updateOrderDetailDTO).subscribe(console.log);
-    this.updateOrderDetail$.unsubscribe();
+    await this.cartService.addProductToOrder(this.updateOrderDetailDTO).toPromise();
 
     this.router.navigate(["/winkelmandje"]);
   }

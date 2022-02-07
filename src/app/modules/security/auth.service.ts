@@ -39,14 +39,14 @@ export class AuthService {
   }
 
   authenticate(user: User): Observable<UserResponse> {
-    return this.httpClient.post<UserResponse>(this.baseUrl + 'api/authenticate', user);
+    return this.httpClient.post<UserResponse>(this.baseUrl + 'authenticate', user);
   }
 
   registerCustomer(customer: Omit<Customer, 'id'|'role'>): Observable<Customer> {
-    return this.httpClient.post<Customer>(this.baseUrl + 'api/register/customer', customer);
+    return this.httpClient.post<Customer>(this.baseUrl + 'register/customer', customer);
   }
 
   registerOrganization(organization: Omit<Organization, 'id'|'role'>): Observable<Organization> {
-    return this.httpClient.post<Organization>(this.baseUrl + 'api/register/customer', organization);
+    return this.httpClient.post<Organization>(this.baseUrl + 'register/customer', organization);
   }
 }

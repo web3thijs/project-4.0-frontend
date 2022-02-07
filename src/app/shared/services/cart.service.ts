@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CartDTO } from 'src/app/core/models/CartDTO';
+import { UpdateDonationDTO } from 'src/app/core/models/UpdateDonationDTO';
 import { UpdateOrderDetailDTO } from 'src/app/core/models/UpdateOrderDetailDTO';
 import { AuthService } from 'src/app/modules/security/auth.service';
 
@@ -28,5 +29,12 @@ export class CartService {
 
     headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.authService.getToken() );
     return this.httpClient.post<UpdateOrderDetailDTO>(this.baseUrl + "cart/addProduct", updateOrderDTO, {headers: headers});
+  }
+
+  addDonationToOrder(updateDonationDTO: UpdateDonationDTO): NewType {
+    let headers = new HttpHeaders();
+
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.authService.getToken() );
+    return this.httpClient.post<UpdateOrderDetailDTO>(this.baseUrl + "cart/addDonation", updateDonationDTO, {headers: headers});
   }
 }

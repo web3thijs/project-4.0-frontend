@@ -5,46 +5,22 @@
       <div class="row mt-5">
         <div class="col-12 col-lg-8 pr-5">
           <div class="row">
-            <div class="col-12">
+            <div class="col-12" *ngFor="let product of (products | async)">
               <div class="row align-items-center">
                 <div class="col-2 d-flex">
-                  <img src="https://via.placeholder.com/100" alt="">
+                  <img src="{{ product.imgUrl[0] }}" alt="productImg" class="img-fluid">
                 </div>
                 <div class="col-3">
-                  <h5>Product</h5>
-                  <span>Size</span>
+                  <h5>{{ product.productName }}</h5>
+                  <span>{{ product.sizeName }}</span>
                 </div>
                 <div class="col-3 d-flex align-items-center">
                   <i class="fas fa-minus mr-3"></i>
-                  <span>1</span>
+                  <span>{{ product.amount }}</span>
                   <i class="fas fa-plus ml-3"></i>
                 </div>
                 <div class="col-3">
-                  <span>$ 12.50</span>
-                </div>
-                <div class="col-1">
-                  <i class="fas fa-times"></i>
-                </div>
-              </div>
-              <hr class="mt-4">
-            </div>
-
-            <div class="col-12">
-              <div class="row align-items-center">
-                <div class="col-2 d-flex">
-                  <img src="https://via.placeholder.com/100" alt="">
-                </div>
-                <div class="col-3">
-                  <h5>Product</h5>
-                  <span>Size</span>
-                </div>
-                <div class="col-3 d-flex align-items-center">
-                  <i class="fas fa-minus mr-3"></i>
-                  <span>1</span>
-                  <i class="fas fa-plus ml-3"></i>
-                </div>
-                <div class="col-3">
-                  <span>$ 12.50</span>
+                  <span>$ {{ product.productPrice }}</span>
                 </div>
                 <div class="col-1">
                   <i class="fas fa-times"></i>
@@ -56,24 +32,27 @@
           </div>
         </div>
         <div class="col-12 col-lg-4 pl-4 pr-4 pt-3 pb-3" id="total_card">
-          <div class="text-center">
-            <span class="font-weight-bold">
-              Vrije giften
-            </span>
+          <div class="row">
+            <div class="col-6 text-left font-weight-bold">
+              <p>Vrije giften</p>
+            </div>
+            <div class="col-6 text-right">
+              <button class="btn btn-outline-dark" data-toggle="modal" data-target="#modal"><i
+                  class="fas fa-plus"></i></button>
+            </div>
           </div>
           <div class="row">
-            <div class="col-12 bg-white mt-3">
+            <div class="col-12 bg-white mt-3" *ngFor="let donation of (donations | async)">
               <div class="row align-items-center">
                 <div class="col-2 d-flex pl-0">
                   <img src="https://via.placeholder.com/50" alt="">
                 </div>
                 <div class="col-5 font-weight-bold">
-                  <span>Pater damiaanactie</span>
+                  <span>{{ donation.organizationName }}</span>
                 </div>
                 <div class="col-4">
                   <div class="input-group">
-                    <span class="input-group-addon d-flex align-items-center mr-2">$</span>
-                    <input type="text" class="form-control" placeholder="0.00">
+                    <span class="input-group-addon d-flex align-items-center mr-2">$ {{ donation.amount }}</span>
                   </div>
                 </div>
                 <div class="col-1">
@@ -81,26 +60,46 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="col-12 bg-white mt-3">
-              <div class="row align-items-center">
-                <div class="col-2 d-flex pl-0">
-                  <img src="https://via.placeholder.com/50" alt="">
+      <!-- Modal -->
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <form (ngSubmit)="submitDonation()" #donationForm="ngForm">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Vrije gift</h5>
+                <button type="button" class="close" data-dismiss="modal" #closeModal aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="organization">VZW</label>
+                  <select class="custom-select" name="organization" id="organization"
+                    [(ngModel)]="updateDonationDTO.organizationId">
+                    <option *ngFor="let organization of (organizations$ | async)" [ngValue]="organization.id">
+                      {{ organization.organizationName }}</option>
+                  </select>
                 </div>
-                <div class="col-5 font-weight-bold">
-                  <span>Pater damiaanactie</span>
-                </div>
-                <div class="col-4 ">
-                  <div class="input-group">
-                    <span class="input-group-addon d-flex align-items-center mr-2">$</span>
-                    <input type="text" class="form-control" placeholder="0.00">
+                <div class="form-group">
+                  <label for="amount">Amount</label>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">$</span>
+                    </div>
+                    <input type="number" class="form-control" [(ngModel)]="updateDonationDTO.amount">
                   </div>
                 </div>
-                <div class="col-1">
-                  <i class="fas fa-times"></i>
-                </div>
               </div>
-            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Sluiten</button>
+                <button type="submit" class="btn btn-primary">Opslaan</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
