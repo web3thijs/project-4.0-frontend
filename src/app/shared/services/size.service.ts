@@ -9,7 +9,7 @@ export class SizeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl = "https://backend-jolien.herokuapp.com/api/";
+  baseUrl = "https://project-4-0-backend.herokuapp.com/api/";
 
   getSizes(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "sizes");

@@ -23,6 +23,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RetourFormComponent } from './components/retour-form/retour-form.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { OrderOverviewCustomerComponent } from './components/order-overview-customer/order-overview-customer.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 
 
@@ -43,6 +45,8 @@ import { RouterModule } from '@angular/router';
     FaqComponent,
     ContactComponent,
     RetourFormComponent,
+    OrderOverviewCustomerComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     CommonModule,

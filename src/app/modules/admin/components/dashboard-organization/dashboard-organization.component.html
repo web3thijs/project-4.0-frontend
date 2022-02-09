@@ -7,24 +7,15 @@
           <th scope="col">#</th>
           <th scope="col">Naam</th>
           <th scope="col">E-mail</th>
-          <th scope="col">Status</th>
-          <th scope="col">Acties</th>
+          <th scope="col">Telefoonnummer</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Jolien Foets</td>
-          <td>Jolien@mail.be</td>
-          <td>In afwachting</td>
-          <td>Bewerken</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Thijs Wouters</td>
-          <td>Thijs@mail.be</td>
-          <td>Goedgekeurd</td>
-          <td>Bewerken</td>
+        <tr *ngFor="let organization of (organizations$ | async)">
+          <th scope="row">{{organization.id}}</th>
+          <td>{{organization.organizationName}}</td>
+          <td>{{organization.email}}</td>
+          <td>{{organization.phoneNr}}</td>
         </tr>
         </tbody>
     </table>

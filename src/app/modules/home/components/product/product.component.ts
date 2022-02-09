@@ -10,6 +10,11 @@ import { ProductService } from 'src/app/shared/services/product.service';
 import { Router } from '@angular/router';
 import { Stock } from 'src/app/core/models/Stock';
 import { StockService } from 'src/app/shared/services/stock.service';
+import { Interaction } from 'src/app/core/models/Interaction';
+import { Customer } from 'src/app/core/models/Customer';
+import { InteractionService } from 'src/app/shared/services/interaction.service';
+import { AuthService } from 'src/app/modules/security/auth.service';
+import { Review } from 'src/app/core/models/Review';
 
 @Component({
   selector: 'app-product',
@@ -21,8 +26,85 @@ export class ProductComponent implements OnInit {
   products$: Observable<Product[]>;
   categories$: Observable<Category[]>;
   organizations$: Observable<Organization[]>;
+  errorMessage: string = '';
 
-  constructor(private productService: ProductService, private categoryService: CategoryService, private organizationService: OrganizationService, private router: Router, private stockService: StockService) { }
+  postAddClick$: Subscription = new Subscription();
+
+
+  /*id: number;
+  amountClicks: number;
+  amountCart: number;
+  amountBought: number;
+  review: Review;
+  product: Product;
+  customer: Customer;*/
+
+  customer: Omit<Customer, "firstName" | "lastName" | "email" | "password" | "phoneNr" | "postalCode" | "address" | "country" | "role"> = {
+    id: 0
+  }
+
+  postCustomer: Customer = {
+    firstName: '',
+    lastName: '',
+    id: 0,
+    email: '',
+    password: '',
+    phoneNr: '',
+    address: '',
+    postalCode: '',
+    country: '',
+    role: ''
+  }
+
+  product: Omit<Product, "name" | "price" | "description" | "imageUrl" | "active" | "category" | "organization"> = {
+    id: 0
+  }
+
+  category: Category = {
+    id: 0,
+    name: ''
+  }
+
+  organization: Organization = {
+    organizationName: '',
+    companyRegistrationNr: '',
+    vatNr: '',
+    who: '',
+    what: '',
+    help: '',
+    supportPhoneNr: '',
+    supportEmail: '',
+    imageUrl: '',
+    id: 0,
+    email: '',
+    password: '',
+    phoneNr: '',
+    address: '',
+    postalCode: '',
+    country: '',
+    role: ''
+  }
+
+  postProduct: Product = {
+    id: 0,
+    name: '',
+    price: 0,
+    description: '',
+    imageUrl: [],
+    active: false,
+    category: this.category,
+    organization: this.organization
+  }
+
+  review: Omit<Review, "id" | "score" | "title" | "text" | "customer"> = {
+  }
+
+  interaction: Omit<Interaction, "id" | "amountCart" | "amountBought" | "amountClicks" | "review" | "product" | "customer"> = {
+    productId: 0,
+    customerId: 0,
+  }
+
+  constructor(private productService: ProductService, private categoryService: CategoryService, private organizationService: OrganizationService, private router: Router, private stockService: StockService, private interactionService: InteractionService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -50,7 +132,15 @@ export class ProductComponent implements OnInit {
   }
 
   onClick(productId: number) {
-    this.router.navigate(['/producten', productId])
+    this.interaction.customerId = parseInt(this.authService.getUser()!.id);
+    this.interaction.productId = productId;
+    this.postAddClick$ = this.interactionService.postAddClicks(this.interaction).subscribe(result => {
+      this.router.navigate(['/producten', productId]);
+    },
+    error => {
+      this.errorMessage = error.message;
+    });
+
   }
 
 }

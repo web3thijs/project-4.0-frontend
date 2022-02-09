@@ -15,7 +15,7 @@
     <div class="col-12 mt-3 pb-2 rounded ml-2">
       <i class="fas fa-question mr-2"></i> Contact
     </div>
-    <div class="col-12 mt-3 pb-2 rounded ml-2">
+    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/account">
       <i class="fas fa-user-alt mr-2"></i> Profiel
     </div>
     <div class="col-12 mt-3 pb-2 rounded ml-2">
@@ -35,23 +35,15 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Datum</th>
             <th scope="col">Prijs</th>
-            <th scope="col">Bekijken</th>
           </tr>
         </thead>
-        <!--<tbody>
-          <tr *ngFor="let product of products">
-            <th scope="row">{{product.id}}</th>
-            <td>{{product.name}}</td>
-            <td>{{product.price}}</td>
-            <td><i *ngIf="product.isActive" class="fas fa-check"></i><i *ngIf="!product.isActive" class="fas fa-times"></i></td>
-            <td>
-              <button type="button" class="btn btn-success mr-2" (click)="edit(product.id)"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger mr-2" (click)="delete(product.id)"><i class="far fa-trash-alt"></i></button>
-            </td>
+        <tbody>
+          <tr *ngFor="let donation of (donations$ | async)">
+            <th scope="row">{{donation.id}}</th>
+            <td>€ {{donation.amount}}</td>
           </tr>
-          </tbody>-->
+          </tbody>
       </table>
     </div>
 

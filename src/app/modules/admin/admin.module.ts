@@ -9,6 +9,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardOrganizationComponent } from './components/dashboard-organization/dashboard-organization.component';
 import { DashboardProductComponent } from './components/dashboard-product/dashboard-product.component';
 import { DashboardCustomerComponent } from './components/dashboard-customer/dashboard-customer.component';
+import { DashboardCategoryComponent } from './components/dashboard-category/dashboard-category.component';
+import { DashboardCategoryFormComponent } from './components/dashboard-category-form/dashboard-category-form.component';
+import { DashboardPagenotfoundComponent } from './components/dashboard-pagenotfound/dashboard-pagenotfound.component';
 
 
 
@@ -17,7 +20,10 @@ import { DashboardCustomerComponent } from './components/dashboard-customer/dash
     DashboardComponent,
     DashboardOrganizationComponent,
     DashboardProductComponent,
-    DashboardCustomerComponent
+    DashboardCustomerComponent,
+    DashboardCategoryComponent,
+    DashboardCategoryFormComponent,
+    DashboardPagenotfoundComponent
   ],
   imports: [
     CommonModule,
