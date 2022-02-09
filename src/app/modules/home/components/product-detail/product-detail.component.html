@@ -27,7 +27,7 @@
             <option>Kies een maat</option>
             <option *ngFor="let stock of (stocks$ | async)">{{stock.size.name}}</option>
           </select>
-        <p class="details-title">Details</p>
+        <p class="details-title">Omschrijving</p>
         <p>{{product.description}}</p>
     </div>
   </div>

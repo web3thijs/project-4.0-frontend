@@ -111,22 +111,28 @@ export class OrganizationStockFormComponent implements OnInit {
     this.isEdit = this.router.getCurrentNavigation()?.extras.state?.mode === 'edit';
     this.stockId = this.router.getCurrentNavigation()?.extras.state?.id;
 
-    if (this.stockId != null && this.stockId > 0) {
-      this.stock$ = this.stockService.getStocksById(this.stockId).subscribe(result => {
-        this.stockForm.setValue({
-          amountInStock: result.amountInStock,
-          size: result.size,
-          color: result.color,
-          product: result.product
-        });
-      });
-    }
+    this.getStock();
+
    }
 
   ngOnInit(): void {
     this.getProducts();
     this.getSizes();
     this.getColors();
+  }
+
+  async getStock(){
+    if (this.stockId != null) {
+      this.stock$ = this.stockService.getStocksByIdPut(this.stockId).subscribe(result => {
+        this.stockForm.setValue({
+          amountInStock: result.amountInStock,
+          size: result.size,
+          color: result.color,
+          product: result.product
+        });
+        console.log(result.amountInStock);
+      });
+    }
   }
 
   getSizes() {
@@ -166,7 +172,7 @@ export class OrganizationStockFormComponent implements OnInit {
       this.stock.product = this.product;
 
       this.postStock$ = this.stockService.postStock(this.stock).subscribe(result => {
-        this.router.navigateByUrl("/organisatie/product");
+        this.router.navigateByUrl("organisatie/product");
       },
       error => {
         this.errorMessage = error.message;
@@ -176,14 +182,15 @@ export class OrganizationStockFormComponent implements OnInit {
       this.size.id = parseInt(this.stockForm.controls['size'].value);
       this.color.id = parseInt(this.stockForm.controls['color'].value);
       this.product.id = parseInt(this.stockForm.controls['product'].value);
+      this.product.organization.id = parseInt(this.authService.getUser()!.id);
       this.stockPut.id = this.stockId;
-      this.stock.amountInStock = this.stockForm.controls['amountInStock'].value;
-      this.stock.size = this.size;
-      this.stock.color = this.color;
-      this.stock.product = this.product;
+      this.stockPut.amountInStock = this.stockForm.controls['amountInStock'].value;
+      this.stockPut.size = this.size;
+      this.stockPut.color = this.color;
+      this.stockPut.product = this.product;
 
       this.putStock$ = this.stockService.putStock(this.stockPut).subscribe(result => {
-        this.router.navigateByUrl("/organisatie/product/form/");
+        this.router.navigateByUrl("organisatie/product");
       },
       error => {
         this.errorMessage = error.message;

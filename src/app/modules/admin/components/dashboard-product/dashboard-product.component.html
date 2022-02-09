@@ -8,16 +8,14 @@
           <th scope="col">Naam</th>
           <th scope="col">Prijs</th>
           <th scope="col">Actief</th>
-          <th scope="col">Bekijken</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Panda knuffel</td>
-          <td>€25</td>
-          <td><i class="fas fa-check"></i></td>
-          <td>??</td>
+        <tr *ngFor="let product of (products$ | async)">
+          <th scope="row">{{product.id}}</th>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td><i *ngIf="product.active" class="fas fa-check"></i><i *ngIf="!product.active" class="fas fa-times"></i></td>
         </tr>
         </tbody>
     </table>

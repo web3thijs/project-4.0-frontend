@@ -1,0 +1,26 @@
+<div class="container mt-4">
+  <app-title [titleText]="'Overzicht bestellingen'"></app-title>
+
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+  <div class="table-responsive">
+  <table class="table mt-3 text-center table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Datum</th>
+      <th scope="col">Product</th>
+      <th scope="col">Aantal</th>
+      <th scope="col">Prijs</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr *ngFor="let order of (orders$ | async)">
+      <td>{{order.name}}</td>
+      <td>{{order.price}}</td>
+    </tr>-->
+    </tbody>
+  </table>
+  </div>
+
+</div>

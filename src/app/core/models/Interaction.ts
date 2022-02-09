@@ -7,7 +7,6 @@ export interface Interaction {
   amountClicks: number;
   amountCart: number;
   amountBought: number;
-  reviewId: number;
   productId: number;
   customerId: number;
   review: Review;

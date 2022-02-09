@@ -15,6 +15,7 @@ import { OrganizationOrderComponent } from './components/organization-order/orga
 import { OrganizationDonationComponent } from './components/organization-donation/organization-donation.component';
 import { OrganizationStockFormComponent } from './components/organization-stock-form/organization-stock-form.component';
 import { OrganizationAccountComponent } from './components/organization-account/organization-account.component';
+import { OrganizationPagenotfoundComponent } from './components/organization-pagenotfound/organization-pagenotfound.component';
 
 
 
@@ -26,6 +27,8 @@ import { OrganizationAccountComponent } from './components/organization-account/
     OrganizationOrderComponent,
     OrganizationDonationComponent,
     OrganizationStockFormComponent,
+    OrganizationAccountComponent,
+    OrganizationPagenotfoundComponent,
     OrganizationAccountComponent
   ],
   imports: [

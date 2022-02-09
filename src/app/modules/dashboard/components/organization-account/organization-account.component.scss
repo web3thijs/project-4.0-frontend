@@ -9,3 +9,18 @@ button{
     background-color: #184964;
   }
 }
+
+.sidebar {
+  cursor: pointer;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #08344B;
+  color: white;
+}
+
+.bg-blue {
+  background-color: white;
+  color: #08344B;
+}
