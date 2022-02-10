@@ -28,8 +28,7 @@ import { OrganizationPagenotfoundComponent } from './components/organization-pag
     OrganizationDonationComponent,
     OrganizationStockFormComponent,
     OrganizationAccountComponent,
-    OrganizationPagenotfoundComponent,
-    OrganizationAccountComponent
+    OrganizationPagenotfoundComponent
   ],
   imports: [
     CommonModule,

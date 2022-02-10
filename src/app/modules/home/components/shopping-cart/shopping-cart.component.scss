@@ -1,25 +1,40 @@
-.product-price {
-  font-size: 14px;
+.form-control{
+  border: none;
+  border-bottom: 1px rgba(156, 156, 156, 1) solid;
 }
 
-.shopping-title {
-  font-weight: bold;
-  color: #08344B;
+.page-link{
+  color: black;
 }
 
-input, select {
-  height: 30px;
+h4, h6{
+  padding: 0 !important;
+  margin: 0;
 }
 
-.bg-shopping {
-  background-color: #F4F4F4;
+.subtitle{
+  background: #d6f0ff;
+  padding: 0.75rem 1.5rem;
   border-radius: 8px;
+  width: 100%;
 }
 
-.total-shopping {
-  font-weight: bold;
+.clickable{
+  cursor: pointer;
 }
 
-.empty-basket {
-  font-size: 18px;
+img{
+  height: 100%;
+  width: 125px;
+}
+
+.btn-primary{
+  background-color: #08344B;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+
+  &:hover{
+    background-color: #184964;
+  }
 }

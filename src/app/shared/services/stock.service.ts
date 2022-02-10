@@ -12,14 +12,14 @@ export class StockService {
   constructor(private httpClient: HttpClient) { }
 
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/";
+  baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
 
   getStocks(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "stocks");
   }
 
-  getStocksByProductId(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + "stocks/product/" + id);
+  getStocksByProductId(id: number): Observable<Stock[]> {
+    return this.httpClient.get<Stock[]>(this.baseUrl + "stocks/product/" + id);
   }
 
   getStocksById(id: number): Observable<Stock> {

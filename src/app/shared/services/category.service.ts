@@ -11,9 +11,8 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
+  baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
-  baseUrlNew = "https://project-4-0-backend.herokuapp.com/api/"
 
   getCategories(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "categories");

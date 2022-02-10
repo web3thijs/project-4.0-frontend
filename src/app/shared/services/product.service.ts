@@ -12,7 +12,7 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
+  baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
 
   getProducts(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "products");

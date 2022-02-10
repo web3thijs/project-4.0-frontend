@@ -23,9 +23,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RetourFormComponent } from './components/retour-form/retour-form.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { OrderComponent } from './components/order/order.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { OrderOverviewCustomerComponent } from './components/order-overview-customer/order-overview-customer.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
-
 
 
 @NgModule({
@@ -45,16 +47,18 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     FaqComponent,
     ContactComponent,
     RetourFormComponent,
+    OrderComponent,
+    OrderConfirmationComponent,
     OrderOverviewCustomerComponent,
     PagenotfoundComponent,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule,
     HomeRoutingModule,
     SharedModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule
   ]
 })

@@ -12,6 +12,9 @@ import { RegisterOrganizationComponent } from './components/register-organizatio
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RetourFormComponent } from './components/retour-form/retour-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderComponent } from './components/order/order.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { OrderOverviewCustomerComponent } from './components/order-overview-customer/order-overview-customer.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
@@ -28,12 +31,13 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'retourneren', component: RetourFormComponent},
+  { path: 'bestellen', component: OrderComponent},
+  { path: 'besteld', component: OrderConfirmationComponent},
   { path: 'bestellingen', component: OrderOverviewCustomerComponent},
-  //{ path: '**', component: PagenotfoundComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), FormsModule, ReactiveFormsModule],
   exports: [RouterModule]
 })
 export class HomeRoutingModule {
