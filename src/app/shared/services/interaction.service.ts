@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Customer } from 'src/app/core/models/Customer';
 import { Interaction } from 'src/app/core/models/Interaction';
 import { Product } from 'src/app/core/models/Product';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class InteractionService {
   constructor(private httpClient: HttpClient) { }
 
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/";
+  baseUrl: String = environment.database.toString();;
 
   getInteractions(): Observable<any> {
     let headers = new HttpHeaders();

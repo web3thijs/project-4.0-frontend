@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from 'src/app/core/models/Product';
 import { ProductService } from 'src/app/shared/services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Category } from 'src/app/core/models/Category';
@@ -13,16 +13,23 @@ import { Stock } from 'src/app/core/models/Stock';
 import { Color } from 'src/app/core/models/Color';
 import { Size } from 'src/app/core/models/Size';
 import { StockService } from 'src/app/shared/services/stock.service';
+import { AuthService } from 'src/app/modules/security/auth.service';
+import { Order } from 'src/app/core/models/Order';
+import { UpdateOrderDetailDTO } from 'src/app/core/models/UpdateOrderDetailDTO';
+import { OrderService } from 'src/app/shared/services/order.service';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { CartDTO } from 'src/app/core/models/CartDTO';
+import { CartProductDTO } from 'src/app/core/models/CartProductDTO';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnDestroy{
   user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   user$: Subscription = new Subscription();
-  organization: Omit<Organization, "role"> = {
+  organization: Organization = {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
@@ -38,18 +45,22 @@ export class ProductDetailComponent implements OnInit {
     phoneNr: '',
     address: '',
     postalCode: '',
-    country: ''
+    country: '',
+    role: ''
   };
-  organization$: Subscription = new Subscription();
+
+  updateOrderDetailDTO: UpdateOrderDetailDTO = {
+    productId: 0,
+    sizeId: 0,
+    colorId: 0,
+    amount: 0
+  }
+
+  updateOrderDetail: Observable<UpdateOrderDetailDTO>;
+
   category: Category = {id: 0, name: ""};
-  category$: Subscription = new Subscription();
-  product: Product = {id: 0, name: "", price: 0, description: "", active: false, imageUrl: [], organization: this.organization, category: this.category};
-  product$: Subscription = new Subscription();
-  color: Color = {id: 0, name: ""};
-  color$: Subscription = new Subscription();
-  size: Size = {id: 0, name: ""};
-  size$: Subscription = new Subscription();
-  /*stock: Stock = {id: "", size: this.size, color: this.color, product: this.product, amountInStock: 0};
+  product: Product = {id: 0, name: "", price: 0, description: "", active: false, imageUrl: [""], organization: this.organization, category: this.category};
+  /*stock: Stock = {id: 0, size: this.size, color: this.color, product: this.product, amountInStock: 0};
   stock$: Subscription = new Subscription();*/
   stocks$: Observable<Stock[]>;
 
@@ -60,8 +71,10 @@ export class ProductDetailComponent implements OnInit {
 
   valueProduct = 0;
 
+  products: Observable<CartProductDTO[]>;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private categoryService: CategoryService, private organizationService: OrganizationService, private stockService: StockService) { }
+
+  constructor(private orderService: OrderService, private cartService: CartService, private authService: AuthService, private productService: ProductService, private route: ActivatedRoute, private categoryService: CategoryService, private organizationService: OrganizationService, private stockService: StockService, private router: Router) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.params.id;
@@ -72,53 +85,34 @@ export class ProductDetailComponent implements OnInit {
 
 
     this.productService.getProductById(id).subscribe(result => (this.product = result));
-    this.amountChange();
-    console.log("ID: " + id);
-
-    if(this.shoppingCart != null){
-      this.itemsInCart = JSON.parse(localStorage.productsInCart).length;
-    } else {
-      console.log("Cart is empty");
-    }
-
-    for(let i = 0; i < this.itemsInCart; i++){
-      console.log(this.shoppingCart[i].id);
-      this.productsIdsInCart.push(this.shoppingCart[i].id);
-    }
-
-    console.log("Shoppingcart " + this.shoppingCart);
-    console.log("Items in cart: " + this.itemsInCart);
-    console.log("ProductIDS " + this.productsIdsInCart);
-    console.log("Organizations " + this.organization$);
   }
 
-  amountChange() {
-    this.valueProduct ++;
-    console.log("Value " + this.valueProduct);
+  ngOnDestroy(): void {
   }
 
-  AddToShopping() {
-    var productsAdd = JSON.parse(localStorage.getItem("productsInCart") || "[]");
-    if(this.productsIdsInCart.includes(this.product.id.toString())) {
-      this.alertIsShown = true;
-    } else {
-      var productAdd = {
-        id: this.product.id,
-        name: this.product.name,
-        price: this.product.price,
-        description: this.product.description,
-        isActive: this.product.active,
-        imageUrl: this.product.imageUrl,
-        valueProduct: this.valueProduct
-      };
-      productsAdd.push(productAdd);
-      localStorage.setItem("productsInCart", JSON.stringify(productsAdd));
-      localStorage.setItem('totalOrderPrice', JSON.stringify(0));
-      localStorage.setItem('shippingCost', JSON.stringify(0));
-      location.reload();
+  getCart() {
+    this.products = this.cartService.getCart().pipe(
+      map(result => result.cartProductDTOS)
+    )
+  }
+
+  async addToCart(){
+    if(!this.authService.isLoggedIn()){
+      this.router.navigate(["/inloggen"]);
+      return
     }
 
 
+    this.updateOrderDetailDTO.productId = this.product.id
 
+    if(this.updateOrderDetailDTO.sizeId == 0){
+      this.updateOrderDetailDTO.sizeId = 1
+    }
+
+    this.updateOrderDetailDTO.colorId = this.updateOrderDetailDTO.sizeId
+
+    await this.cartService.addProductToOrder(this.updateOrderDetailDTO).toPromise();
+
+    this.router.navigate(["/winkelmandje"]);
   }
 }

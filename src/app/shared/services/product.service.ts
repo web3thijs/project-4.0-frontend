@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Product } from 'src/app/core/models/Product';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
+  baseUrl: String = environment.database.toString();
 
   getProducts(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "products");

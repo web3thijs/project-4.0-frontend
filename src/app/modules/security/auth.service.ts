@@ -5,13 +5,15 @@ import {Observable} from 'rxjs';
 import {UserResponse} from './user-response';
 import { Customer } from 'src/app/core/models/Customer';
 import { Organization } from 'src/app/core/models/Organization';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
- baseUrl: String = "https://project-4-0-backend.herokuapp.com/";
+ allowOrder: boolean = false;
+ baseUrl: String = environment.database.toString();
 
   constructor(private httpClient: HttpClient) {
   }
@@ -39,14 +41,22 @@ export class AuthService {
   }
 
   authenticate(user: User): Observable<UserResponse> {
-    return this.httpClient.post<UserResponse>(this.baseUrl + 'api/authenticate', user);
+    return this.httpClient.post<UserResponse>(this.baseUrl + 'authenticate', user);
   }
 
   registerCustomer(customer: Omit<Customer, 'id'|'role'>): Observable<Customer> {
-    return this.httpClient.post<Customer>(this.baseUrl + 'api/register/customer', customer);
+    return this.httpClient.post<Customer>(this.baseUrl + 'register/customer', customer);
   }
 
   registerOrganization(organization: Omit<Organization, 'id'|'role'>): Observable<Organization> {
-    return this.httpClient.post<Organization>(this.baseUrl + 'api/register/customer', organization);
+    return this.httpClient.post<Organization>(this.baseUrl + 'register/customer', organization);
+  }
+
+  getAllowOrder(): boolean {
+    return this.allowOrder;
+  }
+
+  setAllowOrder(allow: boolean){
+    this.allowOrder = allow
   }
 }

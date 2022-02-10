@@ -1,160 +1,134 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { CartDonationDTO } from 'src/app/core/models/CartDonationDTO';
+import { CartDTO } from 'src/app/core/models/CartDTO';
+import { CartProductDTO } from 'src/app/core/models/CartProductDTO';
+import { Order } from 'src/app/core/models/Order';
+import { Organization } from 'src/app/core/models/Organization';
+import { Stock } from 'src/app/core/models/Stock';
+import { UpdateDonationDTO } from 'src/app/core/models/UpdateDonationDTO';
+import { UpdateOrderDetailDTO } from 'src/app/core/models/UpdateOrderDetailDTO';
+import { AuthService } from 'src/app/modules/security/auth.service';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { OrderService } from 'src/app/shared/services/order.service';
+import { OrganizationService } from 'src/app/shared/services/organization.service';
+import { StockService } from 'src/app/shared/services/stock.service';
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss']
 })
-export class ShoppingCartComponent implements OnInit {
-  shoppingCart = JSON.parse(localStorage.getItem('productsInCart') || "[]");
-  itemsInCart = 0;
-  productsIdsInCart: string[] = [];
+export class ShoppingCartComponent implements OnInit, OnDestroy {
+  orders: Observable<Order[]>;
+  orders$: Subscription = new Subscription;
+  updateDonation$: Subscription = new Subscription();
+  currentOrder: Order
 
-  totalPrice = 0;
-  shippingCost = 5;
-  noShippingCost = 0;
-  totalOrderPrice = 0;
-  donation = 0;
-  totalDonation = 0;
-  chosenOrganization = '';
-  organizationDonationChosen = '';
+  cart: Observable<CartDTO>;
+  cart$: Subscription = new Subscription;
+  products: Observable<CartProductDTO[]>;
+  donations: Observable<CartDonationDTO[]>;
+  organizations: Observable<Organization[]>;
 
-  newValueProduct = 0;
+  updateOrderDetailDTO: UpdateOrderDetailDTO = {
+    productId: 0,
+    sizeId: 0,
+    colorId: 0,
+    amount: 0
+  }
 
-  donationIsAdded = false;
+  updateDonationDTO: UpdateDonationDTO = {
+    organizationId: 0,
+    amount: 0
+  }
 
+  @ViewChild('closeModal') closeModal: ElementRef;
 
+  @ViewChild("modal") modal: ElementRef;
 
-  constructor(private router: Router) { }
+  constructor(private organizationService: OrganizationService, private router: Router, private stockService: StockService, private orderService: OrderService, private authService: AuthService, private cartService: CartService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    this.donationChange();
-    this.getTotalPriceShoppingCart();
-
-    if(localStorage.getItem("productsInCart") === '[]') {
-      localStorage.setItem('shippingCost', JSON.stringify(this.noShippingCost));
-    }
-
-    this.totalDonation = parseInt(localStorage.getItem('totalDonationAdded') || '');
-
-    if(this.totalDonation > 0) {
-      this.donationIsAdded = true;
-    }
-
-    if("productsInCart" in localStorage && "totalOrderPrice" in localStorage && "shippingCost" in localStorage) {
-      if(this.shoppingCart != null){
-        this.itemsInCart = JSON.parse(localStorage.productsInCart).length;
-        console.log("Items in cart " + this.itemsInCart);
-      } else if(localStorage.getItem("productsInCart") === null) {
-        localStorage.setItem('shippingCost', JSON.stringify(this.noShippingCost));
-      } else {
-        console.log("Cart is empty");
-      }
-    }
-
-    for(let i = 0; i < this.itemsInCart; i++) {
-      this.productsIdsInCart.push(this.shoppingCart[i].id);
-    }
+    this.getCart()
+    this.getOrganizations();
   }
 
-  donationChange() {
-    this.totalDonation = 0;
-    this.donation = parseInt((<HTMLInputElement>document.getElementById("donation")).value);
 
-    console.log("Value donation" + this.donation);
+  ngOnDestroy(): void {
+    this.cart$.unsubscribe();
   }
 
-  donationAdd() {
-    this.totalDonation = this.donation;
-    localStorage.setItem('totalDonationAdded', JSON.stringify(this.totalDonation));
-    location.reload();
+  getCart() {
+    this.cart = this.cartService.getCart().pipe(
+      map(result => result)
+    );
+
+    this.products = this.cart.pipe(
+      map(result => result.cartProductDTOS)
+    )
+
+    this.donations = this.cart.pipe(
+      map(result => result.cartDonationDTOS)
+    )
   }
 
-  organizationAdd() {
-    this.chosenOrganization = (<HTMLInputElement>document.getElementById("donationOrganizations")).value;
-    localStorage.setItem('chosenOrganizationDonation', this.chosenOrganization);
+  getOrganizations() {
+    this.organizations = this.organizationService.getOrganizations().pipe(
+      map(response => response.content)
+    );
   }
 
-  amountChange(id: number) {
-    console.log("ID " + id);
-    this.newValueProduct = parseInt((<HTMLInputElement>document.getElementById(id.toString())).value);
+  async reduceAmount(productId: number, sizeId: number, amount: number){
+    this.updateOrderDetailDTO.productId = productId
+    this.updateOrderDetailDTO.sizeId = sizeId
+    this.updateOrderDetailDTO.colorId = sizeId
+    this.updateOrderDetailDTO.amount = amount - 1
 
-    var cart_items = JSON.parse(localStorage["productsInCart"]);
-    var productsAdd = JSON.parse(localStorage.getItem("productsInCart") || "[]");
-    for(let i = 0; i < cart_items.length; i++) {
-      if(cart_items[i].id == id) {
-        if(this.productsIdsInCart.includes(id.toString())) {
-          console.log("ID zit al in object");
-          var productAdd = {
-            id: cart_items[i].id,
-            categoryId: cart_items[i].categoryId,
-            organizationId: cart_items[i].organizationId,
-            name: cart_items[i].name,
-            price: cart_items[i].price,
-            description: cart_items[i].description,
-            isActive: cart_items[i].isActive,
-            imageUrl: cart_items[i].imageUrl,
-            valueProduct: this.newValueProduct
-        };
-        productsAdd.push(productAdd);
-        localStorage.setItem("productsInCart", JSON.stringify(productsAdd));
-        }
+    await this.cartService.updateProductFromOrder(this.updateOrderDetailDTO).toPromise();
 
-    }
-  }
+    this.getCart()
   }
 
-  getTotalPriceShoppingCart() {
-    for(let i = 0, len = JSON.parse(localStorage.productsInCart).length; i < len; ++i ) {
-      this.totalPrice += this.shoppingCart[i].price * this.shoppingCart[i].valueProduct;
-    }
+  async addAmount(productId: number, sizeId: number, amount: number){
+    this.updateOrderDetailDTO.productId = productId
+    this.updateOrderDetailDTO.sizeId = sizeId
+    this.updateOrderDetailDTO.colorId = sizeId
+    this.updateOrderDetailDTO.amount = amount + 1
 
-    localStorage.setItem('totalProductsAdded', JSON.stringify(this.totalPrice));
+    await this.cartService.updateProductFromOrder(this.updateOrderDetailDTO).toPromise();
 
-
-    this.totalDonation = parseInt(localStorage.getItem('totalDonationAdded') || '');
-    this.totalPrice = parseFloat(localStorage.getItem('totalProductsAdded') || '');
-
-    if(this.totalPrice >= 30) {
-      this.totalOrderPrice = this.totalPrice + this.totalDonation;
-      console.log("totalPrice: " + this.totalPrice);
-      localStorage.setItem('totalOrderPrice', JSON.stringify(this.totalOrderPrice));
-      localStorage.setItem('shippingCost', JSON.stringify(this.noShippingCost));
-    } else if(this.totalPrice < 30 && this.totalPrice > 1) {
-      this.totalOrderPrice = this.totalPrice + this.totalDonation + this.shippingCost;
-      localStorage.setItem('totalOrderPrice', JSON.stringify(this.totalOrderPrice));
-      localStorage.setItem('shippingCost', JSON.stringify(this.shippingCost));
-    } else if(this.totalPrice == 0 && this.totalDonation > 0) {
-      this.totalOrderPrice = this.totalPrice + this.totalDonation;
-      localStorage.setItem('totalOrderPrice', JSON.stringify(this.totalOrderPrice));
-      localStorage.setItem('shippingCost', JSON.stringify(this.noShippingCost));
-    }
+    this.getCart()
   }
 
-  reloadComponent() {
-    let currentUrl = this.router.url;
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate([currentUrl]);
+  async removeProduct(productId: number, sizeId: number){
+    this.updateOrderDetailDTO.productId = productId
+    this.updateOrderDetailDTO.sizeId = sizeId
+    this.updateOrderDetailDTO.colorId = sizeId
+    this.updateOrderDetailDTO.amount = 0
+
+    await this.cartService.updateProductFromOrder(this.updateOrderDetailDTO).toPromise();
+
+    this.getCart()
   }
 
-  delete(id: number) {
-    var cart_items = JSON.parse(localStorage["productsInCart"]);
-    for(let i = 0; i < cart_items.length; i++) {
-      if(cart_items[i].id == id) {
-        cart_items.splice(i, 1);
-        localStorage["productsInCart"] = JSON.stringify(cart_items);
-        this.reloadComponent();
-      }
-    }
-    location.reload();
+  async removeDonation(organizationId: number){
+    this.updateDonationDTO.organizationId = organizationId
+    this.updateDonationDTO.amount = 0
+
+    await this.cartService.updateDonationFromOrder(this.updateDonationDTO).toPromise();
+
+    this.getCart()
   }
 
-  deleteDonation() {
-    this.totalDonation = 0;
-    localStorage.setItem('totalDonationAdded', JSON.stringify(0));
-    location.reload();
-  }
+  async submitDonation(){
+    await this.cartService.addDonationToOrder(this.updateDonationDTO).toPromise();
+    this.closeModal.nativeElement.click();
+    this.updateDonationDTO.amount = 0
+    this.updateDonationDTO.organizationId = 0
 
+    this.getCart()
+  }
 }

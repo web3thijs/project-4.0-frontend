@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Stock } from 'src/app/core/models/Stock';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +13,14 @@ export class StockService {
   constructor(private httpClient: HttpClient) { }
 
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/";
+  baseUrl: String = environment.database.toString();
 
   getStocks(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "stocks");
   }
 
-  getStocksByProductId(id: number): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + "stocks/product/" + id);
+  getStocksByProductId(id: number): Observable<Stock[]> {
+    return this.httpClient.get<Stock[]>(this.baseUrl + "stocks/product/" + id);
   }
 
   getStocksById(id: number): Observable<Stock> {

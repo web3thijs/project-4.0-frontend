@@ -3,17 +3,21 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "start npm run api && start ng serve -o --port 5500",
+    "start": "node server.js",
+    "dev": "start npm run api && start ng serve -o --port 5500",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "api": "json-server --watch json-server-local\\db.json"
+    "api": "json-server --watch json-server-local\\db.json",
+    "heroku-postbuild": "ng build --configuration=development"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.0.5",
+    "@angular/cli": "~12.0.5",
     "@angular/common": "~12.0.5",
     "@angular/compiler": "~12.0.5",
+    "@angular/compiler-cli": "~12.0.5",
     "@angular/core": "~12.0.5",
     "@angular/fire": "^7.2.0",
     "@angular/forms": "~12.0.5",
@@ -21,16 +25,19 @@
     "@angular/platform-browser-dynamic": "~12.0.5",
     "@angular/router": "~12.0.5",
     "bootstrap": "^4.5.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
     "firebase": "^9.6.4",
+    "http-server": "^14.1.0",
     "jquery": "^3.5.1",
+    "path": "^0.12.7",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.1",
+    "typescript": "~4.2.3",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.0.5",
-    "@angular/cli": "~12.0.5",
-    "@angular/compiler-cli": "~12.0.5",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
     "jasmine-core": "~3.8.0",
@@ -38,7 +45,6 @@
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.7.0",
-    "typescript": "~4.2.3"
+    "karma-jasmine-html-reporter": "^1.7.0"
   }
 }
