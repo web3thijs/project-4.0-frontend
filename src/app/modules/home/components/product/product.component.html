@@ -24,9 +24,12 @@
     </div>
   </div>
   <div class="row" >
-    <div class="col-sm-6 col-lg-4" *ngFor="let product of (products$ | async)">
-
-     <app-product-view [productImg]="product.imageUrl" [productTitle]="product.name" [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
-     </div>
+    <div *ngFor="let product of (products$ | async)">
+      <div class="col-sm-6 col-lg-4 mx-auto" *ngIf="product.active">
+        <div>
+          <app-product-view  [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
+        </div>
+       </div>
+    </div>
   </div>
 </div>

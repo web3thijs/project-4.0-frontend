@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   toAdminCustomer() {
-    this.router.navigate(['dashboard-admin/gebruikers']);
+    this.router.navigate(['dashboard-admin/klanten']);
   }
 
   toAdminProduct() {

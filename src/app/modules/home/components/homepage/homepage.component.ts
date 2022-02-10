@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Organization } from 'src/app/core/models/Organization';
+import { Product } from 'src/app/core/models/Product';
 import { OrganizationService } from 'src/app/shared/services/organization.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,15 +14,25 @@ import { OrganizationService } from 'src/app/shared/services/organization.servic
 })
 export class HomepageComponent implements OnInit {
   organizations: Observable<Organization[]>;
+  products: Observable<Product[]>;
   organizations$: Subscription = new Subscription();
   organizationRandom: Organization[];
+  displayNumProd: number = 6;
+  displayNumOrg: number = 6;
 
-  constructor(private router: Router, private organizationService: OrganizationService) { }
+  constructor(private router: Router, private organizationService: OrganizationService, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.getOrganizations();
+    this.getProducts();
     //this.organizationService.getOrganizations().subscribe(organizations => this.organizations = organizations);
     //console.log(this.organizations);
+  }
+
+  getProducts() {
+    this.products = this.productService.getProducts().pipe(
+      map(response => response.content)
+    );
   }
 
   getOrganizations() {

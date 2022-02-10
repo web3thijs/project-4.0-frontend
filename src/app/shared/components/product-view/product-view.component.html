@@ -1,6 +1,6 @@
 <div class="card mx-auto text-left" style="width: 18rem;">
   <div class="card-body">
-    <img src="{{ productImg }}" alt="" class="mb-2 img-fluid">
+    <img src="{{ productImg }}" alt="" class="mb-2 img-fluid" onerror="this.src='../../../../../assets/placeholder.png';">
     <h5 class="card-title mb-1" id="product-title">{{ productTitle }}</h5>
     <p class="card-text mb-2" id="product-price">€ {{ productPrice }}</p>
     <app-button [buttonText]="'Bekijk'"></app-button>

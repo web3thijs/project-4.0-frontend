@@ -11,13 +11,6 @@
   font-weight: bold;
 }
 
-.sidebar {
-  cursor: pointer;
-  background-color: #001321;
-  height: 55vh;
-  color: white;
-}
-
 .bg-blue {
   background-color: white;
   color: #001321;
@@ -33,22 +26,56 @@
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
-@media (min-width: 576px) {
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: absolute;
+  height: 1000px;
+  overflow: auto;
+}
 
+.sidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
 
- }
+.sidebar a.active {
+  background-color: #08344B;
+  color: white;
+}
 
- @media (min-width: 992px) {
+.sidebar a:hover:not(.active) {
+  background-color: #08344B;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
   .sidebar {
-    cursor: pointer;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    left: 0;
-    background-color: #08344B;
-    color: white;
+    width: 100%;
+    height: auto;
+    position: relative;
   }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
   }
+}
+
 
 
 

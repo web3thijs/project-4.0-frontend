@@ -11,7 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 const routes: Routes = [
   { path: 'dashboard-admin', component: DashboardComponent },
   { path: 'dashboard-admin/organisaties', component: DashboardOrganizationComponent},
-  { path: 'dashboard-admin/gebruikers', component: DashboardCustomerComponent},
+  { path: 'dashboard-admin/klanten', component: DashboardCustomerComponent},
   { path: 'dashboard-admin/producten', component: DashboardProductComponent},
   { path: 'dashboard-admin/categorieën', component: DashboardCategoryComponent},
   { path: 'dashboard-admin/categorieën/form', component: DashboardCategoryFormComponent},
