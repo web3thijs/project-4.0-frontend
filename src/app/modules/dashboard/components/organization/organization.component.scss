@@ -7,19 +7,14 @@
 }
 
 .bigger-font {
-  font-size: 24px;
+  font-size: 1.08rem;
   font-weight: bold;
-}
-
-img{
-  border-radius: 1rem;
-  width: 100px;
 }
 
 .sidebar {
   cursor: pointer;
-  height: 100vh;
   background-color: #001321;
+  height: 55vh;
   color: white;
 }
 
@@ -37,4 +32,23 @@ img{
   0 100px 80px rgba(0, 0, 0, 0.12);*/
   box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
+
+@media (min-width: 576px) {
+
+
+ }
+
+ @media (min-width: 992px) {
+  .sidebar {
+    cursor: pointer;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #08344B;
+    color: white;
+  }
+  }
+
+
 

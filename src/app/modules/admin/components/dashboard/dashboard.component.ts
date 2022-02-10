@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/modules/security/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,10 @@ export class DashboardComponent implements OnInit {
 
   toAdminProduct() {
     this.router.navigate(['dashboard-admin/producten']);
+  }
+
+  toAdminCategory() {
+    this.router.navigate(['dashboard-admin/categorieën']);
   }
 
 }

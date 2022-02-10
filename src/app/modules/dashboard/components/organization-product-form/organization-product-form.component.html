@@ -15,7 +15,7 @@
     <div class="col-12 mt-3 pb-2 rounded ml-2">
       <i class="fas fa-question mr-2"></i> Contact
     </div>
-    <div class="col-12 mt-3 pb-2 rounded ml-2">
+    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/account">
       <i class="fas fa-user-alt mr-2"></i> Profiel
     </div>
     <div class="col-12 mt-3 pb-2 rounded ml-2">
@@ -106,7 +106,7 @@
             <td>{{stock.size.name}}</td>
             <td>{{stock.color.name}}</td>
             <td>
-              <button type="button" class="btn btn-success mr-2" title="Bewerken: {{stock.product.id}}" (click)="edit(stock.id)"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-success mr-2" title="Bewerken: {{stock.id}}" (click)="edit(stock.id)"><i class="fas fa-edit"></i></button>
               <button type="button" class="btn btn-danger" (click)="delete(stock.id)"><i class="far fa-trash-alt"></i></button>
             </td>
           </tr>

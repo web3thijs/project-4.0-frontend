@@ -2,8 +2,7 @@
   <div class="filter">
   <div class="container mb-5">
     <div class="text-center pt-5">
-      <h1 class="text-center">Marketplace</h1>
-      <p class="text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptas suscipit voluptates consequatur quo eveniet veniam, ipsum quae, ducimus alias consectetur totam, in illo voluptatum hic beatae. Quia, magnam provident!</p>
+      <h1 class="text-center mb-5">SteunVzw</h1>
       <div class="row">
         <div class="col-sm-12 col-md-6 mb-3 text-sm-center text-md-right">
           <app-button [buttonText]="'Producten'" routerLink="/producten"></app-button>
@@ -17,10 +16,10 @@
 </div>
 </div>
 
-<!-- <main class="container">
+<main class="container">
   <div id="newarrivals" class="mt-4">
     <app-title [titleText]="'New arrivals'"></app-title>
-  <div class="container my-3 mb-5">
+  <!--<div class="container my-3 mb-5">
     <div class="row mx-auto my-auto">
       <div class="col-12 text-right">
         <a class="btn btn-primary mb-3 mr-1 bg-blue" href="#newarrivalsCarousel" role="button" data-slide="prev">
@@ -34,53 +33,17 @@
             <div class="carousel-inner w-100" role="listbox">
                 <div class="carousel-item active">
                   <div class="row">
-                    <div class="col-sm-12 col-md-4">
-                      <app-product-view [productImg]="'https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 1'" [productPrice]="25" (click)="onClick(1)"></app-product-view>
-                    </div>
-                  <div class="col-sm-12 col-md-4">
-                    <app-product-view [productImg]="'https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 2'" [productPrice]="25" (click)="onClick(2)"></app-product-view>
-                </div>
-                <div class="col-sm-12 col-md-4">
-                  <app-product-view [productImg]="'https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 3'" [productPrice]="25" (click)="onClick(3)"></app-product-view>
-              </div>
-              <div class="col-sm-12 col-md-4">
-                <app-product-view [productImg]="'https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 3'" [productPrice]="25" (click)="onClick(3)"></app-product-view>
-            </div>
-                  </div>
-
-                </div>
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <app-product-view [productImg]="'https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 4'" [productPrice]="25" (click)="onClick(4)"></app-product-view>
-                    </div>
-                    <div class="col-md-4">
-                      <app-product-view [productImg]="'https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 5'" [productPrice]="25" (click)="onClick(5)"></app-product-view>
-                    </div>
-                    <div class="col-md-4">
-                      <app-product-view [productImg]="'https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 6'" [productPrice]="25" (click)="onClick(6)"></app-product-view>
+                    <div class="col-sm-12 col-md-4" *ngFor="let organization of (organizations$ | async)">
+                      <app-product-view [productImg]="'{{organization.imageUrl[0]}}'" [productTitle]="'{{organization.name}}'" [productPrice]="25" (click)="onClick(1)"></app-product-view>
                     </div>
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-md-4">
-                    <app-product-view [productImg]="'https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 7'" [productPrice]="25" (click)="onClick(7)"></app-product-view>
-                    </div>
-                    <div class="col-md-4">
-                      <app-product-view [productImg]="'https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 8'" [productPrice]="25" (click)="onClick(8)"></app-product-view>
-                      </div>
-                      <div class="col-md-4">
-                        <app-product-view [productImg]="'https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [productTitle]="'Product 9'" [productPrice]="25" (click)="onClick(9)"></app-product-view>
-                        </div>
-                        </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</div>-->
   </div>
-</main> -->
+</main>
 
 <div class="banner mt-3 mb-5">
   <div class="container text-center">
@@ -114,7 +77,7 @@
             </div>
           <div class="col-sm-12 pt-3">
             <p class="font-weight-bold subtitle">Steunen</p>
-            <p>Je kan COUNT vzw's steunen door producten te kopen of een vrije gift te geven.</p>
+            <p>Je kan vzw's steunen door producten te kopen of een vrije gift te geven.</p>
           </div>
         </div>
       </div>
@@ -136,46 +99,15 @@
           </a>
       </div>
           <div id="vzwCarousel" class="carousel slide w-100" data-ride="carousel">
-              <div class="carousel-inner w-100" role="listbox">
-                  <div class="carousel-item active">
-                    <div class="row">
-                      <div class="col-sm-12 col-md-4">
-                        <app-organization-view [productImg]="'https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 1'"></app-organization-view>
+              <div class="carousel-inner w-100">
+                  <div class="carousel-item active" *ngFor="let organization of (organizations | async)">
+                    <app-organization-view [productImg]="organization.imageUrl" [organizationTitle]="organization.organizationName"></app-organization-view>
+                    <!--<div class="row">
+                      <div class="col-sm-12 col-md-4" *ngFor="let organization of (organizations | async)">
+                        <app-organization-view [productImg]="organization.imageUrl" [organizationTitle]="organization.organizationName"></app-organization-view>
                       </div>
-                    <div class="col-sm-12 col-md-4">
-                      <app-organization-view [productImg]="'https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 2'"></app-organization-view>
-                  </div>
-                  <div class="col-sm-12 col-md-4">
-                    <app-organization-view [productImg]="'https://images.unsplash.com/photo-1617173944882-2acd1c9cb75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 3'"></app-organization-view>
-                </div>
-                    </div>
+                    </div>-->
 
-                  </div>
-                  <div class="carousel-item">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <app-organization-view [productImg]="'https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 4'"></app-organization-view>
-                      </div>
-                      <div class="col-md-4">
-                        <app-organization-view [productImg]="'https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 5'"></app-organization-view>
-                      </div>
-                      <div class="col-md-4">
-                        <app-organization-view [productImg]="'https://images.unsplash.com/photo-1610209938868-1a985cce79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 6'"></app-organization-view>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <div class="row">
-                      <div class="col-md-4">
-                      <app-organization-view [productImg]="'https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 7'"></app-organization-view>
-                      </div>
-                      <div class="col-md-4">
-                        <app-organization-view [productImg]="'https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 8'"></app-organization-view>
-                        </div>
-                        <div class="col-md-4">
-                          <app-organization-view [productImg]="'https://images.unsplash.com/photo-1604269879264-b1cec41c0e41?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80'" [organizationTitle]="'vzw 9'"></app-organization-view>
-                          </div>
-                          </div>
                   </div>
               </div>
           </div>

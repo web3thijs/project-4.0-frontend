@@ -26,6 +26,10 @@ export class StockService {
     return this.httpClient.get<Stock>(this.baseUrl + "stocks/" + id);
   }
 
+  getStocksByIdPut(id: number): Observable<Stock> {
+    return this.httpClient.get<Stock>(this.baseUrl + "stocks/product/" + id);
+  }
+
   postStock(stock: Omit<Stock, "id">): Observable<Stock> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.token );

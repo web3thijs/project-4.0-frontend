@@ -100,7 +100,7 @@ export class OrganizationProductFormComponent implements OnInit {
     name: new FormControl(''),
     description: new FormControl(''),
     price: new FormControl(0),
-    active: new FormControl('true'),
+    active: new FormControl('false'),
     category: new FormControl(0),
     imageUrl: new FormControl('')
   });
@@ -129,6 +129,7 @@ export class OrganizationProductFormComponent implements OnInit {
     this.product$.unsubscribe();
     this.postProduct$.unsubscribe();
     this.putProduct$.unsubscribe();
+    this.deleteStock$.unsubscribe();
   }
 
   getStocks() {

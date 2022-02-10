@@ -26,7 +26,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { OrderComponent } from './components/order/order.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
-
+import { OrderOverviewCustomerComponent } from './components/order-overview-customer/order-overview-customer.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -48,6 +49,8 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
     RetourFormComponent,
     OrderComponent,
     OrderConfirmationComponent,
+    OrderOverviewCustomerComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Organization } from 'src/app/core/models/Organization';
 import { Product } from 'src/app/core/models/Product';
@@ -12,6 +12,7 @@ export class OrganizationService {
 
   constructor(private httpClient: HttpClient) { }
 
+  token: string = localStorage.getItem('token') ?? ''
   baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
   public search = new BehaviorSubject<string>("");
 
@@ -25,5 +26,12 @@ export class OrganizationService {
 
   getOrganizationById(id: number): Observable<Organization> {
     return this.httpClient.get<Organization>(this.baseUrl + "organizations/" + id);
+  }
+
+  putOrganization(organization: Omit<Organization, "role">): Observable<Organization> {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.token );
+
+    return this.httpClient.put<Organization>(this.baseUrl + "organizations", organization, {headers: headers});
   }
 }

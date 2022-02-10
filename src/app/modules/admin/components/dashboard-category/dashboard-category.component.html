@@ -1,0 +1,28 @@
+<div class="container mt-4">
+  <app-title [titleText]="'Categorieën beheren'"></app-title>
+
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+  <app-button-add [buttonText]="'Categorieën toevoegen'" (click)="add()"></app-button-add>
+  <div class="table-responsive">
+  <table class="table mt-3 text-center table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">Naam</th>
+      <th scope="col">Acties</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let category of (categories$ | async)">
+      <td>{{category.name}}</td>
+      <td>
+        <button type="button" class="btn btn-success mr-2" title="Bewerken: {{category.name}}" (click)="edit(category.id)"><i class="fas fa-edit"></i></button>
+        <button type="button" class="btn btn-danger" (click)="delete(category.id)"><i class="far fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+
+</div>

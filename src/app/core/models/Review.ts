@@ -5,6 +5,5 @@ export interface Review {
   score: number;
   title: string;
   text: string;
-  customerId: number;
   customer: Customer;
 }

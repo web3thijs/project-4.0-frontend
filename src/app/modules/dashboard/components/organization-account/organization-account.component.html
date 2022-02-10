@@ -1,78 +1,110 @@
+<div class="row">
+  <div class="col-12 col-md-4 col-lg-2 sidebar">
+    <div class="col-12 mt-4 pt-2 pb-2 ml-2 rounded" routerLink="/organisatie">
+      <i class="fas fa-chart-line mr-2"></i> Dashboard
+    </div>
+    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/product">
+      <i class="fas fa-tshirt mr-2"></i> Producten
+    </div>
+    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/bestelling">
+      <i class="fas fa-shopping-cart mr-2"></i> Bestellingen
+    </div>
+    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/vrije-gift">
+      <i class="fas fa-gift mr-2"></i> Vrije giften
+    </div>
+    <div class="col-12 mt-3 rounded ml-2">
+      <i class="fas fa-question mr-2"></i> Contact
+    </div>
+    <div class="col-12 mt-3 pb-2 pt-2 rounded ml-2 bg-blue" routerLink="/organisatie/account">
+      <i class="fas fa-user-alt mr-2"></i> Profiel
+    </div>
+    <div class="col-12 mt-3 pb-2 rounded ml-2">
+      <i class="fas fa-sign-out-alt mr-2"></i> Uitloggen
+    </div>
+  </div>
+  <div class="col-12 col-md-8 col-lg-10">
+
+
+
 <div class="container mt-4">
   <app-title [titleText]="'Profiel'"></app-title>
   <div class="row mb-5">
-    <form class="col-12">
+    <form class="col-12" (ngSubmit)="onSubmit()"  [formGroup]="organizationForm">
       <div class="row">
       <div class="form-group mb-4 col-12 col-md-6">
         <label for="email">E-mail</label>
-        <input type="email" class="form-control" id="email" placeholder="E-mail">
+        <input type="email" class="form-control" formControlName="email" id="email" placeholder="E-mail">
       </div>
       <div class="form-group mb-4 col-12 col-md-6">
         <label for="phoneNr">Telefoonnummer</label>
-        <input type="text" class="form-control" id="phoneNr" placeholder="Telefoonnummer">
+        <input type="text" class="form-control" id="phoneNr" formControlName="phoneNr" placeholder="Telefoonnummer">
       </div>
       <div class="form-group mb-4 col-12">
         <label for="address">Adres</label>
-        <input type="text" class="form-control" id="address" placeholder="Adres">
+        <input type="text" class="form-control" id="address" formControlName="address" placeholder="Adres">
       </div>
       <div class="form-group mb-4 col-12 col-md-6">
         <label for="postalCode">Postcode</label>
-        <input type="text" class="form-control" id="postalCode" placeholder="Postcode">
+        <input type="text" class="form-control" id="postalCode" formControlName="postalCode" placeholder="Postcode">
       </div>
       <div class="form-group mb-4 col-12 col-md-6">
         <label for="country">Land</label>
-        <input type="text" class="form-control" id="country" placeholder="Land">
+        <input type="text" class="form-control" id="country" formControlName="country" placeholder="Land">
       </div>
       <div class="form-group mb-4 col-12">
         <label for="organizationName">vzw-naam</label>
-        <input type="text" class="form-control" id="organizationName" placeholder="vzw-naam">
+        <input type="text" class="form-control" id="organizationName" formControlName="organizationName" placeholder="vzw-naam">
       </div>
       <div class="form-group mb-4 col-12 col-md-6">
         <label for="companyRegistrationNr">Ondernemingsnummer</label>
-        <input type="text" class="form-control" id="companyRegistrationNr" placeholder="Ondernemingsnummer">
+        <input type="text" class="form-control" id="companyRegistrationNr" formControlName="companyRegistrationNr" placeholder="Ondernemingsnummer">
       </div>
       <div class="form-group mb-4 col-12 col-md-6">
         <label for="vatNr">BTW-nummer</label>
-        <input type="text" class="form-control" id="vatNr" placeholder="BTW-nummer">
+        <input type="text" class="form-control" id="vatNr" formControlName="vatNr" placeholder="BTW-nummer">
       </div>
       <div class="form-group mb-4 col-12">
         <label for="who">Wie zijn we?</label>
-        <textarea class="form-control" id="who" rows="3"></textarea>
+        <textarea class="form-control" id="who" rows="3" formControlName="who" placeholder="Wie zijn we?"></textarea>
       </div>
       <div class="form-group mb-4 col-12">
         <label for="what">Wat doen we?</label>
-        <textarea class="form-control" id="what" rows="3"></textarea>
+        <textarea class="form-control" id="what" rows="3" formControlName="what" placeholder="Wat doen we?"></textarea>
       </div>
       <div class="form-group mb-4 col-12">
         <label for="help">Wie helpen we?</label>
-        <textarea class="form-control" id="help" rows="3"></textarea>
+        <textarea class="form-control" id="help" rows="3" formControlName="help" placeholder="Wie helpen we?"></textarea>
       </div>
       <div class="form-group mb-4 col-12 col-md-6">
         <label for="supportPhoneNr">Telefoonnummer support</label>
-        <input type="text" class="form-control" id="supportPhoneNr" placeholder="Telefoonnummer support">
+        <input type="text" class="form-control" id="supportPhoneNr" formControlName="supportPhoneNr" placeholder="Telefoonnummer support">
       </div>
       <div class="form-group mb-4 col-12 col-md-6">
-        <label for="supportEmail">E-mail</label>
-        <input type="email" class="form-control" id="supportEmail" placeholder="E-mail support">
+        <label for="supportEmail">E-mail support</label>
+        <input type="email" class="form-control" id="supportEmail" formControlName="supportEmail" placeholder="E-mail support">
       </div>
-          <!--<div class="form-group">
-          <label for="image">Image</label>
-          <input
-            id="image"
-            type="file"
-            class="form-control"
-            autocomplete="off"
-            (change)="onImageSelected($event)"
-            accept=".png,.jpg">
-          <div *ngIf="isSubmitted && uploadProgress">
-            <progress max="100" [value]="(uploadProgress)"></progress>
-          </div>
+      <div class="form-group mb-4 col-12">
+        <label for="imageUrl">Logo</label>
+        <input
+          id="imageUrl"
+          type="file"
+          class="form-control"
+          autocomplete="off"
+          (change)="onImageSelected($event)"
+          accept=".png,.jpg">
+        <div *ngIf="isSubmitted && uploadProgress">
+          <progress max="100" [value]="(uploadProgress)"></progress>
         </div>
-        <div *ngIf="isEdit && imageSrc">
-          <img src="{{imageSrc}}" alt="article image">
-        </div>-->
       </div>
-      <button type="submit" class="btn btn-dark">Opslaan</button>
+      <div *ngIf="imageSrc">
+        <img src="{{imageSrc}}" alt="article image">
+      </div>
+      <input type="hidden" id="password" name="password" formControlName="password">
+      </div>
+      <button type="submit" class="btn btn-dark"  [disabled]="!organizationForm.valid || isSubmitted">Opslaan</button>
     </form>
   </div>
+</div>
+</div>
+
 </div>
