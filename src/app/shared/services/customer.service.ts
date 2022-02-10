@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/core/models/Customer';
 import { AuthService } from 'src/app/modules/security/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class CustomerService {
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
+  baseUrl: String = environment.database.toString();
 
   getCustomerById(id: string): Observable<Customer> {
     let headers = new HttpHeaders();

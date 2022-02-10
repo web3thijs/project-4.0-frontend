@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  database: "https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/",
+  database: "https://project-4-0-backend.herokuapp.com/api/",
   firebaseConfig: {
     apiKey: "AIzaSyDZtZol_5bq4lmnIb6MKSp7S2jsf22pkq4",
     authDomain: "marketplace-mus.firebaseapp.com",

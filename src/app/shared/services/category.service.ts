@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/core/models/Category';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
+  baseUrl: String = environment.database.toString();
   token: string = localStorage.getItem('token') ?? ''
 
   getCategories(): Observable<any> {

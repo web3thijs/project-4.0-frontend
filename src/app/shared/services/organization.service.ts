@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Organization } from 'src/app/core/models/Organization';
 import { Product } from 'src/app/core/models/Product';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class OrganizationService {
   constructor(private httpClient: HttpClient) { }
 
   token: string = localStorage.getItem('token') ?? ''
-  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
+  baseUrl: String = environment.database.toString();
   public search = new BehaviorSubject<string>("");
 
   getOrganizations(): Observable<any> {
