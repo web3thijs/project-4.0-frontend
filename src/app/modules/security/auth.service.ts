@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {UserResponse} from './user-response';
 import { Customer } from 'src/app/core/models/Customer';
 import { Organization } from 'src/app/core/models/Organization';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { Organization } from 'src/app/core/models/Organization';
 export class AuthService {
 
  allowOrder: boolean = false;
- baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
+ baseUrl: String = environment.database.toString();
 
   constructor(private httpClient: HttpClient) {
   }

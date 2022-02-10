@@ -7,6 +7,7 @@ import { OrderConfirmationDTO } from 'src/app/core/models/OrderConfirmationDTO';
 import { UpdateDonationDTO } from 'src/app/core/models/UpdateDonationDTO';
 import { UpdateOrderDetailDTO } from 'src/app/core/models/UpdateOrderDetailDTO';
 import { AuthService } from 'src/app/modules/security/auth.service';
+import { environment } from 'src/environments/environment';
 
 type NewType = Observable<any>;
 
@@ -17,7 +18,7 @@ export class CartService {
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { }
 
-  baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
+  baseUrl: String = environment.database.toString();
 
   getCart(){
     let headers = new HttpHeaders();
