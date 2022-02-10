@@ -3,11 +3,36 @@
 }
 
 h1 {
-  font-size: 3.75rem;
+  font-size: 3.5rem;
+  color: #031c29;
+  font-weight: bold;
+  font-family: 'Gotham Black', sans-serif;
+}
+
+.banner-option{
+  box-shadow: 0 3px 2px rgb(0 0 0 / 4%), 0 7px 5px rgb(0 0 0 / 2%), 0 13px 10px rgb(0 0 0 / 2%), 0 22px 17px rgb(0 0 0 / 2%) !important;
+  border-radius: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+  color:#031c29;
 }
 
 .card img {
   border-radius: 8px;
+}
+
+#banner{
+  background-color: rgb(242, 242, 242);
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+#homeImg{
+  height: 100%;
+  max-width: 400px;
 }
 
 .banner {
@@ -17,16 +42,6 @@ h1 {
 
 .bg-blue {
   background-color: #001321;
-}
-
-.parallax {
-  background-image: url("../../../../../assets/homepage.jpg");
-  height: 50vh;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
 }
 
 .filter {
