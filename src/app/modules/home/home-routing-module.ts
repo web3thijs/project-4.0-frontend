@@ -14,6 +14,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { RetourFormComponent } from './components/retour-form/retour-form.component';
 import { OrderOverviewCustomerComponent } from './components/order-overview-customer/order-overview-customer.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { OrderRetourComponent } from './components/order-retour/order-retour.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent},
   { path: 'retourneren', component: RetourFormComponent},
   { path: 'bestellingen', component: OrderOverviewCustomerComponent},
+  { path: 'retour', component: OrderRetourComponent},
   //{ path: '**', component: PagenotfoundComponent},
 ];
 

@@ -25,6 +25,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { OrderOverviewCustomerComponent } from './components/order-overview-customer/order-overview-customer.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { OrderRetourComponent } from './components/order-retour/order-retour.component';
 
 
 
@@ -47,6 +48,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     RetourFormComponent,
     OrderOverviewCustomerComponent,
     PagenotfoundComponent,
+    OrderRetourComponent,
   ],
   imports: [
     CommonModule,

@@ -24,7 +24,7 @@ export class AuthService {
     if (this.isLoggedIn()){
       return { id : (localStorage.getItem('id') ?? '0') ,
         email: localStorage.getItem('email') ?? '', password: '',
-        token: this.getToken()  };
+        token: this.getToken(),  };
     } else {
       return null;
     }
