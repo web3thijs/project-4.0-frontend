@@ -13,6 +13,8 @@ import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RetourFormComponent } from './components/retour-form/retour-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderComponent } from './components/order/order.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent},
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'faq', component: FaqComponent},
   { path: 'contact', component: ContactComponent},
   { path: 'retourneren', component: RetourFormComponent},
+  { path: 'bestellen', component: OrderComponent},
+  { path: 'besteld', component: OrderConfirmationComponent},
 ];
 
 @NgModule({

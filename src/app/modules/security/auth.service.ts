@@ -12,6 +12,7 @@ import { Organization } from 'src/app/core/models/Organization';
 export class AuthService {
 
  baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
+ allowOrder: boolean = false;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -48,5 +49,13 @@ export class AuthService {
 
   registerOrganization(organization: Omit<Organization, 'id'|'role'>): Observable<Organization> {
     return this.httpClient.post<Organization>(this.baseUrl + 'register/customer', organization);
+  }
+
+  getAllowOrder(): boolean {
+    return this.allowOrder;
+  }
+
+  setAllowOrder(allow: boolean){
+    this.allowOrder = allow
   }
 }

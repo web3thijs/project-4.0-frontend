@@ -24,6 +24,8 @@ import { RetourFormComponent } from './components/retour-form/retour-form.compon
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { OrderComponent } from './components/order/order.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 
 
@@ -44,6 +46,8 @@ import { BrowserModule } from '@angular/platform-browser';
     FaqComponent,
     ContactComponent,
     RetourFormComponent,
+    OrderComponent,
+    OrderConfirmationComponent,
   ],
   imports: [
     CommonModule,

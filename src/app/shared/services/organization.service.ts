@@ -12,7 +12,7 @@ export class OrganizationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl = "https://backend-jolien.herokuapp.com/api/"
+  baseUrl = "https://project-4-0-backend.herokuapp.com/api/"
   public search = new BehaviorSubject<string>("");
 
   getOrganizations(): Observable<any> {

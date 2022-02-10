@@ -18,6 +18,8 @@ import { Order } from 'src/app/core/models/Order';
 import { UpdateOrderDetailDTO } from 'src/app/core/models/UpdateOrderDetailDTO';
 import { OrderService } from 'src/app/shared/services/order.service';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { CartDTO } from 'src/app/core/models/CartDTO';
+import { CartProductDTO } from 'src/app/core/models/CartProductDTO';
 
 @Component({
   selector: 'app-product-detail',
@@ -48,10 +50,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   };
 
   updateOrderDetailDTO: UpdateOrderDetailDTO = {
-    productId: 1,
-    sizeId: 1,
-    colorId: 1,
-    amount: 50
+    productId: 0,
+    sizeId: 0,
+    colorId: 0,
+    amount: 0
   }
 
   updateOrderDetail: Observable<UpdateOrderDetailDTO>;
@@ -68,6 +70,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   alertIsShown: boolean = false;
 
   valueProduct = 0;
+
+  products: Observable<CartProductDTO[]>;
 
 
   constructor(private orderService: OrderService, private cartService: CartService, private authService: AuthService, private productService: ProductService, private route: ActivatedRoute, private categoryService: CategoryService, private organizationService: OrganizationService, private stockService: StockService, private router: Router) { }
@@ -86,11 +90,26 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
   }
 
+  getCart() {
+    this.products = this.cartService.getCart().pipe(
+      map(result => result.cartProductDTOS)
+    )
+  }
+
   async addToCart(){
     if(!this.authService.isLoggedIn()){
-      this.router.navigate(["/login"]);
+      this.router.navigate(["/inloggen"]);
       return
     }
+
+
+    this.updateOrderDetailDTO.productId = this.product.id
+
+    if(this.updateOrderDetailDTO.sizeId == 0){
+      this.updateOrderDetailDTO.sizeId = 1
+    }
+
+    this.updateOrderDetailDTO.colorId = this.updateOrderDetailDTO.sizeId
 
     await this.cartService.addProductToOrder(this.updateOrderDetailDTO).toPromise();
 

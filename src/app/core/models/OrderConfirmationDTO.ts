@@ -1,8 +1,10 @@
 import { CartDonationDTO } from "./CartDonationDTO";
 import { CartProductDTO } from "./CartProductDTO";
 
-export interface CartDTO {
+export interface OrderConfirmationDTO {
   cartProductDTOS: CartProductDTO[];
   cartDonationDTOS: CartDonationDTO[];
-  total: number;
+  country: string;
+  postal: string;
+  address: string;
 }

@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-8 p-5">
+      <img src="assets/order_confirmed.svg" alt="" class="img-fluid">
+    </div>
+    <div class="col-12 text-center">
+      <app-title [titleText]="'Bestelling succesvol geplaatst!'"></app-title>
+      <p class="mt-3 mb-4">{{ this.orderConfirmationDTO.country }}, {{ this.orderConfirmationDTO.postal }}, {{ this.orderConfirmationDTO.address }}</p>
+      <div class="row mt-3" *ngIf="this.orderConfirmationDTO.cartProductDTOS.length">
+        <div class="col-12 font-weight-bold d-flex mb-4 p-0 justify-content-center">
+          <div class="subtitle text-center">
+            <h6 class="text-center">Producten</h6>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center" *ngIf="this.orderConfirmationDTO.cartProductDTOS.length">
+        <div class="col-12 col-md-8 d-flex justify-content-center bg-white pt-2" *ngFor="let product of this.orderConfirmationDTO.cartProductDTOS">
+          <div class="row">
+            <div class="col-12">
+              <div class="row d-flex align-items-center">
+                <div class="col-3">
+                  <img src="{{ product.imgUrl }}" alt="product_img" class="img-fluid">
+                </div>
+                <div class="col-3 font-weight-bold text-left">
+                  {{ product.productName }}
+                </div>
+                <div class="col-3">
+                  {{ product.amount }}
+                </div>
+                <div class="col-3 text-right">
+                  € {{ product.amount * product.productPrice | number : '1.2-2' }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-3" *ngIf="this.orderConfirmationDTO.cartDonationDTOS.length">
+        <div class="col-12 font-weight-bold d-flex mb-4 p-0 justify-content-center">
+          <div class="subtitle text-center">
+            <h6 class="text-center">Vrije giften</h6>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center" *ngIf="this.orderConfirmationDTO.cartDonationDTOS.length">
+        <div class="col-12 col-md-8 d-flex justify-content-center bg-white pt-2" *ngFor="let donation of this.orderConfirmationDTO.cartDonationDTOS">
+          <div class="row">
+            <div class="col-12">
+              <div class="row d-flex align-items-center">
+                <div class="col-3">
+                  <img src="{{ donation.organizationImg }}" alt="product_img" class="img-fluid">
+                </div>
+                <div class="col-5 font-weight-bold text-left">
+                  {{ donation.organizationName }}
+                </div>
+                <div class="col-4 text-right">
+                  € {{ donation.amount | number : '1.2-2' }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

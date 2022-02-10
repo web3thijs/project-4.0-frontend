@@ -9,6 +9,7 @@ import { Order } from 'src/app/core/models/Order';
 import { Organization } from 'src/app/core/models/Organization';
 import { Stock } from 'src/app/core/models/Stock';
 import { UpdateDonationDTO } from 'src/app/core/models/UpdateDonationDTO';
+import { UpdateOrderDetailDTO } from 'src/app/core/models/UpdateOrderDetailDTO';
 import { AuthService } from 'src/app/modules/security/auth.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { OrderService } from 'src/app/shared/services/order.service';
@@ -30,7 +31,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   cart$: Subscription = new Subscription;
   products: Observable<CartProductDTO[]>;
   donations: Observable<CartDonationDTO[]>;
-  organizations$: Observable<Organization[]>;
+  organizations: Observable<Organization[]>;
+
+  updateOrderDetailDTO: UpdateOrderDetailDTO = {
+    productId: 0,
+    sizeId: 0,
+    colorId: 0,
+    amount: 0
+  }
 
   updateDonationDTO: UpdateDonationDTO = {
     organizationId: 0,
@@ -68,9 +76,51 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   }
 
   getOrganizations() {
-    this.organizations$ = this.organizationService.getOrganizations().pipe(
+    this.organizations = this.organizationService.getOrganizations().pipe(
       map(response => response.content)
     );
+  }
+
+  async reduceAmount(productId: number, sizeId: number, amount: number){
+    this.updateOrderDetailDTO.productId = productId
+    this.updateOrderDetailDTO.sizeId = sizeId
+    this.updateOrderDetailDTO.colorId = sizeId
+    this.updateOrderDetailDTO.amount = amount - 1
+
+    await this.cartService.updateProductFromOrder(this.updateOrderDetailDTO).toPromise();
+
+    this.getCart()
+  }
+
+  async addAmount(productId: number, sizeId: number, amount: number){
+    this.updateOrderDetailDTO.productId = productId
+    this.updateOrderDetailDTO.sizeId = sizeId
+    this.updateOrderDetailDTO.colorId = sizeId
+    this.updateOrderDetailDTO.amount = amount + 1
+
+    await this.cartService.updateProductFromOrder(this.updateOrderDetailDTO).toPromise();
+
+    this.getCart()
+  }
+
+  async removeProduct(productId: number, sizeId: number){
+    this.updateOrderDetailDTO.productId = productId
+    this.updateOrderDetailDTO.sizeId = sizeId
+    this.updateOrderDetailDTO.colorId = sizeId
+    this.updateOrderDetailDTO.amount = 0
+
+    await this.cartService.updateProductFromOrder(this.updateOrderDetailDTO).toPromise();
+
+    this.getCart()
+  }
+
+  async removeDonation(organizationId: number){
+    this.updateDonationDTO.organizationId = organizationId
+    this.updateDonationDTO.amount = 0
+
+    await this.cartService.updateDonationFromOrder(this.updateDonationDTO).toPromise();
+
+    this.getCart()
   }
 
   async submitDonation(){

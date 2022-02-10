@@ -1,0 +1,63 @@
+.subtitle{
+  background: #d6f0ff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+}
+
+h6, p{
+  padding: 0;
+  margin: 0;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.product-img{
+  width: 50px;
+  height: 100%;
+}
+
+.payment-method{
+  height: 100%;
+  width: 100px;
+  background-color: red;
+}
+
+.overview{
+  border: 1px solid #eee;
+  padding: 1rem 1rem;
+}
+
+.card{
+    height: 100%;
+    width: 100px;
+
+  .card-body{
+    padding: 0;
+  }
+
+  border: none;
+
+  &.selected{
+    border: 2px solid #2666AE;
+  }
+}
+
+.alert{
+  border: 1px solid rgba(0, 0, 0, .05);
+  color: rgba(0, 0, 0, .7);
+  border-radius: 8px;
+}
+
+.btn-primary{
+  background-color: #08344B;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+
+  &:hover{
+    background-color: #184964;
+  }
+}
