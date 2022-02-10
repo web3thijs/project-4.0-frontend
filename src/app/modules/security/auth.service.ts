@@ -12,7 +12,7 @@ import { Organization } from 'src/app/core/models/Organization';
 export class AuthService {
 
  allowOrder: boolean = false;
- baseUrl: String = "https://project-4-0-backend.herokuapp.com/";
+ baseUrl: String = "https://project-4-0-backend.herokuapp.com/api/";
 
   constructor(private httpClient: HttpClient) {
   }
