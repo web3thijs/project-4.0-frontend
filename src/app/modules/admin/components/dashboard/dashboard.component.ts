@@ -8,8 +8,9 @@ import { AuthService } from 'src/app/modules/security/auth.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  isLogout: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +29,12 @@ export class DashboardComponent implements OnInit {
 
   toAdminCategory() {
     this.router.navigate(['dashboard-admin/categorieën']);
+  }
+
+  logOut() {
+    this.isLogout = true;
+    this.authService.deleteToken();
+    this.router.navigate(['']);
   }
 
 }
