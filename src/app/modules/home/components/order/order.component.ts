@@ -63,7 +63,7 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   getCustomer(){
-    this.customer$ = this.customerService.getCustomerById(this.authService.getUser()!.id).subscribe(result => {
+    this.customer$ = this.customerService.getCustomerById(parseInt(this.authService.getUser()!.id)).subscribe(result => {
       this.orderForm.setValue({
         country: result.country,
         postal: result.postalCode,

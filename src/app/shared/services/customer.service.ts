@@ -15,7 +15,7 @@ export class CustomerService {
   token: string = localStorage.getItem('token') ?? ''
   baseUrl: String = environment.database.toString();
 
-  getCustomerById(id: string): Observable<Customer> {
+  getCustomerById(id: number): Observable<Customer> {
     let headers = new HttpHeaders();
 
     headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.authService.getToken() );
