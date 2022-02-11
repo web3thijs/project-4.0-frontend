@@ -41,7 +41,7 @@
     </div>
     <div class="row" *ngIf="shopIsShown">
       <div class="col-sm-6 col-md-4" *ngFor="let product of (products$ | async)">
-        <app-product-view [productImg]="product.imageUrl" [productTitle]="product.name" [productPrice]="product.price"
+        <app-product-view [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price"
           (click)="onClick(product.id)"></app-product-view>
       </div>
     </div>

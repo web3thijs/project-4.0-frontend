@@ -28,6 +28,7 @@ import { OrderComponent } from './components/order/order.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { OrderOverviewCustomerComponent } from './components/order-overview-customer/order-overview-customer.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { OrderRetourComponent } from './components/order-retour/order-retour.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     OrderConfirmationComponent,
     OrderOverviewCustomerComponent,
     PagenotfoundComponent,
+    OrderRetourComponent,
   ],
   imports: [
     CommonModule,

@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/modules/security/auth.service';
 import { UpdateOrderDetailDTO } from 'src/app/core/models/UpdateOrderDetailDTO'
+import { AuthService } from 'src/app/modules/security/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

@@ -1,121 +1,101 @@
-<div class="row">
-  <div class="col-12 col-md-4 col-lg-2 sidebar">
-    <div class="col-12 mt-4 pt-2 ml-2 rounded" routerLink="/organisatie">
-      <i class="fas fa-chart-line mr-2"></i> Dashboard
-    </div>
-    <div class="col-12 mt-3 pt-2 pb-2 rounded ml-2 bg-blue" routerLink="/organisatie/product">
-      <i class="fas fa-tshirt mr-2"></i> Producten
-    </div>
-    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/bestelling">
-      <i class="fas fa-shopping-cart mr-2"></i> Bestellingen
-    </div>
-    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/vrije-gift">
-      <i class="fas fa-gift mr-2"></i> Vrije giften
-    </div>
-    <div class="col-12 mt-3 pb-2 rounded ml-2">
-      <i class="fas fa-question mr-2"></i> Contact
-    </div>
-    <div class="col-12 mt-3 pb-2 rounded ml-2" routerLink="/organisatie/account">
-      <i class="fas fa-user-alt mr-2"></i> Profiel
-    </div>
-    <div class="col-12 mt-3 pb-2 rounded ml-2">
-      <i class="fas fa-sign-out-alt mr-2"></i> Uitloggen
-    </div>
-
-  </div>
-  <div class="col-12 col-md-8 col-lg-10">
-    <div class="container mt-4">
-      <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
-        {{errorMessage}}
-      </div>
-      <!--<div class="alert alert-warning" role="warning">
-        <p>Form Status: {{ productForm.status }}</p>
-      </div>-->
-      <app-title [titleText]="'Product'"></app-title>
-      <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="mb-5">
-        <div class="form-group">
-          <label for="name">Naam</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2">
-        </div>
-        <div class="form-group">
-          <label for="price">Prijs</label>
-          <input type="number" class="form-control" id="price" name="price" placeholder="Price" formControlName="price" minlength="2">
-        </div>
-        <div class="form-group">
-          <label for="description">Beschrijving</label>
-          <input type="text" class="form-control" id="description" name="description" placeholder="Description" formControlName="description" minlength="2">
-        </div>
-        <div class="form-group">
-          <label for="category">Categorie</label>
-          <select class="form-control" formControlName="category" id="category">
-            <option value="" disabled>Kies een categorie</option>
-            <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
-          </select>
-        </div>
-        <!--<div class="form-group">
-          <label for="categoryId">Categorie</label>
-          <select class="form-control" formControlName="categoryId" id="categoryId">
-            <option value="" disabled>Kies een categorie</option>
-            <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="organizationId">Vzw</label>
-          <input type="text" class="form-control" id="organizationId" name="organizationId" placeholder="vzw" formControlName="organizationId" minlength="2" value="{{authOrganization}}" readonly>
-        </div>-->
-        <div class="form-group">
-            <label for="imageUrl">Afbeelding</label>
-            <input
-              id="imageUrl"
-              type="file"
-              class="form-control"
-              autocomplete="off"
-              (change)="onImageSelected($event)"
-              accept=".png,.jpg">
-            <div *ngIf="isSubmitted && uploadProgress">
-              <progress max="100" [value]="(uploadProgress)"></progress>
-            </div>
-          </div>
-          <div *ngIf="isEdit && imageSrc">
-            <img src="{{imageSrc}}" alt="article image">
-          </div>
-        <div class="form-group">
-          <input type="checkbox" formControlName="active" id="active" class="mr-2">
-          <label for="active">Actief</label>
-        </div>
-        <button type="submit" class="btn btn-blue" *ngIf="isAdd" [disabled]="!productForm.valid || isSubmitted">Toevoegen</button>
-        <button type="submit" class="btn btn-blue" *ngIf="isEdit" [disabled]="!productForm.valid || isSubmitted">Opslaan</button>
-      </form>
-      <h4>Stock toevoegen</h4>
-      <app-button-add [buttonText]="'Stock toevoegen'" (click)="addStock()"></app-button-add>
-      <div class="table-responsive">
-        <table class="table mt-3 text-center table-hover">
-          <thead class="thead-dark">
-          <tr>
-            <th scope="col">Naam</th>
-            <th scope="col">Aantal in stock</th>
-            <th scope="col">Maat</th>
-            <th scope="col">Kleur</th>
-            <th scope="col">Acties</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let stock of (stocks$ | async)">
-            <td>{{stock.product.name}}</td>
-            <td>{{stock.amountInStock}}</td>
-            <td>{{stock.size.name}}</td>
-            <td>{{stock.color.name}}</td>
-            <td>
-              <button type="button" class="btn btn-success mr-2" title="Bewerken: {{stock.id}}" (click)="edit(stock.id)"><i class="fas fa-edit"></i></button>
-              <button type="button" class="btn btn-danger" (click)="delete(stock.id)"><i class="far fa-trash-alt"></i></button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        </div>
-    </div>
-  </div>
-
+<div class="sidebar">
+  <a routerLink="/organisatie"><i class="fas fa-chart-line p-2"></i> Dashboard</a>
+  <a class="active" routerLink="/organisatie/product"><i class="fas fa-tshirt p-2"></i> Producten</a>
+  <a routerLink="/organisatie/bestelling"><i class="fas fa-shopping-cart p-2"></i> Bestellingen</a>
+  <a routerLink="/organisatie/vrije-gift"><i class="fas fa-gift p-2"></i> Vrije giften</a>
+  <a routerLink="/organisatie/account"><i class="fas fa-user-alt p-2"></i> Account</a>
+  <a routerLink="/uitloggen"><i class="fas fa-sign-out-alt p-2"></i> Uitloggen</a>
 </div>
 
-
+<div class="content">
+  <div class="container mt-4">
+    <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
+      {{errorMessage}}
+    </div>
+    <!--<div class="alert alert-warning" role="warning">
+      <p>Form Status: {{ productForm.status }}</p>
+    </div>-->
+    <app-title [titleText]="'Product'"></app-title>
+    <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="mb-5">
+      <div class="form-group">
+        <label for="name">Naam</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2">
+      </div>
+      <div class="form-group">
+        <label for="price">Prijs</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Price" formControlName="price" minlength="2">
+      </div>
+      <div class="form-group">
+        <label for="description">Beschrijving</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="Description" formControlName="description" minlength="2">
+      </div>
+      <div class="form-group">
+        <label for="category">Categorie</label>
+        <select class="form-control" formControlName="category" id="category">
+          <option value="" disabled>Kies een categorie</option>
+          <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </div>
+      <!--<div class="form-group">
+        <label for="categoryId">Categorie</label>
+        <select class="form-control" formControlName="categoryId" id="categoryId">
+          <option value="" disabled>Kies een categorie</option>
+          <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="organizationId">Vzw</label>
+        <input type="text" class="form-control" id="organizationId" name="organizationId" placeholder="vzw" formControlName="organizationId" minlength="2" value="{{authOrganization}}" readonly>
+      </div>-->
+      <div class="form-group">
+          <label for="imageUrl">Afbeelding</label>
+          <input
+            id="imageUrl"
+            type="file"
+            class="form-control"
+            autocomplete="off"
+            (change)="onImageSelected($event)"
+            accept=".png,.jpg">
+          <div *ngIf="isSubmitted && uploadProgress">
+            <progress max="100" [value]="(uploadProgress)"></progress>
+          </div>
+        </div>
+        <div *ngIf="isEdit && imageSrc">
+          <img src="{{imageSrc}}" alt="article image">
+        </div>
+      <div class="form-group">
+        <input type="checkbox" formControlName="active" id="active" class="mr-2">
+        <label for="active">Actief</label>
+      </div>
+      <button type="submit" class="btn btn-blue" *ngIf="isAdd" [disabled]="!productForm.valid || isSubmitted">Toevoegen</button>
+      <button type="submit" class="btn btn-blue" *ngIf="isEdit" [disabled]="!productForm.valid || isSubmitted">Opslaan</button>
+    </form>
+    <h4>Stock toevoegen</h4>
+    <app-button-add [buttonText]="'Stock toevoegen'" (click)="addStock()"></app-button-add>
+    <div class="table-responsive">
+      <table class="table mt-3 text-center table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Naam</th>
+          <th scope="col">Aantal in stock</th>
+          <th scope="col">Maat</th>
+          <th scope="col">Kleur</th>
+          <th scope="col">Acties</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let stock of (stocks$ | async)">
+          <td>{{stock.product.name}}</td>
+          <td>{{stock.amountInStock}}</td>
+          <td>{{stock.size.name}}</td>
+          <td>{{stock.color.name}}</td>
+          <td>
+            <button type="button" class="btn btn-success mr-2" title="Bewerken: {{stock.id}}" (click)="edit(stock.id)"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" (click)="delete(stock.id)"><i class="far fa-trash-alt"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+  </div>
+</div>

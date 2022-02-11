@@ -14,4 +14,14 @@ p{
 
 .card {
   border: 0px;
+  cursor: pointer;
+
+  .card-body{
+    padding: 0 !important;
+  }
+}
+
+img {
+  width: 248px;
+  height: 248px;
 }

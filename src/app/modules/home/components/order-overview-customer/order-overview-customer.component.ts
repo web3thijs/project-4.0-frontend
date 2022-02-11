@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-overview-customer',
@@ -8,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class OrderOverviewCustomerComponent implements OnInit {
   errorMessage: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  add() {
+    this.router.navigate(['retour']);
   }
 
 }

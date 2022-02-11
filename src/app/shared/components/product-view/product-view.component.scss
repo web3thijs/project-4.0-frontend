@@ -13,11 +13,19 @@ p{
 }
 
 .card {
-  border: 0px;
+  border-radius: 1rem;
   cursor: pointer;
+  border: none;
+
+  .card-body{
+    padding: 0 !important;
+  }
 }
 
 img {
-  width: 248px;
-  height: 248px;
+  width: 250px;
+  height: 250px;
+  border: 2px solid #eee;
+  object-fit: cover;
 }
+
