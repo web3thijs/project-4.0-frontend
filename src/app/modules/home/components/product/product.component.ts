@@ -132,15 +132,7 @@ export class ProductComponent implements OnInit {
   }
 
   onClick(productId: number) {
-    this.interaction.customerId = parseInt(this.authService.getUser()!.id);
-    this.interaction.productId = productId;
-    this.postAddClick$ = this.interactionService.postAddClicks(this.interaction).subscribe(result => {
-      this.router.navigate(['/producten', productId]);
-    },
-    error => {
-      this.errorMessage = error.message;
-    });
-
+    this.router.navigate(['/producten', productId]);
   }
 
 }
