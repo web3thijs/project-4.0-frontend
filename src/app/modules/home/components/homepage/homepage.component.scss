@@ -22,6 +22,17 @@ h1 {
 
 .card img {
   border-radius: 8px;
+  width: 248px;
+  height: 248px;
+  border-color: #f3f3f3;
+  border-width: 3px;
+  border-style: solid;
+}
+
+.card-body img {
+  border-radius: 8px;
+  width: 400px !important;
+  height: 250px !important;
 }
 
 #banner{
@@ -51,4 +62,9 @@ h1 {
 
 .subtitle {
   color: #001321;
+}
+
+.btn-blue {
+  background-color: #08344B;
+  color: white;
 }

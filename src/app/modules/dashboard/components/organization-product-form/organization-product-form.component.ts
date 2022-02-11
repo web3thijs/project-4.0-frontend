@@ -208,7 +208,7 @@ export class OrganizationProductFormComponent implements OnInit {
 
   async getCategories(){
     this.categories$ = this.categoryService.getCategories().pipe(
-      map(response => response.content)
+      map(response => response)
     );
 }
 

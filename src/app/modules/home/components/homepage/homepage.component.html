@@ -15,23 +15,25 @@
     </div>
   </section>
 
-  <section id="newarrivals" class="mt-5">
-    <app-title [titleText]="'Nieuwe producten'"></app-title>
-    <div class="row mt-4">
-      <div class="col-12 col-md-3">
-        <app-product-view [productImg]="['https://via.placeholder.com/300']" [productPrice]="5" productTitle="Test"></app-product-view>
-      </div>
-      <div class="d-none d-md-inline col-md-3">
-        <app-product-view [productImg]="['https://via.placeholder.com/300']" [productPrice]="5" productTitle="Test"></app-product-view>
-      </div>
-      <div class="d-none d-md-inline col-md-3">
-        <app-product-view [productImg]="['https://via.placeholder.com/300']" [productPrice]="5" productTitle="Test"></app-product-view>
-      </div>
-      <div class="d-none d-md-inline col-md-3">
-        <app-product-view [productImg]="['https://via.placeholder.com/300']" [productPrice]="5" productTitle="Test"></app-product-view>
+<main class="container">
+  <div id="newarrivals" class="mt-4">
+    <app-title [titleText]="'Producten'"></app-title>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of (products | async) | slice:0:displayNumProd">
+        <div class="card mx-auto text-left" style="width: 18rem;">
+          <div class="card-body">
+            <img src="{{product.imageUrl[0]}}" alt="" class="mb-2 img-fluid" onerror="this.src='../../../../../assets/placeholder.png';">
+            <h5 class="card-title mb-1" id="product-title">{{product.name}}</h5>
+            <p class="card-text mb-2" id="product-price">€ {{product.price}}</p>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+    <div class="text-center">
+      <button class="btn btn-blue mt-4 mb-3" routerLink="/producten">Alle producten</button>
+    </div>
+  </div>
+</main>
 </div>
 <div class="container-fluid mt-5" id="banner">
   <section class="mt-5 pl-4 pr-4">
@@ -66,19 +68,20 @@
 <div class="container mt-5">
   <section id="organizations" class="mt-5">
     <app-title [titleText]="'Organisaties'"></app-title>
-    <div class="row mt-4">
-      <div class="col-12 col-md-3">
-        <app-organization-view [productImg]="'https://via.placeholder.com/300'" [organizationTitle]="'WWF'"></app-organization-view>
+    <div class="container my-3 mb-5">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let organization of (organizations | async) | slice:3:displayNumOrg">
+          <div class="card mx-auto text-left" style="width: 18rem;">
+            <div class="card-body">
+              <img src="{{organization.imageUrl}}" id="organizationImage" alt="" class="mb-2 img-fluid" onerror="this.src='../../../../../assets/placeholder.png';">
+              <h5 class="card-title mb-1" id="product-title">{{organization.organizationName}}</h5>
+            </div>
+          </div>
+          <!--<app-product-view  [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>-->
+        </div>
       </div>
-      <div class="d-none d-md-inline col-md-3">
-        <app-organization-view [productImg]="'https://via.placeholder.com/300'" [organizationTitle]="'WWF'"></app-organization-view>
-      </div>
-      <div class="d-none d-md-inline col-md-3">
-        <app-organization-view [productImg]="'https://via.placeholder.com/300'" [organizationTitle]="'WWF'"></app-organization-view>
-      </div>
-      <div class="d-none d-md-inline col-md-3">
-        <app-organization-view [productImg]="'https://via.placeholder.com/300'" [organizationTitle]="'WWF'"></app-organization-view>
-      </div>
+      <div class="text-center">
+        <button class="btn btn-blue mt-4" routerLink="/organisaties">Alle vzw's</button>
     </div>
   </section>
 </div>
