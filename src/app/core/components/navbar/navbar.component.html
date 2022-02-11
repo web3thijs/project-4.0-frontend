@@ -13,9 +13,12 @@
       <a class="nav-link mr-3" routerLink="/">Home</a>
       <a class="nav-link mr-3" routerLink="/producten">Producten</a>
       <a class="nav-link mr-3" routerLink="/organisaties">Vzw's</a>
-      <a class="nav-link mr-3" routerLink="/bestellingen">Bestellingen</a>
+      <a class="nav-link mr-3" *ngIf="isCustomer" routerLink="/bestellingen">Bestellingen</a>
       <a class="nav-link mr-3" routerLink="/contact">Contact</a>
-      <a class="nav-link mr-3" routerLink="/inloggen"><i class="fas fa-user text-white"></i></a>
+      <a class="nav-link mr-3" routerLink="/inloggen" *ngIf="!authService.isLoggedIn()">Inloggen</a>
+      <a class="nav-link mr-3" (click)="logOut()" *ngIf="authService.isLoggedIn() && isCustomer">Uitloggen</a>
+      <a class="nav-link mr-3" routerLink="/organisatie" *ngIf="authService.isLoggedIn() && isOrganization"><i class="fas fa-user text-white"></i></a>
+      <a class="nav-link mr-3" routerLink="/dashboard-admin" *ngIf="authService.isLoggedIn() && isAdmin"><i class="fas fa-user text-white"></i></a>
       <a class="nav-link mr-3" routerLink="/winkelmandje"><i class="fas fa-shopping-cart text-white mr-1"></i>{{itemsInCart}}</a>
     </div>
   </div>
