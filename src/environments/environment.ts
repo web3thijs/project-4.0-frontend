@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  database: "http://localhost:8081/api/",
+  database: "https://project-4-0-backend.herokuapp.com/api/",
   firebaseConfig: {
     apiKey: "AIzaSyDZtZol_5bq4lmnIb6MKSp7S2jsf22pkq4",
     authDomain: "marketplace-mus.firebaseapp.com",
