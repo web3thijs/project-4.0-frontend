@@ -15,6 +15,10 @@ p{
 .card {
   border: 0px;
   cursor: pointer;
+
+  .card-body{
+    padding: 0 !important;
+  }
 }
 
 img {

@@ -64,6 +64,13 @@ div.content {
     width: 100%;
     height: auto;
     position: relative;
+    cursor: pointer;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #031c29;
+    color: white;
   }
   .sidebar a {float: left;}
   div.content {margin-left: 0;}
