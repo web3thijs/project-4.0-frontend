@@ -19,7 +19,7 @@
   <div id="newarrivals" class="mt-4">
     <app-title [titleText]="'Producten'"></app-title>
     <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of (products | async) | slice:0:displayNumProd">
+      <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of (products | async) | slice:0:displayNumProd" (click)="onClick(product.id)">
         <div class="card mx-auto text-left" style="width: 18rem;">
           <div class="card-body">
             <img src="{{product.imageUrl[0]}}" alt="" class="mb-2 img-fluid" onerror="this.src='../../../../../assets/placeholder.png';">
@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="text-center">
-      <button class="btn btn-blue mt-4 mb-3" routerLink="/producten">Alle producten</button>
+      <app-button [buttonText]="'Alle producten'" routerLink="/producten"></app-button>
     </div>
   </div>
 </main>
@@ -81,7 +81,8 @@
         </div>
       </div>
       <div class="text-center">
-        <button class="btn btn-blue mt-4" routerLink="/organisaties">Alle vzw's</button>
-    </div>
+        <app-button [buttonText]="'Alle VZW´s'" routerLink="/organisaties"></app-button>
+</div>
+</div>
   </section>
 </div>

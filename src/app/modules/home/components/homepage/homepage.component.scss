@@ -1,5 +1,6 @@
 .card {
   border: 0px !important;
+  cursor: pointer;
 }
 
 h1 {
@@ -30,10 +31,11 @@ h1 {
 }
 
 .card-body img {
-  border-radius: 8px;
-  width: 400px !important;
-  height: 250px !important;
+  width: 250px;
+  height: 250px;
+  border: 2px solid #eee;
 }
+
 
 #banner{
   background-color: rgb(245, 245, 245);
