@@ -6,6 +6,7 @@ import {UserResponse} from './user-response';
 import { Customer } from 'src/app/core/models/Customer';
 import { Organization } from 'src/app/core/models/Organization';
 import { environment } from 'src/environments/environment';
+import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,16 @@ export class AuthService {
     } else {
       return null;
     }
+  }
+
+  getRole(): string {
+    let token: String = this.getToken();
+    if(token == ""){
+      return "GUEST";
+    }
+
+    let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
+    return decodedJWT.role;
   }
 
   deleteToken(): void {

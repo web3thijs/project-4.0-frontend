@@ -10,16 +10,53 @@
   </div>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-link mr-3" routerLink="/">Home</a>
-      <a class="nav-link mr-3" routerLink="/producten">Producten</a>
-      <a class="nav-link mr-3" routerLink="/organisaties">Vzw's</a>
-      <a class="nav-link mr-3" *ngIf="isCustomer" routerLink="/bestellingen">Bestellingen</a>
-      <a class="nav-link mr-3" routerLink="/contact">Contact</a>
-      <a class="nav-link mr-3" routerLink="/inloggen" *ngIf="!authService.isLoggedIn()">Inloggen</a>
-      <a class="nav-link mr-3" (click)="logOut()" *ngIf="authService.isLoggedIn() && isCustomer">Uitloggen</a>
-      <a class="nav-link mr-3" routerLink="/organisatie" *ngIf="authService.isLoggedIn() && isOrganization"><i class="fas fa-user text-white"></i></a>
-      <a class="nav-link mr-3" routerLink="/dashboard-admin" *ngIf="authService.isLoggedIn() && isAdmin"><i class="fas fa-user text-white"></i></a>
-      <a class="nav-link mr-3" routerLink="/winkelmandje"><i class="fas fa-shopping-cart text-white mr-1"></i></a>
+      <a class="nav-link mr-4" routerLink="/">Home</a>
+      <a class="nav-link mr-4" routerLink="/producten">Producten</a>
+      <a class="nav-link mr-4" routerLink="/organisaties">Vzw's</a>
+      <a class="nav-link mr-4" routerLink="/contact">Contact</a>
+      <div *ngIf="!this.authService.isLoggedIn()">
+        <a class="nav-link mr-4" routerLink="/inloggen"><i class="fas fa-user mr-2"></i>Inloggen</a>
+      </div>
+
+      <!-- CUSTOMER -->
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'CUSTOMER'" class="d-flex">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user mr-2"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" routerLink="/bestellingen">Bestellingen</a>
+            <a class="dropdown-item"  href="/" (click)="logOut()">Uitloggen</a>
+          </div>
+        </li>
+        <a class="nav-link mr-4" routerLink="/winkelmandje"><i class="fas fa-shopping-cart mr-2"></i></a>
+      </div>
+
+      <!-- ORGANIZATION -->
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ORGANIZATION'" class="d-flex">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user mr-2"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" routerLink="/organisatie">Dashboard</a>
+            <a class="dropdown-item" href="/" (click)="logOut()">Uitloggen</a>
+          </div>
+        </li>
+      </div>
+
+      <!-- ADMIN -->
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ADMIN'" class="d-flex">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user mr-2"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#" routerLink="/dashboard-admin">Dashboard</a>
+            <a class="dropdown-item" href="/" (click)="logOut()">Uitloggen</a>
+          </div>
+        </li>
+      </div>
     </div>
   </div>
 </nav>
