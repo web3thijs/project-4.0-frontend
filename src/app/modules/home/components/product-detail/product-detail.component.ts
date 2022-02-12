@@ -20,6 +20,8 @@ import { OrderService } from 'src/app/shared/services/order.service';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { CartDTO } from 'src/app/core/models/CartDTO';
 import { CartProductDTO } from 'src/app/core/models/CartProductDTO';
+import { InteractionService } from 'src/app/shared/services/interaction.service';
+import { AddToInteractionDTO } from 'src/app/core/models/AddToInteractionDTO';
 
 @Component({
   selector: 'app-product-detail',
@@ -56,6 +58,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
     amount: 0
   }
 
+  addToInteractionDTO: AddToInteractionDTO = {
+    customerId: 0,
+    productId: 0
+  }
+
   noSizeId: number = 0;
 
   updateOrderDetail: Observable<UpdateOrderDetailDTO>;
@@ -78,7 +85,11 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   amount = 1;
 
 
-  constructor(private orderService: OrderService, private cartService: CartService, private authService: AuthService, private productService: ProductService, private route: ActivatedRoute, private categoryService: CategoryService, private organizationService: OrganizationService, private stockService: StockService, private router: Router) { }
+  constructor(private orderService: OrderService, private cartService: CartService,
+    private authService: AuthService, private productService: ProductService,
+    private route: ActivatedRoute, private categoryService: CategoryService,
+    private organizationService: OrganizationService, private stockService: StockService,
+    private router: Router, private interactionService: InteractionService) { }
 
   ngOnInit(): void {
     let id = this.route.snapshot.params.id;
@@ -99,6 +110,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   }
 
   reduceAmount(): void {
+    if(this.amount == 1) return;
     this.amount--;
   }
 
@@ -114,16 +126,24 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
       return
     }
 
+    if(this.authService.getRole() !=  "CUSTOMER"){
+      //WARNING FOR ORGANIZATION AND ADMIN
+      return
+    }
+
+    this.addToInteractionDTO.customerId = parseInt(this.authService.getUser()!.id);
+    this.addToInteractionDTO.productId = this.product.id
 
     this.updateOrderDetailDTO.productId = this.product.id
     this.updateOrderDetailDTO.amount = this.amount
 
-    if(this.updateOrderDetailDTO.sizeId == 0){
+    if(this.updateOrderDetailDTO.sizeId <= 0){
       this.updateOrderDetailDTO.sizeId = 1
     }
 
     this.updateOrderDetailDTO.colorId = this.updateOrderDetailDTO.sizeId
 
+    await this.interactionService.addCart(this.addToInteractionDTO).toPromise();
     await this.cartService.addProductToOrder(this.updateOrderDetailDTO).toPromise();
 
     this.router.navigate(["/winkelmandje"]);
