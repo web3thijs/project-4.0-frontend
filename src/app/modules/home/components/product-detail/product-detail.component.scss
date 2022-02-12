@@ -1,44 +1,78 @@
 .details-title {
-  color: #001321;
+  color: #031c29;
   font-weight: bold;
 }
 
 button{
-  background-color: #001321;
+  background-color: #031c29;
+  color: white;
   outline: none;
   border: none;
   border-radius: 8px;
-  width: 290px;
-  height: 38px;
+  width: 100%;
+  font-weight: bold;
+  font-size: 20px;
+  padding: .75rem;
 
   &:hover{
     background-color: #184964;
   }
-}
 
-select, input {
-  width: 290px;
+  @media only screen and (min-width: 720px) {
+    max-width: 400px;
+  }
 }
 
 .input-size {
   border-radius: 8px;
-  border-color: #001321;
+  border-color: #031c29;
 }
 
 .select-size {
   background-color: white;
-  border-color: #001321;
+  border-color: #031c29;
   border-radius: 8px;
-  color: #001321;
+  border: 2px solid #031c29;
+
+  @media only screen and (min-width: 720px) {
+    max-width: 272px;
+  }
 }
 
 option {
-  background-color: #001321;
+  background-color: #031c29;
   color: white;
 }
 
-@media (min-width: 992px) {
-  img {
-    width: 75%;
+.product-price{
+  font-size: 24px;
+  color: #92c1dc;
+  font-weight: bold;
+}
+
+img{
+  object-fit: contain;
+  max-height: 330px;
+  max-width: 330px;
+  border-radius: 12px;
+  border: 2px solid #eee;
+}
+
+.page-link{
+  cursor: pointer;
+  color: #92c1dc;
+}
+
+.add-cart{
+  i{
+    position: absolute;
+    left: 0;
+    margin-left: 2rem;
+    margin-top: 0.30rem;
   }
 }
+
+
+select{
+  font-weight: 600 !important;
+ }

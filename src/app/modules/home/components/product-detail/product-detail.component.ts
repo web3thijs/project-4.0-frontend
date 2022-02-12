@@ -56,6 +56,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
     amount: 0
   }
 
+  noSizeId: number = 0;
+
   updateOrderDetail: Observable<UpdateOrderDetailDTO>;
 
   category: Category = {id: 0, name: ""};
@@ -72,6 +74,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   valueProduct = 0;
 
   products: Observable<CartProductDTO[]>;
+
+  amount = 1;
 
 
   constructor(private orderService: OrderService, private cartService: CartService, private authService: AuthService, private productService: ProductService, private route: ActivatedRoute, private categoryService: CategoryService, private organizationService: OrganizationService, private stockService: StockService, private router: Router) { }
@@ -90,6 +94,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
   }
 
+  addAmount(): void {
+    this.amount++;
+  }
+
+  reduceAmount(): void {
+    this.amount--;
+  }
+
   getCart() {
     this.products = this.cartService.getCart().pipe(
       map(result => result.cartProductDTOS)
@@ -104,6 +116,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
 
 
     this.updateOrderDetailDTO.productId = this.product.id
+    this.updateOrderDetailDTO.amount = this.amount
 
     if(this.updateOrderDetailDTO.sizeId == 0){
       this.updateOrderDetailDTO.sizeId = 1

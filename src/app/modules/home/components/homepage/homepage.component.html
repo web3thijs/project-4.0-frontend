@@ -15,25 +15,21 @@
     </div>
   </section>
 
-<main class="container">
-  <div id="newarrivals" class="mt-4">
-    <app-title [titleText]="'Producten'"></app-title>
-    <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let product of (products | async) | slice:0:displayNumProd" (click)="onClick(product.id)">
-        <div class="card mx-auto text-left" style="width: 18rem;">
-          <div class="card-body">
-            <img src="{{product.imageUrl[0]}}" alt="" class="mb-2 img-fluid" onerror="this.src='../../../../../assets/placeholder.png';">
-            <h5 class="card-title mb-1" id="product-title">{{product.name}}</h5>
-            <p class="card-text mb-2" id="product-price">€ {{product.price}}</p>
-          </div>
+  <main class="container">
+    <div id="newarrivals" class="mt-4">
+      <app-title [titleText]="'Producten'"></app-title>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3"
+          *ngFor="let product of (products | async) | slice:0:displayNumProd">
+          <app-product-view [productImg]="product.imageUrl[0]" [productTitle]="product.name"
+            [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
         </div>
       </div>
+      <div class="text-center mt-4">
+        <app-button [buttonText]="'Alle producten'" routerLink="/producten"></app-button>
+      </div>
     </div>
-    <div class="text-center">
-      <app-button [buttonText]="'Alle producten'" routerLink="/producten"></app-button>
-    </div>
-  </div>
-</main>
+  </main>
 </div>
 <div class="container-fluid mt-5" id="banner">
   <section class="mt-5 pl-4 pr-4">
@@ -70,19 +66,14 @@
     <app-title [titleText]="'Organisaties'"></app-title>
     <div class="container my-3 mb-5">
       <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let organization of (organizations | async) | slice:3:displayNumOrg">
-          <div class="card mx-auto text-left" style="width: 18rem;">
-            <div class="card-body">
-              <img src="{{organization.imageUrl}}" id="organizationImage" alt="" class="mb-2 img-fluid" onerror="this.src='../../../../../assets/placeholder.png';">
-              <h5 class="card-title mb-1" id="product-title">{{organization.organizationName}}</h5>
-            </div>
-          </div>
-          <!--<app-product-view  [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>-->
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 "
+        *ngFor="let organization of (organizations | async) | slice:0:displayNumOrg">
+          <app-organization-view [organizationImg]="organization.imageUrl" [organizationTitle]="organization.organizationName" (click)="onClickOrganization(organization.id)"></app-organization-view>
         </div>
       </div>
-      <div class="text-center">
+      <div class="text-center mt-4">
         <app-button [buttonText]="'Alle VZW´s'" routerLink="/organisaties"></app-button>
-</div>
-</div>
+      </div>
+    </div>
   </section>
 </div>

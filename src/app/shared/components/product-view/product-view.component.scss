@@ -7,7 +7,7 @@ p{
   margin: 0;
 
   &#product-title{
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
   }
 }
@@ -17,15 +17,44 @@ p{
   cursor: pointer;
   border: none;
 
-  .card-body{
-    padding: 0 !important;
+  .card-title{
+    font-size: 1rem;
+    font-weight: 600;
   }
-}
 
-img {
-  width: 250px;
-  height: 250px;
-  border: 2px solid #eee;
-  object-fit: cover;
+  .card-text{
+    color: #92c1dc;
+    font-weight: 500;
+  }
+
+  .card-body{
+    padding: 0;
+  }
+
+  .card-image-top {
+    height: 125px;
+    width: 125px;
+    object-fit: contain;
+    border: 2px solid #eee;
+
+    @media only screen and (min-width: 576px) {
+      height: 200px;
+      width: 200px;
+    }
+
+    @media only screen and (min-width: 768px) {
+      height: 280px;
+      width: 280px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+      height: 250px;
+      width: 250px;
+    }
+  }
+
+  i{
+    color: #92c1dc;
+  }
 }
 

@@ -17,8 +17,8 @@ export class HomepageComponent implements OnInit {
   products: Observable<Product[]>;
   organizations$: Subscription = new Subscription();
   organizationRandom: Organization[];
-  displayNumProd: number = 6;
-  displayNumOrg: number = 6;
+  displayNumProd: number = 4;
+  displayNumOrg: number = 4;
 
   constructor(private router: Router, private organizationService: OrganizationService, private productService: ProductService) { }
 
@@ -58,6 +58,10 @@ export class HomepageComponent implements OnInit {
 
   onClick(productId: number) {
     this.router.navigate(['/producten', productId])
+  }
+
+  onClickOrganization(organizationId: number) {
+    this.router.navigate(['/organisaties', organizationId])
   }
 
 }
