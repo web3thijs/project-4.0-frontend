@@ -25,7 +25,7 @@
             [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
         </div>
       </div>
-      <div class="text-center mt-2">
+      <div class="text-center mt-4">
         <app-button [buttonText]="'Alle producten'" routerLink="/producten"></app-button>
       </div>
     </div>
@@ -71,7 +71,7 @@
           <app-organization-view [organizationImg]="organization.imageUrl" [organizationTitle]="organization.organizationName" (click)="onClickOrganization(organization.id)"></app-organization-view>
         </div>
       </div>
-      <div class="text-center">
+      <div class="text-center mt-4">
         <app-button [buttonText]="'Alle VZW´s'" routerLink="/organisaties"></app-button>
       </div>
     </div>

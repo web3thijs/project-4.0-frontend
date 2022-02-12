@@ -5,14 +5,14 @@
 
 .bg-blue {
   background-color: white;
-  color: #08344B;
+  color: #031c29;
 }
 
 .sidebar {
   margin: 0;
   padding: 0;
   width: 200px;
-  background-color: #f1f1f1;
+  background-color: #031c29;
   position: absolute;
   height: 1000px;
   overflow: auto;
@@ -20,18 +20,18 @@
 
 .sidebar a {
   display: block;
-  color: black;
+  color: white;
   padding: 16px;
   text-decoration: none;
 }
 
 .sidebar a.active {
-  background-color: #08344B;
+  background-color: #031c29;
   color: white;
 }
 
 .sidebar a:hover:not(.active) {
-  background-color: #08344B;
+  background-color: #031c29;
   color: white;
 }
 
