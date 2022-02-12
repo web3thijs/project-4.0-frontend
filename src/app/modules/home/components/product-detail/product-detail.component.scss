@@ -51,7 +51,7 @@ option {
 }
 
 img{
-  object-fit: cover;
+  object-fit: contain;
   max-height: 330px;
   max-width: 330px;
   border-radius: 12px;

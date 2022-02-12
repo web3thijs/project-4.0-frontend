@@ -24,7 +24,7 @@
     </div>
   </div>
   <div class="row" >
-    <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-5 d-flex align-items-center justify-content-center" *ngFor="let product of (products$ | async)">
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of (products$ | async)">
       <app-product-view  [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
     </div>
   </div>

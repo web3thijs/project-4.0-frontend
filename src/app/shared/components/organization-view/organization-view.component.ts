@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./organization-view.component.scss']
 })
 export class OrganizationViewComponent implements OnInit {
-  @Input() productImg: string = "";
+  @Input() organizationImg: string = "";
   @Input() organizationTitle: string = "";
 
   constructor() { }
