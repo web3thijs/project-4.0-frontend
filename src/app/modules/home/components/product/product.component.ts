@@ -15,6 +15,7 @@ import { Customer } from 'src/app/core/models/Customer';
 import { InteractionService } from 'src/app/shared/services/interaction.service';
 import { AuthService } from 'src/app/modules/security/auth.service';
 import { Review } from 'src/app/core/models/Review';
+import { AddToInteractionDTO } from 'src/app/core/models/AddToInteractionDTO';
 
 @Component({
   selector: 'app-product',
@@ -104,6 +105,11 @@ export class ProductComponent implements OnInit {
     customerId: 0,
   }
 
+  addToInteractionDTO: AddToInteractionDTO = {
+    customerId: 0,
+    productId: 0
+  }
+
   constructor(private productService: ProductService, private categoryService: CategoryService, private organizationService: OrganizationService, private router: Router, private stockService: StockService, private interactionService: InteractionService, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -131,8 +137,14 @@ export class ProductComponent implements OnInit {
     )
   }
 
-  onClick(productId: number) {
+  async onClick(productId: number) {
+    if(this.authService.getRole() ==  "CUSTOMER"){
+      this.addToInteractionDTO.customerId = parseInt(this.authService.getUser()!.id);
+      this.addToInteractionDTO.productId = productId
+
+      await this.interactionService.addClick(this.addToInteractionDTO).toPromise();
+    }
+
     this.router.navigate(['/producten', productId]);
   }
-
 }
