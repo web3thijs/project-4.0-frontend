@@ -16,30 +16,11 @@ export class NavbarComponent implements OnInit {
   isCustomer: boolean = false;
   isOrganization: boolean = false;
   isAdmin: boolean = false;
-  helper = new JwtHelperService();
   isLogout: boolean = false;
 
   constructor(public authService: AuthService, private customerService: CustomerService, private router: Router) { }
 
   ngOnInit(): void {
-    if(this.shoppingCart != null){
-      this.itemsInCart = JSON.parse(localStorage.productsInCart).length;
-    } else {
-      console.log("Cart is empty");
-    }
-
-    const decodedToken = this.helper.decodeToken(this.authService.getToken());
-    console.log(decodedToken);
-
-    if (decodedToken.role == "CUSTOMER") {
-      this.isCustomer = true;
-    } else if (decodedToken.role == "ORGANIZATION") {
-      this.isOrganization = true;
-    } else {
-      this.isAdmin = true;
-    }
-
-
   }
 
   logOut() {
@@ -47,7 +28,4 @@ export class NavbarComponent implements OnInit {
     this.authService.deleteToken();
     this.router.navigate(['']);
   }
-
-
-
 }

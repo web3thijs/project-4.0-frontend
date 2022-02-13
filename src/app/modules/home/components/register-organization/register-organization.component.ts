@@ -11,16 +11,10 @@ import { FormComponent } from './form/form.component';
   styleUrls: ['./register-organization.component.scss']
 })
 export class RegisterOrganizationComponent implements OnInit {
-  organization: Omit<Organization, 'id'|'role'> = {
+  organization:  Omit<Organization, 'id'|'role'|'supportEmail'|'supportPhoneNr'|'help'|'what'|'imageUrl'|'who'> = {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
-    who: '',
-    what: '',
-    help: '',
-    supportPhoneNr: '',
-    supportEmail: '',
-    imageUrl: '',
     email: '',
     password: '',
     phoneNr: '',

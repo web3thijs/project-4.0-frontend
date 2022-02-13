@@ -91,7 +91,7 @@
 
 .progress-line.active {
   .progress-percent {
-    background: #001321;
+    background: #031c29;
     width: 50%;
   }
 }
@@ -99,7 +99,7 @@
 .progress-line.complete {
   .progress-percent {
     width: 100%;
-    background: #001321;
+    background: #031c29;
   }
 }
 .check-box {
@@ -125,7 +125,7 @@
 
   i#checkboxChecked {
     stroke-dashoffset: 0;
-    color: #001321 !important;
+    color: #031c29 !important;
     display: inline-block;
   }
 }

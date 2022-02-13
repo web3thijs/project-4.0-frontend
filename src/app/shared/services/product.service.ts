@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from 'src/app/core/models/Product';
+import { SimilarProduct } from 'src/app/core/models/SimilarProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +44,9 @@ export class ProductService {
 
   deleteProduct(id: number): Observable<Product> {
     return this.httpClient.delete<Product>(this.baseUrl + "products/" + id);
+  }
+
+  getSimilarProducts(id: number): Observable<SimilarProduct[]> {
+    return this.httpClient.get<SimilarProduct[]>("https://project-4-0-ai.herokuapp.com/product?productId=" + id);
   }
 }

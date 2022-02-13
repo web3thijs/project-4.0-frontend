@@ -1,34 +1,68 @@
-<div class="container mt-4">
+<div class="container mt-5">
   <div class="alert alert-danger" role="alert" *ngIf="alertIsShown">
     Let op! Je hebt dit product al aan je winkelmandje toegevoegd!
   </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <img src="{{product.imageUrl}}" class="img-fluid" alt="">
+  <div class="row mt-5">
+    <div class="col-12 col-md-6 d-flex justify-content-center">
+      <img src="{{ product.imageUrl }}" class="img-fluid" alt="" />
     </div>
-    <form (ngSubmit)="addToCart()" #orderDetailForm="ngForm">
-      <div class="col-sm-12 col-md-6">
-        <p>{{product.organization.organizationName}}</p>
-        <h2>{{product.name}}</h2>
-        <p>€ {{product.price}}</p>
-        <p class="mb-0">Aantal</p>
-        <input class="form-control mr-sm-2 input-size mb-3" type="number" id="aantal" name="aantal" [(ngModel)]="this.updateOrderDetailDTO.amount">
-        <button type="submit" class="btn btn-dark text-left mb-3">
-          <div class="row">
-            <div class="col-10 pr-0">
-              In winkelmandje
+    <div class="col-12 col-md-6 mt-4 mt-lg-0">
+      <form (ngSubmit)="addToCart()" #orderDetailForm="ngForm">
+        <p class="mb-2">{{ product.organization.organizationName }}</p>
+        <h2 class="font-weight-bold product-name">{{ product.name }}</h2>
+        <p class="product-price">€ {{ product.price | number: "1.2-2" }}</p>
+        <button class="add-cart mb-3"><i class="fas fa-shopping-cart"></i> In winkelmandje</button>
+        <div class="row">
+          <div class="col-12 d-flex">
+            <div class="row mr-2">
+              <div class="col-12 col-md-6 d-flex align-items-center">
+                <a
+                  class="page-link mr-3 clickable"
+                  (click)="reduceAmount()"
+                  aria-label="Previous"
+                >
+                  <span aria-hidden="true">-</span>
+                  <span class="sr-only">Reduce</span>
+                </a>
+
+                <span>{{ this.amount }}</span>
+
+                <a
+                  class="page-link ml-3 clickable"
+                  (click)="addAmount()"
+                  aria-label="Previous"
+                >
+                  <span aria-hidden="true">+</span>
+                  <span class="sr-only">Add</span>
+                </a>
+              </div>
             </div>
-            <div class="col-2 pr-0">
-              <i class="fas fa-shopping-cart"></i>
-            </div>
-            </div>
-            </button>
-            <select class="form-control select-size mb-3" [(ngModel)]="this.updateOrderDetailDTO.sizeId">
-              <option>Kies een maat</option>
-              <option *ngFor="let stock of (stocks$ | async)" [value]="stock.size.id">{{stock.size.name}}</option>
+            <select
+              class="form-control select-size"
+              [(ngModel)]="this.updateOrderDetailDTO.sizeId"
+            >
+              <option [ngValue]="this.noSizeId">Kies een maat</option>
+              <option *ngFor="let stock of stocks$ | async" [value]="stock.size.id">
+                {{ stock.size.name }}
+              </option>
             </select>
-          <p class="details-title">Details</p>
-      </div>
-  </form>
+          </div>
+        </div>
+        <p class="details-title mt-4">Details</p>
+        <p>{{ product.description }}</p>
+      </form>
+    </div>
   </div>
+  <main class="container mb-5">
+    <div id="newarrivals" class="mt-4">
+      <h4 class="font-weight-bold">Bekijk ook eens</h4>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"
+          *ngFor="let product of (similarProducts | async) | slice:0:4">
+          <app-product-view [productImg]="product.imageUrl" [productTitle]="product.productName"
+            [productPrice]="product.price" (click)="onClick(product.productId)"></app-product-view>
+        </div>
+      </div>
+    </div>
+  </main>
 </div>

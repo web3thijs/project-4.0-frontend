@@ -6,6 +6,7 @@ import {UserResponse} from './user-response';
 import { Customer } from 'src/app/core/models/Customer';
 import { Organization } from 'src/app/core/models/Organization';
 import { environment } from 'src/environments/environment';
+import { tokenize } from '@angular/compiler/src/ml_parser/lexer';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,16 @@ export class AuthService {
     }
   }
 
+  getRole(): string {
+    let token: String = this.getToken();
+    if(token == ""){
+      return "GUEST";
+    }
+
+    let decodedJWT = JSON.parse(window.atob(token.split('.')[1]));
+    return decodedJWT.role;
+  }
+
   deleteToken(): void {
     localStorage.removeItem('token');
   }
@@ -48,8 +59,8 @@ export class AuthService {
     return this.httpClient.post<Customer>(this.baseUrl + 'register/customer', customer);
   }
 
-  registerOrganization(organization: Omit<Organization, 'id'|'role'>): Observable<Organization> {
-    return this.httpClient.post<Organization>(this.baseUrl + 'register/organization', organization);
+  registerOrganization(organization: Omit<Organization, 'id'|'role'|'supportEmail'|'supportPhoneNr'|'help'|'what'|'imageUrl'|'who'>): Observable<Omit<Organization, 'id'|'role'|'supportEmail'|'supportPhoneNr'|'help'|'what'|'imageUrl'|'who'>> {
+    return this.httpClient.post<Omit<Organization, 'id'|'role'|'supportEmail'|'supportPhoneNr'|'help'|'what'|'imageUrl'|'who'>>(this.baseUrl + 'register/organization', organization);
   }
 
   getAllowOrder(): boolean {
