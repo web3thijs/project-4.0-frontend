@@ -22,6 +22,7 @@ import { CartDTO } from 'src/app/core/models/CartDTO';
 import { CartProductDTO } from 'src/app/core/models/CartProductDTO';
 import { InteractionService } from 'src/app/shared/services/interaction.service';
 import { AddToInteractionDTO } from 'src/app/core/models/AddToInteractionDTO';
+import { SimilarProduct } from 'src/app/core/models/SimilarProduct';
 
 @Component({
   selector: 'app-product-detail',
@@ -72,6 +73,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   /*stock: Stock = {id: 0, size: this.size, color: this.color, product: this.product, amountInStock: 0};
   stock$: Subscription = new Subscription();*/
   stocks$: Observable<Stock[]>;
+  product$: Subscription;
 
   shoppingCart = JSON.parse(localStorage.getItem('productsInCart') || "[]");
   itemsInCart = 0;
@@ -81,8 +83,10 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   valueProduct = 0;
 
   products: Observable<CartProductDTO[]>;
+  similarProducts: Observable<SimilarProduct[]>;
 
   amount = 1;
+  id: number = 0;
 
 
   constructor(private orderService: OrderService, private cartService: CartService,
@@ -92,17 +96,19 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
     private router: Router, private interactionService: InteractionService) { }
 
   ngOnInit(): void {
-    let id = this.route.snapshot.params.id;
-    this.stocks$ = this.stockService.getStocksByProductId(id).pipe(
+    this.id = this.route.snapshot.params.id
+    this.stocks$ = this.stockService.getStocksByProductId(this.id).pipe(
       map(response => response)
     );
     //this.stockService.getStocksByProductId(id).subscribe(console.log);
 
 
-    this.productService.getProductById(id).subscribe(result => (this.product = result));
+    this.product$ = this.productService.getProductById(this.id).subscribe(result => (this.product = result));
+    this.getSimilarProducts();
   }
 
   ngOnDestroy(): void {
+    this.product$.unsubscribe();
   }
 
   addAmount(): void {
@@ -117,6 +123,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   getCart() {
     this.products = this.cartService.getCart().pipe(
       map(result => result.cartProductDTOS)
+    )
+  }
+
+  getSimilarProducts(){
+    this.similarProducts = this.productService.getSimilarProducts(this.id).pipe(
+      map(result => result)
     )
   }
 
@@ -147,5 +159,16 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
     await this.cartService.addProductToOrder(this.updateOrderDetailDTO).toPromise();
 
     this.router.navigate(["/winkelmandje"]);
+  }
+
+  async onClick(productId: number) {
+    // if(this.authService.getRole() ==  "CUSTOMER"){
+    //   this.addToInteractionDTO.customerId = parseInt(this.authService.getUser()!.id);
+    //   this.addToInteractionDTO.productId = productId
+
+    //   await this.interactionService.addClick(this.addToInteractionDTO).toPromise();
+    // }
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/producten', productId]));
   }
 }
