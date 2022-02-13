@@ -53,4 +53,16 @@
       </form>
     </div>
   </div>
+  <main class="container mb-5">
+    <div id="newarrivals" class="mt-4">
+      <h4 class="font-weight-bold">Bekijk ook eens</h4>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3"
+          *ngFor="let product of (similarProducts | async) | slice:0:4">
+          <app-product-view [productImg]="product.imageUrl" [productTitle]="product.productName"
+            [productPrice]="product.price" (click)="onClick(product.productId)"></app-product-view>
+        </div>
+      </div>
+    </div>
+  </main>
 </div>
