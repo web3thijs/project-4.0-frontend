@@ -1,31 +1,45 @@
 <div class="container mt-4">
   <div class="row d-flex align-items-center">
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-3">
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2 w-auto" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control mr-sm-2 w-md-25" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchTerm" (keyup)="search($event)" (change)="nav()">
       </form>
     </div>
-    <div class="col-sm-12 col-md-4 mt-2 mt-sm-0">
+    <div class="col-sm-12 col-md-3 mt-2 mt-sm-0 pl-md-1 pr-md-1">
       <div class="input-group">
-        <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-          <option selected>Filter op vzw</option>
+        <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon" (change)="onOrganizationChanged($event)">
+          <option selected value="0">Filter op vzw</option>
           <option *ngFor="let organization of (organizations$ | async)" value="{{organization.id}}">
             {{organization.organizationName}}</option>
         </select>
       </div>
     </div>
-    <div class="col-sm-12 col-md-4 mt-3 mt-sm-0">
+    <div class="col-sm-12 col-md-3 mt-3 mt-sm-0 pl-md-1 pr-md-1">
       <div class="input-group">
-        <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-          <option selected>Filter op categorie</option>
+        <select class="custom-select" id="categorieSelect" name="categorieSelect" aria-label="Example select with button addon" (change)="onCategorieChanged($event)">
+          <option selected value="0">Filter op categorie</option>
           <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
         </select>
       </div>
     </div>
+
+    <div class="col-sm-12 col-md-3 mt-3 mt-sm-0 pl-md-1 pr-md-1">
+      <div class="input-group">
+        <select class="custom-select" name="priceSelect" id="priceSelect" (change)="onPriceChanged($event)">
+          <option value="0" selected>Sorteer op prijs</option>
+          <option value="1">Hoog naar laag</option>
+          <option value="2">Laag naar hoog</option>
+        </select>
+      </div>
+    </div>
+
+
+
+
   </div>
   <div class="row" >
-    <div class="col-12 col-sm-6 col-lg-4 col-xl-3" *ngFor="let product of (products$ | async)">
-      <app-product-view  [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-4 mt-5 d-flex align-items-center justify-content-center" *ngFor="let product of (products$ | async)">
+        <app-product-view  [productImg]="product.imageUrl[0]" [productTitle]="product.name" [productPrice]="product.price" (click)="onClick(product.id)"></app-product-view>
     </div>
   </div>
 </div>

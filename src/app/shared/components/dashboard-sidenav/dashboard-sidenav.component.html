@@ -1,0 +1,8 @@
+<div class="sidebar">
+  <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" routerLink="/organisatie"><i class="fas fa-chart-line p-2"></i> Dashboard</a>
+  <a [routerLinkActive]="['active']" routerLink="/organisatie/product"><i class="fas fa-tshirt p-2"></i> Producten</a>
+  <a [routerLinkActive]="['active']" routerLink="/organisatie/bestelling"><i class="fas fa-shopping-cart p-2"></i> Bestellingen</a>
+  <a [routerLinkActive]="['active']" routerLink="/organisatie/vrije-gift"><i class="fas fa-gift p-2"></i> Vrije giften</a>
+  <a [routerLinkActive]="['active']" routerLink="/organisatie/account"><i class="fas fa-user-alt p-2"></i> Account</a>
+  <a (click)="logOut()"><i class="fas fa-sign-out-alt p-2"></i> Uitloggen</a>
+</div>

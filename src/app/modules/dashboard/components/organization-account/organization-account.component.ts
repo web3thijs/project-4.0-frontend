@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorageReference, AngularFireUploadTask, AngularFireStorage } from '@angular/fire/compat/storage';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Organization } from 'src/app/core/models/Organization';
@@ -16,7 +16,7 @@ import { OrganizationService } from 'src/app/shared/services/organization.servic
 export class OrganizationAccountComponent implements OnInit {
   user: User = {id: 0, email: "", password: "", phoneNr: "", address: "", postalCode: "", country: "", role: ""};
   user$: Subscription = new Subscription();
-  organization: Omit<Organization, "role"> = {
+  organization: Organization = {
     organizationName: '',
     companyRegistrationNr: '',
     vatNr: '',
@@ -28,11 +28,12 @@ export class OrganizationAccountComponent implements OnInit {
     imageUrl: '',
     id: 0,
     email: '',
-    password: '',
     phoneNr: '',
     address: '',
     postalCode: '',
     country: '',
+    role: '',
+    password: ''
   };
 
   isSubmitted: boolean = false;
@@ -50,20 +51,21 @@ export class OrganizationAccountComponent implements OnInit {
   uploadProgress: number | undefined;
 
   organizationForm = new FormGroup({
-    email: new FormControl(''),
-    phoneNr: new FormControl(''),
-    address: new FormControl(''),
-    postalCode: new FormControl(''),
-    country: new FormControl(''),
-    organizationName: new FormControl(''),
-    companyRegistrationNr: new FormControl(''),
-    vatNr: new FormControl(''),
+    email: new FormControl('', [Validators.required]),
+    phoneNr: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    postalCode: new FormControl('', [Validators.required]),
+    country: new FormControl('', [Validators.required]),
+    organizationName: new FormControl('', [Validators.required]),
+    companyRegistrationNr: new FormControl('', [Validators.required]),
+    vatNr: new FormControl('', [Validators.required]),
     who: new FormControl(''),
     what: new FormControl(''),
     help: new FormControl(''),
     supportPhoneNr: new FormControl(''),
     supportEmail: new FormControl(''),
     imageUrl: new FormControl(''),
+    role: new FormControl(''),
     password: new FormControl('')
   });
 
@@ -97,28 +99,15 @@ export class OrganizationAccountComponent implements OnInit {
           supportPhoneNr: result.supportPhoneNr,
           supportEmail: result.supportEmail,
           imageUrl: result.imageUrl,
+          role: result.role,
           password: result.password
         });
         console.log("imageUrl result: " + result.imageUrl);
       });
     }
-    /*if (this.productId != null) {
-      this.product$ = await this.productService.getProductById(this.productId).subscribe(result => {
-        this.organization$;
-        this.productForm.setValue({
-          name: result.name,
-          description: result.description,
-          price: result.price,
-          active: result.active,
-          category: result.category,
-          imageUrl: result.imageUrl[0]
-        });
-        console.log(result.imageUrl);
-      });
-    }*/
   }
 
-  updateOrganization() {
+  async updateOrganization() {
     this.organization.id = parseInt(this.authService.getUser()!.id);
     this.organization.email = this.organizationForm.controls['email'].value;
     this.organization.phoneNr = this.organizationForm.controls['phoneNr'].value;
@@ -134,6 +123,7 @@ export class OrganizationAccountComponent implements OnInit {
     this.organization.supportPhoneNr = this.organizationForm.controls['supportPhoneNr'].value;
     this.organization.supportEmail = this.organizationForm.controls['supportEmail'].value;
     this.organization.imageUrl = this.organizationForm.controls['imageUrl'].value;
+    this.organization.role = this.organizationForm.controls['role'].value;
     this.organization.password = this.organizationForm.controls['password'].value;
 
     this.putOrganization$ = this.organizationService.putOrganization(this.organization).subscribe(result => {
@@ -182,7 +172,7 @@ export class OrganizationAccountComponent implements OnInit {
     }
   }
 
-  submitData(): void {
+  async submitData() {
     this.updateOrganization();
   }
 

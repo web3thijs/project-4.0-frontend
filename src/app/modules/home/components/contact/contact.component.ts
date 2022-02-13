@@ -7,17 +7,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-
-  /*contactForm = new FormGroup({
-    name: new FormControl(''),
-    email: new FormControl(''),
-    subject: new FormControl(''),
-    message: new FormControl('')
-  });*/
-
   constructor() { }
-
   ngOnInit(): void {
   }
-
 }

@@ -46,7 +46,6 @@ export class OrganizationProductComponent implements OnInit {
   errorMessage: string = '';
   id = JSON.stringify(localStorage.getItem('id')|| '');
 
-
   constructor(private productService: ProductService, private organizationService: OrganizationService, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -66,18 +65,10 @@ export class OrganizationProductComponent implements OnInit {
     this.router.navigate(['organisatie/product/form'], {state: {id: id, mode: 'edit'}});
   }
 
-
-
   getProducts() {
     this.products$ = this.productService.getProductsByOrganizationId(parseInt(this.authService.getUser()!.id)).pipe(
       map(response => response.content)
     );
-
-
-    /*this.organizationService.getProductsByOrganization(this.id).pipe(
-      map(response => response.content)
-    );*/
-
   }
 
 }

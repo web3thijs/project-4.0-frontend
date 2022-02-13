@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -12,10 +13,9 @@ import { OrganizationService } from 'src/app/shared/services/organization.servic
 })
 export class OrganizationComponent implements OnInit {
   organizations$: Observable<Organization[]>;
+  searchTerm: string = "";
 
-
-
-  constructor(private organizationService: OrganizationService, private router: Router) { }
+  constructor(private organizationService: OrganizationService, private router: Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.getOrganizations();
@@ -29,6 +29,14 @@ export class OrganizationComponent implements OnInit {
 
   onClick(organizationId: number) {
     this.router.navigate(['/organisaties', organizationId]);
+  }
+
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm)
+    this.organizations$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/organizations?naam=" + this.searchTerm).pipe(
+      map(response => response.content)
+    );
   }
 
 }

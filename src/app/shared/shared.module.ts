@@ -8,6 +8,9 @@ import { OrganizationViewComponent } from './components/organization-view/organi
 import { ButtonAddComponent } from './components/button-add/button-add.component';
 import { ButtonBackComponent } from './components/button-back/button-back.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
+import { RouterModule } from '@angular/router';
+import { AdminDashboardSidenavComponent } from './components/admin-dashboard-sidenav/admin-dashboard-sidenav.component';
 
 
 
@@ -19,12 +22,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductViewComponent,
     OrganizationViewComponent,
     ButtonAddComponent,
-    ButtonBackComponent
+    ButtonBackComponent,
+    DashboardSidenavComponent,
+    AdminDashboardSidenavComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     ButtonComponent,
@@ -32,7 +38,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProductViewComponent,
     OrganizationViewComponent,
     ButtonAddComponent,
-    ButtonBackComponent
+    ButtonBackComponent,
+    DashboardSidenavComponent,
+    AdminDashboardSidenavComponent
   ]
 })
 export class SharedModule { }
