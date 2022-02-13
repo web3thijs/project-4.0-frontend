@@ -29,7 +29,7 @@ export class OrganizationService {
     return this.httpClient.get<Organization>(this.baseUrl + "organizations/" + id);
   }
 
-  putOrganization(organization: Omit<Organization, "role">): Observable<Organization> {
+  putOrganization(organization: Organization): Observable<Organization> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', 'Bearer ' + this.token );
 

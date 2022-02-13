@@ -38,11 +38,4 @@ export class OrganizationComponent implements OnInit {
   toOrganizationDonation() {
     this.router.navigate(['organisatie/vrije-gift']);
   }
-
-  logOut() {
-    this.isLogout = true;
-    this.authService.deleteToken();
-    this.router.navigate(['']);
-  }
-
 }

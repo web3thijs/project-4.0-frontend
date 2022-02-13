@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -23,10 +23,8 @@ export class OrganizationProductFormComponent implements OnInit {
   isAdd: boolean = false;
   isEdit: boolean = false;
   isSubmitted: boolean = false;
-
   testOrganization$: Subscription = new Subscription();
 
-  //Uploading image
   imageSrc: string = '';
   showPhoto: boolean = false;
   isImageChanged: boolean = false;
@@ -87,7 +85,6 @@ export class OrganizationProductFormComponent implements OnInit {
     organization: this.organization
   }
 
-
   product$: Subscription = new Subscription();
   stock$: Subscription = new Subscription();
   organization$: Subscription = new Subscription();
@@ -95,12 +92,11 @@ export class OrganizationProductFormComponent implements OnInit {
   putProduct$: Subscription = new Subscription();
   deleteStock$: Subscription = new Subscription();
 
-  //reactive forms
   productForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    price: new FormControl(0),
-    active: new FormControl('false'),
+    price: new FormControl(0, [Validators.required]),
+    active: new FormControl('false', [Validators.required]),
     category: new FormControl(0),
     imageUrl: new FormControl('')
   });
@@ -267,5 +263,4 @@ hideShowPhoto() {
 addStock() {
   this.router.navigate(['organisatie/stock/form'], {state: {mode: 'add'}});
 }
-
 }

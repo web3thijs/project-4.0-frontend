@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -100,7 +100,7 @@ export class OrganizationStockFormComponent implements OnInit {
   putStock$: Subscription = new Subscription();
 
   stockForm = new FormGroup({
-    amountInStock: new FormControl(0),
+    amountInStock: new FormControl(0, [Validators.required]),
     size: new FormControl(0),
     color: new FormControl(0),
     product: new FormControl(0)
@@ -112,7 +112,6 @@ export class OrganizationStockFormComponent implements OnInit {
     this.stockId = this.router.getCurrentNavigation()?.extras.state?.id;
 
     this.getStock();
-
    }
 
   ngOnInit(): void {
@@ -130,7 +129,7 @@ export class OrganizationStockFormComponent implements OnInit {
           color: result.color,
           product: result.product
         });
-        console.log(result.amountInStock);
+        console.log("Amount in stock " + result.amountInStock);
       });
     }
   }
@@ -143,7 +142,7 @@ export class OrganizationStockFormComponent implements OnInit {
 
   getColors() {
     this.colors$ = this.colorService.getColor().pipe(
-      map(result => result.content)
+      map(result => result)
     );
   }
 
@@ -197,5 +196,4 @@ export class OrganizationStockFormComponent implements OnInit {
       });
     }
   }
-
 }

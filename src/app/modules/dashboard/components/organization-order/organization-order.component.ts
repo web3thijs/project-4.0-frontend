@@ -51,18 +51,15 @@ export class OrganizationOrderComponent implements OnInit {
     organization: this.organization
   }
 
-
   constructor(private orderdetailService: OrderdetailService) { }
 
   ngOnInit(): void {
     this.getOrderDetails();
   }
 
-  //BRENT zijn manier
   getOrderDetails() {
     this.orderdetail$ = this.orderdetailService.getOrderdetails().pipe(
       map(response => response)
     );
   }
-
 }

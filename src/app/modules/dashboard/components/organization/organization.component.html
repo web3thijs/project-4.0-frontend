@@ -1,12 +1,4 @@
-<div class="sidebar">
-  <a class="active" routerLink="/organisatie"><i class="fas fa-chart-line p-2"></i> Dashboard</a>
-  <a routerLink="/organisatie/product"><i class="fas fa-tshirt p-2"></i> Producten</a>
-  <a routerLink="/organisatie/bestelling"><i class="fas fa-shopping-cart p-2"></i> Bestellingen</a>
-  <a routerLink="/organisatie/vrije-gift"><i class="fas fa-gift p-2"></i> Vrije giften</a>
-  <a routerLink="/organisatie/account"><i class="fas fa-user-alt p-2"></i> Account</a>
-  <a (click)="logOut()"><i class="fas fa-sign-out-alt p-2"></i> Uitloggen</a>
-</div>
-
+<app-dashboard-sidenav></app-dashboard-sidenav>
 <div class="content">
   <div class="container mt-4 pr-0 pl-1">
     <app-title [titleText]="'Dashboard'"></app-title>
@@ -62,60 +54,7 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="col-sm-12 col-md-4 mt-4">
-      <div class="card test-shadow" style="width: 14rem; height: 6rem;" (click)="toOrganizationDonation()">
-        <div class="card-body">
-          <div class="row mt-2 mb-2">
-            <div class="col-8">
-              <p class="bigger-font mb-0">Profiel</p>
-            </div>
-            <div class="col-4 text-right">
-              <i class="fas fa-gift fa-lg p-2 fa-border rounded"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-12 col-md-4 mt-4">
-      <div class="card test-shadow" style="width: 14rem; height: 6rem;" (click)="toOrganizationDonation()">
-        <div class="card-body">
-          <div class="row mt-2 mb-2">
-            <div class="col-8">
-              <p class="bigger-font mb-0">Uitloggen</p>
-            </div>
-            <div class="col-4 text-right">
-              <i class="fas fa-gift fa-lg p-2 fa-border rounded"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
   </div>
-
-  <!-- <div class="text-center">
-
-  </div> -->
-
-
-  <!--<h5 class="mb-2">Meest verkochte producten</h5>-->
-  <!--<div class="table-responsive">
-    <table class="table mt-3 text-center table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Afbeelding</th>
-          <th scope="col">Naam</th>
-          <th scope="col">Prijs</th>
-          <th scope="col">Besteld</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let interaction of (interactions$ | async)">
-        </tr>
-      </tbody>
-    </table>
-  </div>-->
-
   </div>
 </div>
 

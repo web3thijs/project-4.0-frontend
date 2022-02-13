@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   registerOrganization(organization: Omit<Organization, 'id'|'role'>): Observable<Organization> {
-    return this.httpClient.post<Organization>(this.baseUrl + 'register/customer', organization);
+    return this.httpClient.post<Organization>(this.baseUrl + 'register/organization', organization);
   }
 
   getAllowOrder(): boolean {

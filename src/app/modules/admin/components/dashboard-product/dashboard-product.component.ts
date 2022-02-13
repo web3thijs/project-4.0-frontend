@@ -23,5 +23,4 @@ export class DashboardProductComponent implements OnInit {
       map(response => response.content)
     );
   }
-
 }

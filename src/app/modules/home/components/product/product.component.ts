@@ -15,6 +15,7 @@ import { Customer } from 'src/app/core/models/Customer';
 import { InteractionService } from 'src/app/shared/services/interaction.service';
 import { AuthService } from 'src/app/modules/security/auth.service';
 import { Review } from 'src/app/core/models/Review';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product',
@@ -27,6 +28,8 @@ export class ProductComponent implements OnInit {
   categories$: Observable<Category[]>;
   organizations$: Observable<Organization[]>;
   errorMessage: string = '';
+  searchTerm: string = "";
+  searchKey: string = "";
 
   postAddClick$: Subscription = new Subscription();
 
@@ -104,7 +107,7 @@ export class ProductComponent implements OnInit {
     customerId: 0,
   }
 
-  constructor(private productService: ProductService, private categoryService: CategoryService, private organizationService: OrganizationService, private router: Router, private stockService: StockService, private interactionService: InteractionService, private authService: AuthService) { }
+  constructor(private productService: ProductService, private categoryService: CategoryService, private organizationService: OrganizationService, private router: Router, private stockService: StockService, private interactionService: InteractionService, private authService: AuthService, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -121,7 +124,7 @@ export class ProductComponent implements OnInit {
 
   getCategories() {
     this.categories$ = this.categoryService.getCategories().pipe(
-      map(response => response.content)
+      map(response => response)
     )
   }
 
@@ -141,6 +144,59 @@ export class ProductComponent implements OnInit {
       this.errorMessage = error.message;
     });
 
+  }
+
+
+
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm)
+    this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?naam=" + this.searchTerm).pipe(
+      map(response => response.content)
+    );
+  }
+
+  nav() {
+    this.router.navigate(['/producten'])
+  }
+
+  onOrganizationChanged(event: any) {
+    console.log(event.target.value);
+    if(event.target.value > 0) {
+      this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?vzw=" + event.target.value).pipe(
+      map(response => response.content)
+    );
+    } else {
+      this.getProducts();
+    }
+  }
+
+  onCategorieChanged(event: any) {
+    console.log(event.target.value);
+    if(event.target.value > 0) {
+      this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?categorie=" + event.target.value).pipe(
+        map(response => response.content)
+      );
+    } else {
+      this.getProducts();
+    }
+  }
+
+  onPriceChanged(event: any) {
+    console.log(event.target.value);
+    if(event.target.value > 0) {
+      if(event.target.value == 1) {
+        this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?sort=price&order=desc").pipe(
+          map(response => response.content)
+        );
+      } else {
+        this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?sort=price&order=asc").pipe(
+          map(response => response.content)
+        );
+      }
+    } else {
+      this.getProducts();
+    }
   }
 
 }

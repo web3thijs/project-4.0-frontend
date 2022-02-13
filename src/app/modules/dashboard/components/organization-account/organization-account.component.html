@@ -1,14 +1,6 @@
-<div class="sidebar">
-  <a routerLink="/organisatie"><i class="fas fa-chart-line p-2"></i> Dashboard</a>
-  <a routerLink="/organisatie/product"><i class="fas fa-tshirt p-2"></i> Producten</a>
-  <a routerLink="/organisatie/bestelling"><i class="fas fa-shopping-cart p-2"></i> Bestellingen</a>
-  <a routerLink="/organisatie/vrije-gift"><i class="fas fa-gift p-2"></i> Vrije giften</a>
-  <a class="active" routerLink="/organisatie/account"><i class="fas fa-user-alt p-2"></i> Account</a>
-  <a routerLink="/uitloggen"><i class="fas fa-sign-out-alt p-2"></i> Uitloggen</a>
-</div>
-
+<app-dashboard-sidenav></app-dashboard-sidenav>
 <div class="content">
-  <div class="container mt-4">
+  <div class="container mt-4 mb-5">
     <app-title [titleText]="'Profiel'"></app-title>
     <div class="row mb-5">
       <form class="col-12" (ngSubmit)="onSubmit()"  [formGroup]="organizationForm">
@@ -19,7 +11,7 @@
         </div>
         <div class="form-group mb-4 col-12 col-md-6">
           <label for="phoneNr">Telefoonnummer</label>
-          <input type="text" class="form-control" id="phoneNr" formControlName="phoneNr" placeholder="Telefoonnummer">
+          <input type="text" class="form-control" id="phoneNr" formControlName="phoneNr" placeholder="Telefoonnummer" pattern="(^[0-9+]{2}(\+?\-? *[0-9 \/]{6,17})$)">
         </div>
         <div class="form-group mb-4 col-12">
           <label for="address">Adres</label>
@@ -27,7 +19,7 @@
         </div>
         <div class="form-group mb-4 col-12 col-md-6">
           <label for="postalCode">Postcode</label>
-          <input type="text" class="form-control" id="postalCode" formControlName="postalCode" placeholder="Postcode">
+          <input type="text" class="form-control" id="postalCode" formControlName="postalCode" placeholder="Postcode" pattern="[0-9]{4}">
         </div>
         <div class="form-group mb-4 col-12 col-md-6">
           <label for="country">Land</label>
@@ -35,31 +27,31 @@
         </div>
         <div class="form-group mb-4 col-12">
           <label for="organizationName">vzw-naam</label>
-          <input type="text" class="form-control" id="organizationName" formControlName="organizationName" placeholder="vzw-naam">
+          <input type="text" class="form-control" id="organizationName" formControlName="organizationName" placeholder="vzw-naam" minlength="1" maxlength="255">
         </div>
         <div class="form-group mb-4 col-12 col-md-6">
           <label for="companyRegistrationNr">Ondernemingsnummer</label>
-          <input type="text" class="form-control" id="companyRegistrationNr" formControlName="companyRegistrationNr" placeholder="Ondernemingsnummer">
+          <input type="text" class="form-control" id="companyRegistrationNr" formControlName="companyRegistrationNr" placeholder="Ondernemingsnummer" pattern="^[0-1]{1}[0-9]{9}$">
         </div>
         <div class="form-group mb-4 col-12 col-md-6">
           <label for="vatNr">BTW-nummer</label>
-          <input type="text" class="form-control" id="vatNr" formControlName="vatNr" placeholder="BTW-nummer">
+          <input type="text" class="form-control" id="vatNr" formControlName="vatNr" placeholder="BTW-nummer" pattern="^BE+[0-9]{10}$">
         </div>
         <div class="form-group mb-4 col-12">
           <label for="who">Wie zijn we?</label>
-          <textarea class="form-control" id="who" rows="3" formControlName="who" placeholder="Wie zijn we?"></textarea>
+          <textarea class="form-control" id="who" rows="3" formControlName="who" placeholder="Wie zijn we?" minlength="0" maxlength="700"></textarea>
         </div>
         <div class="form-group mb-4 col-12">
           <label for="what">Wat doen we?</label>
-          <textarea class="form-control" id="what" rows="3" formControlName="what" placeholder="Wat doen we?"></textarea>
+          <textarea class="form-control" id="what" rows="3" formControlName="what" placeholder="Wat doen we?" minlength="0" maxlength="700"></textarea>
         </div>
         <div class="form-group mb-4 col-12">
           <label for="help">Wie helpen we?</label>
-          <textarea class="form-control" id="help" rows="3" formControlName="help" placeholder="Wie helpen we?"></textarea>
+          <textarea class="form-control" id="help" rows="3" formControlName="help" placeholder="Wie helpen we?" minlength="0" maxlength="700"></textarea>
         </div>
         <div class="form-group mb-4 col-12 col-md-6">
           <label for="supportPhoneNr">Telefoonnummer support</label>
-          <input type="text" class="form-control" id="supportPhoneNr" formControlName="supportPhoneNr" placeholder="Telefoonnummer support">
+          <input type="text" class="form-control" id="supportPhoneNr" formControlName="supportPhoneNr" placeholder="Telefoonnummer support" pattern="(^[0-9+]{2}(\+?\-? *[0-9 \/]{6,17})$)">
         </div>
         <div class="form-group mb-4 col-12 col-md-6">
           <label for="supportEmail">E-mail support</label>
@@ -82,13 +74,10 @@
           <img src="{{imageSrc}}" alt="article image">
         </div>
         <input type="hidden" id="password" name="password" formControlName="password">
+        <input type="hidden" id="role" name="role" formControlName="role">
         </div>
         <button type="submit" class="btn btn-dark"  [disabled]="!organizationForm.valid || isSubmitted">Opslaan</button>
       </form>
     </div>
   </div>
 </div>
-
-
-
-

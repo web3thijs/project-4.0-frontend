@@ -47,6 +47,4 @@ export class DashboardCategoryComponent implements OnInit {
       this.errorMessage = error.message;
     });
   }
-
-
 }
