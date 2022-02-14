@@ -26,7 +26,7 @@ export class CustomerAuthGuard implements CanActivate, CanActivateChild {
     if (this.authService.isLoggedIn() && this.authService.getRole() == "CUSTOMER") {
       return true;
     } else {
-      return this.router.parseUrl('./inloggen');
+      return this.router.parseUrl('/inloggen');
     }
   }
 }

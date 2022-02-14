@@ -20,7 +20,6 @@ import { FormComponent } from './components/register-organization/form/form.comp
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RetourFormComponent } from './components/retour-form/retour-form.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
@@ -47,7 +46,6 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
     FormComponent,
     FaqComponent,
     ContactComponent,
-    RetourFormComponent,
     OrderComponent,
     OrderConfirmationComponent,
     PagenotfoundComponent,
