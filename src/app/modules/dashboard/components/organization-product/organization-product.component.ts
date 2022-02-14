@@ -58,11 +58,11 @@ export class OrganizationProductComponent implements OnInit {
   }*/
 
   add() {
-    this.router.navigate(['organisatie/product/form'], {state: {mode: 'add'}});
+    this.router.navigate(['organisatie/producten/form'], {state: {mode: 'add'}});
   }
 
   edit(id: number) {
-    this.router.navigate(['organisatie/product/form'], {state: {id: id, mode: 'edit'}});
+    this.router.navigate(['organisatie/producten/form'], {state: {id: id, mode: 'edit'}});
   }
 
   getProducts() {
@@ -70,5 +70,4 @@ export class OrganizationProductComponent implements OnInit {
       map(response => response.content)
     );
   }
-
 }

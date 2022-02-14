@@ -171,7 +171,7 @@ export class OrganizationStockFormComponent implements OnInit {
       this.stock.product = this.product;
 
       this.postStock$ = this.stockService.postStock(this.stock).subscribe(result => {
-        this.router.navigateByUrl("organisatie/product");
+        this.router.navigateByUrl("organisatie/producten");
       },
       error => {
         this.errorMessage = error.message;
@@ -189,7 +189,7 @@ export class OrganizationStockFormComponent implements OnInit {
       this.stockPut.product = this.product;
 
       this.putStock$ = this.stockService.putStock(this.stockPut).subscribe(result => {
-        this.router.navigateByUrl("organisatie/product");
+        this.router.navigateByUrl("organisatie/producten");
       },
       error => {
         this.errorMessage = error.message;
