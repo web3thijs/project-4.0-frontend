@@ -4,7 +4,7 @@
   </div>
   <div class="row mt-5">
     <div class="col-12 col-md-6 d-flex justify-content-center">
-      <img src="{{ product.imageUrl }}" class="img-fluid" alt="" />
+      <img src="{{ product.imageUrl[0] }}" class="img-fluid" alt="" />
     </div>
     <div class="col-12 col-md-6 mt-4 mt-lg-0">
       <form (ngSubmit)="addToCart()" #orderDetailForm="ngForm">
