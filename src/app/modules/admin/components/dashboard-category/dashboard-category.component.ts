@@ -32,11 +32,11 @@ export class DashboardCategoryComponent implements OnInit {
   }
 
   add() {
-    this.router.navigate(['dashboard-admin/categorieën/form'], {state: {mode: 'add'}});
+    this.router.navigate(['admin/categorieën/form'], {state: {mode: 'add'}});
   }
 
   edit(id: number) {
-    this.router.navigate(['dashboard-admin/categorieën/form'], {state: {id: id, mode: 'edit'}});
+    this.router.navigate(['admin/categorieën/form'], {state: {id: id, mode: 'edit'}});
   }
 
   delete(id: number) {
