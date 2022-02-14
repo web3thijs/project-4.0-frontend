@@ -25,7 +25,6 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { OrderComponent } from './components/order/order.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
-import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { OrderRetourComponent } from './components/order-retour/order-retour.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
@@ -48,7 +47,6 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
     ContactComponent,
     OrderComponent,
     OrderConfirmationComponent,
-    PagenotfoundComponent,
     OrderRetourComponent,
     OrderHistoryComponent,
   ],

@@ -13,7 +13,7 @@ import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderComponent } from './components/order/order.component';
-import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { OrderRetourComponent } from './components/order-retour/order-retour.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { CustomerAuthGuard } from 'src/app/core/guards/customer-auth.guard';
