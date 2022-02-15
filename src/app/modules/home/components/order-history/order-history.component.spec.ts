@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RetourFormComponent } from './retour-form.component';
+import { OrderHistoryComponent } from './order-history.component';
 
-describe('RetourFormComponent', () => {
-  let component: RetourFormComponent;
-  let fixture: ComponentFixture<RetourFormComponent>;
+describe('OrderHistoryComponent', () => {
+  let component: OrderHistoryComponent;
+  let fixture: ComponentFixture<OrderHistoryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RetourFormComponent ]
+      declarations: [ OrderHistoryComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RetourFormComponent);
+    fixture = TestBed.createComponent(OrderHistoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

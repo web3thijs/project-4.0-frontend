@@ -25,5 +25,4 @@ export class OrganizationDonationComponent implements OnInit {
       map(response => response)
     );
   }
-
 }

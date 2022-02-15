@@ -34,7 +34,6 @@ export class DashboardCategoryFormComponent implements OnInit {
     name: new FormControl('')
   })
 
-
   constructor(private router: Router, private categoryService: CategoryService) {
     this.isAdd = this.router.getCurrentNavigation()?.extras.state?.mode === 'add';
     this.isEdit = this.router.getCurrentNavigation()?.extras.state?.mode === 'edit';
@@ -67,8 +66,7 @@ export class DashboardCategoryFormComponent implements OnInit {
     if (this.isAdd) {
       this.category.name = this.categoryForm.controls['name'].value;
       this.postCategory$ = this.categoryService.postCategory(this.category).subscribe(result => {
-                //all went well
-                this.router.navigateByUrl("/dashboard-admin/categorieën");
+                this.router.navigateByUrl("/admin/categorieën");
               },
               error => {
                 this.errorMessage = error.message;
@@ -79,12 +77,11 @@ export class DashboardCategoryFormComponent implements OnInit {
       this.putCategory.id = this.categoryId;
       this.putCategory$ = this.categoryService.putCategory(this.putCategory).subscribe(result => {
                 //all went well
-                this.router.navigateByUrl("/dashboard-admin/categorieën");
+                this.router.navigateByUrl("/admin/categorieën");
               },
               error => {
                 this.errorMessage = error.message;
               });
     }
   }
-
 }

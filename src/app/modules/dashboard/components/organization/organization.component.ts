@@ -28,21 +28,14 @@ export class OrganizationComponent implements OnInit {
   }
 
   toOrganizationProduct() {
-    this.router.navigate(['organisatie/product']);
+    this.router.navigate(['organisatie/producten']);
   }
 
   toOrganizationOrder() {
-    this.router.navigate(['organisatie/bestelling']);
+    this.router.navigate(['organisatie/bestellingen']);
   }
 
   toOrganizationDonation() {
-    this.router.navigate(['organisatie/vrije-gift']);
+    this.router.navigate(['organisatie/vrije-giften']);
   }
-
-  logOut() {
-    this.isLogout = true;
-    this.authService.deleteToken();
-    this.router.navigate(['']);
-  }
-
 }

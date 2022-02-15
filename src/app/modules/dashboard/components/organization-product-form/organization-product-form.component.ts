@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -23,10 +23,8 @@ export class OrganizationProductFormComponent implements OnInit {
   isAdd: boolean = false;
   isEdit: boolean = false;
   isSubmitted: boolean = false;
-
   testOrganization$: Subscription = new Subscription();
 
-  //Uploading image
   imageSrc: string = '';
   showPhoto: boolean = false;
   isImageChanged: boolean = false;
@@ -87,7 +85,6 @@ export class OrganizationProductFormComponent implements OnInit {
     organization: this.organization
   }
 
-
   product$: Subscription = new Subscription();
   stock$: Subscription = new Subscription();
   organization$: Subscription = new Subscription();
@@ -95,12 +92,11 @@ export class OrganizationProductFormComponent implements OnInit {
   putProduct$: Subscription = new Subscription();
   deleteStock$: Subscription = new Subscription();
 
-  //reactive forms
   productForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    price: new FormControl(0),
-    active: new FormControl('false'),
+    price: new FormControl(0, [Validators.required]),
+    active: new FormControl('false', [Validators.required]),
     category: new FormControl(0),
     imageUrl: new FormControl('')
   });
@@ -139,7 +135,7 @@ export class OrganizationProductFormComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.router.navigate(['organisatie/stock/form'], {state: {id: id, mode: 'edit'}});
+    this.router.navigate(['organisatie/stocks/form'], {state: {id: id, mode: 'edit'}});
   }
 
   delete(id: number) {
@@ -181,7 +177,7 @@ export class OrganizationProductFormComponent implements OnInit {
     this.productPut.organization = this.organization;
     console.log(this.productId);
     this.putProduct$ = await this.productService.putProduct(this.productPut).subscribe(result => {
-        this.router.navigateByUrl("/organisatie/product");
+        this.router.navigateByUrl("/organisatie/producten");
       },
       error => {
         this.errorMessage = error.message;
@@ -199,7 +195,7 @@ export class OrganizationProductFormComponent implements OnInit {
     this.product.category = this.category;
     this.product.organization = this.organization;
     this.postProduct$ = await this.productService.postProduct(this.product).subscribe(result => {
-        this.router.navigateByUrl("/organisatie/product");
+        this.router.navigateByUrl("/organisatie/producten");
       },
       error => {
         this.errorMessage = error.message;
@@ -265,7 +261,6 @@ hideShowPhoto() {
 }
 
 addStock() {
-  this.router.navigate(['organisatie/stock/form'], {state: {mode: 'add'}});
+  this.router.navigate(['organisatie/stocks/form'], {state: {mode: 'add'}});
 }
-
 }

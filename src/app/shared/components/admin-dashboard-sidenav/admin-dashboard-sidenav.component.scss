@@ -1,0 +1,52 @@
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #031c29;
+  position: absolute;
+  height: 1000px;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  color: #b6d5e7;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #b6d5e7;
+  color: #031c29;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    cursor: pointer;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #031c29;
+    color: white;
+  }
+  .sidebar a {float: left;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+.clickable{
+  cursor: pointer;
+}

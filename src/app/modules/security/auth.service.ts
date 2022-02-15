@@ -59,8 +59,8 @@ export class AuthService {
     return this.httpClient.post<Customer>(this.baseUrl + 'register/customer', customer);
   }
 
-  registerOrganization(organization: Omit<Organization, 'id'|'role'>): Observable<Organization> {
-    return this.httpClient.post<Organization>(this.baseUrl + 'register/customer', organization);
+  registerOrganization(organization: Omit<Organization, 'id'|'role'|'supportEmail'|'supportPhoneNr'|'help'|'what'|'imageUrl'|'who'>): Observable<Omit<Organization, 'id'|'role'|'supportEmail'|'supportPhoneNr'|'help'|'what'|'imageUrl'|'who'>> {
+    return this.httpClient.post<Omit<Organization, 'id'|'role'|'supportEmail'|'supportPhoneNr'|'help'|'what'|'imageUrl'|'who'>>(this.baseUrl + 'register/organization', organization);
   }
 
   getAllowOrder(): boolean {

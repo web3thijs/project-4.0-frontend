@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PagenotfoundComponent } from './pagenotfound.component';
+import { DashboardSidenavComponent } from './dashboard-sidenav.component';
 
-describe('PagenotfoundComponent', () => {
-  let component: PagenotfoundComponent;
-  let fixture: ComponentFixture<PagenotfoundComponent>;
+describe('DashboardSidenavComponent', () => {
+  let component: DashboardSidenavComponent;
+  let fixture: ComponentFixture<DashboardSidenavComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PagenotfoundComponent ]
+      declarations: [ DashboardSidenavComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PagenotfoundComponent);
+    fixture = TestBed.createComponent(DashboardSidenavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

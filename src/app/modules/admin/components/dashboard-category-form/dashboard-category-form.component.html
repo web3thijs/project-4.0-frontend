@@ -1,20 +1,9 @@
-<div class="sidebar sticky-top">
-  <a routerLink="/dashboard-admin"><i class="fas fa-chart-line p-2"></i> Dashboard</a>
-  <a routerLink="/dashboard-admin/organisaties"><i class="fas fa-ribbon p-2"></i> Vzw's</a>
-  <a routerLink="/dashboard-admin/klanten"><i class="fas fa-user p-2"></i> Klanten</a>
-  <a routerLink="/dashboard-admin/producten"><i class="fas fa-tshirt p-2"></i> Producten</a>
-  <a class="active" routerLink="/dashboard-admin/categorieën"><i class="fab fa-elementor p-2"></i>Categorieën</a>
-  <a routerLink="/uitloggen"><i class="fas fa-sign-out-alt p-2"></i> Uitloggen</a>
-</div>
-
+<app-admin-dashboard-sidenav></app-admin-dashboard-sidenav>
 <div class="content">
   <div class="container mt-4">
     <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
       {{errorMessage}}
     </div>
-    <!--<div class="alert alert-warning" role="warning">
-      <p>Form Status: {{ productForm.status }}</p>
-    </div>-->
     <app-title [titleText]="'Categorie'"></app-title>
     <form (ngSubmit)="onSubmit()" [formGroup]="categoryForm" class="mb-5">
       <div class="form-group">
@@ -24,7 +13,6 @@
       <button type="submit" class="btn btn-blue" *ngIf="isAdd" [disabled]="!categoryForm.valid || isSubmitted">Toevoegen</button>
       <button type="submit" class="btn btn-blue" *ngIf="isEdit" [disabled]="!categoryForm.valid || isSubmitted">Opslaan</button>
     </form>
-
       </div>
 </div>
 

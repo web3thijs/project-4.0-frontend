@@ -18,7 +18,7 @@ button{
     background-color: #184964;
   }
 
-  @media only screen and (min-width: 720px) {
+  @media only screen and (min-width: 768px) {
     max-width: 400px;
   }
 }
@@ -34,7 +34,7 @@ button{
   border-radius: 8px;
   border: 2px solid #031c29;
 
-  @media only screen and (min-width: 720px) {
+  @media only screen and (min-width: 768px) {
     max-width: 272px;
   }
 }
@@ -51,11 +51,32 @@ option {
 }
 
 img{
+  height: 275px;
+  width: 275px;
   object-fit: contain;
-  max-height: 330px;
-  max-width: 330px;
-  border-radius: 12px;
   border: 2px solid #eee;
+
+  @media only screen and (min-width: 576px) {
+    height: 325px;
+    width: 325px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    height: 300px;
+    width: 300px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    height: 375px;
+    width: 375px;
+  }
+}
+
+:host::ng-deep app-product-view .card-image-top {
+  @media only screen and (min-width: 768px) {
+    height: 200px !important;
+    width: 200px !important;
+  }
 }
 
 .page-link{

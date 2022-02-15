@@ -1,19 +1,7 @@
-<div class="sidebar">
-  <a routerLink="/organisatie"><i class="fas fa-chart-line p-2"></i> Dashboard</a>
-  <a routerLink="/organisatie/product"><i class="fas fa-tshirt p-2"></i> Producten</a>
-  <a routerLink="/organisatie/bestelling"><i class="fas fa-shopping-cart p-2"></i> Bestellingen</a>
-  <a class="active" routerLink="/organisatie/vrije-gift"><i class="fas fa-gift p-2"></i> Vrije giften</a>
-  <a routerLink="/organisatie/account"><i class="fas fa-user-alt p-2"></i> Account</a>
-  <a routerLink="/uitloggen"><i class="fas fa-sign-out-alt p-2"></i> Uitloggen</a>
-</div>
-
+<app-dashboard-sidenav></app-dashboard-sidenav>
 <div class="content">
   <div class="container mt-4">
     <app-title [titleText]="'Vrije giften'"></app-title>
-
-  <!--<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-      {{errorMessage}}
-    </div>-->
   <div class="table-responsive">
     <table class="table mt-3 text-center table-hover">
       <thead class="thead-dark">
@@ -30,9 +18,5 @@
         </tbody>
     </table>
   </div>
-
 </div>
 </div>
-
-
-

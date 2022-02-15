@@ -10,24 +10,14 @@ import { OrganizationStockFormComponent } from './components/organization-stock-
 import { OrganizationComponent } from './components/organization/organization.component';
 
 const routes: Routes = [
-  { path: 'organisatie', component: OrganizationComponent },
-  { path: 'organisatie/product', component: OrganizationProductComponent },
-  { path: 'organisatie/product/form', component: OrganizationProductFormComponent },
-  { path: 'organisatie/bestelling', component: OrganizationOrderComponent},
-  { path: 'organisatie/vrije-gift', component: OrganizationDonationComponent},
-  { path: 'organisatie/stock/form', component: OrganizationStockFormComponent},
-  { path: 'organisatie/account', component: OrganizationAccountComponent},
-  //{ path: '**', component: OrganizationPagenotfoundComponent},
+  { path: '', component: OrganizationComponent },
+  { path: 'producten', component: OrganizationProductComponent },
+  { path: 'producten/form', component: OrganizationProductFormComponent },
+  { path: 'bestellingen', component: OrganizationOrderComponent},
+  { path: 'vrije-giften', component: OrganizationDonationComponent},
+  { path: 'stocks/form', component: OrganizationStockFormComponent},
+  { path: 'account', component: OrganizationAccountComponent},
 ];
-
-/*{
-    path: 'page-not-found',
-    component: PagenotfoundComponent
-},
-{
-    path: '**',
-    redirectTo: '/page-not-found'
-},*/
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

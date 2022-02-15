@@ -1,0 +1,106 @@
+<div class="container mt-5">
+  <app-title [titleText]="'Bestellingen'"></app-title>
+  <div class="row">
+    <div class="col-12" *ngFor="let orderHistory of orderHistoryDTO$ | async">
+      <div class="card text-center mt-4">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6 d-flex justify-content-start align-items-center">
+              {{ orderHistoryDTO.date | date }}
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+              <app-button buttonText="Retour" routerLink="/retour"></app-button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body text-left">
+          <h6 class="font-weight-bold">Producten</h6>
+          <div class="row">
+            <div class="col-12 mt-3" *ngFor="let product of orderHistory.cartProductDTOS">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <div class="row align-items-center">
+                    <div class="col-3">
+                      <img
+                        src="{{ product.imgUrl[0] }}"
+                        alt="productImg"
+                        class="img-fluid product-img"
+                      />
+                    </div>
+                    <div class="col-9">
+                      <p class="font-weight-bold mb-1">{{ product.productName }}</p>
+                      <span>{{ product.sizeName }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="row">
+                    <div class="col-12 col-md-3 d-flex align-items-center justify-content-end justify-content-md-start">
+                      <span>{{ product.amount }}</span>
+                    </div>
+                    <div class="col-12 col-md-9 d-flex justify-content-end">
+                      <span
+                        >€
+                        {{
+                          product.productPrice * product.amount | number: "1.2-2"
+                        }}</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mt-5">
+              <h6 class="font-weight-bold">Vrije giften</h6>
+            </div>
+            <div class="col-12" *ngIf="orderHistory?.cartDonationDTOS?.length == 0">
+              <p>Geen vrije giften gevonden.</p>
+            </div>
+            <div class="col-12 mt-3" *ngFor="let donation of orderHistory.cartDonationDTOS">
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <div class="row align-items-center">
+                    <div class="col-3">
+                      <img
+                        src="{{ donation.organizationImg }}"
+                        alt="productImg"
+                        class="img-fluid product-img"
+                      />
+                    </div>
+                    <div class="col-9">
+                      <p>{{ donation.organizationName }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4 d-flex justify-content-end">
+                  <span>€ {{ donation.amount | number: "1.2-2" }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-5">
+              <div class="row">
+                <div class="col-6">
+                  <h6 class="font-weight-bold">Verzending</h6>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                  <h6 class="text-success">Gratis</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-3">
+              <div class="row">
+                <div class="col-6">
+                  <h6 class="font-weight-bold">Totaal</h6>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                  <h6>€ {{ orderHistoryDTO.total | number: "1.2-2" }}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

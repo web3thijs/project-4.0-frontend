@@ -1,33 +1,22 @@
-<div class="sidebar sticky-top">
-  <a routerLink="/organisatie"><i class="fas fa-chart-line p-2"></i> Dashboard</a>
-  <a class="active" routerLink="/organisatie/product"><i class="fas fa-tshirt p-2"></i> Producten</a>
-  <a routerLink="/organisatie/bestelling"><i class="fas fa-shopping-cart p-2"></i> Bestellingen</a>
-  <a routerLink="/organisatie/vrije-gift"><i class="fas fa-gift p-2"></i> Vrije giften</a>
-  <a routerLink="/organisatie/account"><i class="fas fa-user-alt p-2"></i> Account</a>
-  <a routerLink="/uitloggen"><i class="fas fa-sign-out-alt p-2"></i> Uitloggen</a>
-</div>
-
+<app-dashboard-sidenav></app-dashboard-sidenav>
 <div class="content">
   <div class="container mt-4">
     <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
       {{errorMessage}}
     </div>
-    <!--<div class="alert alert-warning" role="warning">
-      <p>Form Status: {{ productForm.status }}</p>
-    </div>-->
     <app-title [titleText]="'Product'"></app-title>
     <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="mb-5">
       <div class="form-group">
         <label for="name">Naam</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2">
+        <input type="text" class="form-control" id="name" name="name" placeholder="Naam" formControlName="name" minlength="3" maxlength="50">
       </div>
       <div class="form-group">
         <label for="price">Prijs</label>
-        <input type="number" class="form-control" id="price" name="price" placeholder="Price" formControlName="price" minlength="2">
+        <input type="number" class="form-control" id="price" name="price" placeholder="Prijs" formControlName="price" minlength="0" maxlength="9999">
       </div>
       <div class="form-group">
         <label for="description">Beschrijving</label>
-        <input type="text" class="form-control" id="description" name="description" placeholder="Description" formControlName="description" minlength="2">
+        <input type="text" class="form-control" id="description" name="description" placeholder="Beschrijving" formControlName="description" minlength="1" maxlength="255">
       </div>
       <div class="form-group">
         <label for="category">Categorie</label>
@@ -36,17 +25,6 @@
           <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
         </select>
       </div>
-      <!--<div class="form-group">
-        <label for="categoryId">Categorie</label>
-        <select class="form-control" formControlName="categoryId" id="categoryId">
-          <option value="" disabled>Kies een categorie</option>
-          <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="organizationId">Vzw</label>
-        <input type="text" class="form-control" id="organizationId" name="organizationId" placeholder="vzw" formControlName="organizationId" minlength="2" value="{{authOrganization}}" readonly>
-      </div>-->
       <div class="form-group">
           <label for="imageUrl">Afbeelding</label>
           <input

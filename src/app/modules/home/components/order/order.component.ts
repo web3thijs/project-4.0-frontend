@@ -93,7 +93,7 @@ export class OrderComponent implements OnInit, OnDestroy {
       }
     })
 
-    // this.authService.setAllowOrder(true);
-    // this.router.navigate(["/besteld"]);
+    this.authService.setAllowOrder(true);
+    this.router.navigate(["/besteld"]);
   }
 }

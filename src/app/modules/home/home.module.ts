@@ -20,15 +20,13 @@ import { FormComponent } from './components/register-organization/form/form.comp
 import { FaqComponent } from './components/faq/faq.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RetourFormComponent } from './components/retour-form/retour-form.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { OrderComponent } from './components/order/order.component';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
-import { OrderOverviewCustomerComponent } from './components/order-overview-customer/order-overview-customer.component';
-import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { OrderRetourComponent } from './components/order-retour/order-retour.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
 
 @NgModule({
@@ -47,21 +45,19 @@ import { OrderRetourComponent } from './components/order-retour/order-retour.com
     FormComponent,
     FaqComponent,
     ContactComponent,
-    RetourFormComponent,
     OrderComponent,
     OrderConfirmationComponent,
-    OrderOverviewCustomerComponent,
-    PagenotfoundComponent,
     OrderRetourComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    HomeRoutingModule,
     SharedModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HomeRoutingModule,
   ]
 })
 export class HomeModule { }
