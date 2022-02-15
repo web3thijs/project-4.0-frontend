@@ -44,14 +44,14 @@ export class OrganizationComponent implements OnInit {
     this.isPagination = false;
     this.searchTerm = (event.target as HTMLInputElement).value;
     console.log(this.searchTerm)
-    this.organizations$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/organizations?naam=" + this.searchTerm).pipe(
+    this.organizations$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/organizations?naam=" + this.searchTerm).pipe(
       map(response => response)
     );
   }
 
   onClickMore(){
     this.totalPagesPagination+=1;
-    this.organizations$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/organizations?page=" + (this.totalPagesPagination - 1)).pipe(
+    this.organizations$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/organizations?page=" + (this.totalPagesPagination - 1)).pipe(
       map(response => response)
     );
     window.scroll({
@@ -64,7 +64,7 @@ export class OrganizationComponent implements OnInit {
 
   onClickLess(){
     this.totalPagesPagination-=1;
-    this.organizations$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/organizations?page=" + (this.totalPagesPagination - 1)).pipe(
+    this.organizations$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/organizations?page=" + (this.totalPagesPagination - 1)).pipe(
       map(response => response)
     );
     window.scroll({

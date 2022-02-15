@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit {
   searchKey: string = "";
   isFilter: boolean = false;
   isPagination: boolean = true;
-  totalPagesPagination: number = 1;
+  currentPage: number = 1;
   productListPaginationDTO: ProductListPaginationDTO = {
     content: [],
     totalPages: 0
@@ -149,8 +149,8 @@ export class ProductComponent implements OnInit {
   }
 
   onClickMore(){
-    this.totalPagesPagination+=1;
-    this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?page=" + (this.totalPagesPagination - 1)).pipe(
+    this.currentPage+=1;
+    this.products$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/products?page=" + (this.currentPage - 1)).pipe(
       map(response => response)
     );
     window.scroll({
@@ -158,12 +158,12 @@ export class ProductComponent implements OnInit {
       left: 0,
       behavior: 'smooth'
     });
-    console.log("more" + this.totalPagesPagination);
+    console.log("more" + this.currentPage);
   }
 
   onClickLess(){
-    this.totalPagesPagination-=1;
-    this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?page=" + (this.totalPagesPagination - 1)).pipe(
+    this.currentPage-=1;
+    this.products$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/products?page=" + (this.currentPage - 1)).pipe(
       map(response => response)
     );
     window.scroll({
@@ -171,7 +171,7 @@ export class ProductComponent implements OnInit {
       left: 0,
       behavior: 'smooth'
     });
-    console.log("less " + this.totalPagesPagination);
+    console.log("less " + this.currentPage);
   }
 
   async onClick(productId: number) {
@@ -190,7 +190,7 @@ export class ProductComponent implements OnInit {
     this.isPagination = false;
     this.searchTerm = (event.target as HTMLInputElement).value;
     console.log(this.searchTerm)
-    this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?naam=" + this.searchTerm).pipe(
+    this.products$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/products?naam=" + this.searchTerm).pipe(
       map(response => response)
     );
   }
@@ -204,7 +204,7 @@ export class ProductComponent implements OnInit {
     if(event.target.value > 0) {
       this.isFilter = true;
       this.isPagination = false;
-      this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?vzw=" + event.target.value).pipe(
+      this.products$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/products?vzw=" + event.target.value).pipe(
       map(response => response)
     );
     } else {
@@ -219,7 +219,7 @@ export class ProductComponent implements OnInit {
     if(event.target.value > 0) {
       this.isFilter = true;
       this.isPagination = false;
-      this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?categorie=" + event.target.value).pipe(
+      this.products$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/products?categorie=" + event.target.value).pipe(
         map(response => response)
       );
     } else {
@@ -233,13 +233,13 @@ export class ProductComponent implements OnInit {
       if(event.target.value == 1) {
         this.isFilter = true;
         this.isPagination = false;
-        this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?sort=price&order=desc").pipe(
+        this.products$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/products?sort=price&order=desc").pipe(
           map(response => response)
         );
       } else {
         this.isFilter = true;
         this.isPagination = false;
-        this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?sort=price&order=asc").pipe(
+        this.products$ = this.httpClient.get<any>("https://6tmnye3cmp.eu-west-1.awsapprunner.com/api/products?sort=price&order=asc").pipe(
           map(response => response)
         );
       }
