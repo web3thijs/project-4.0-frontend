@@ -32,7 +32,7 @@ export class OrderConfirmationComponent implements OnInit {
       this.getConfirmation();
       this.authService.setAllowOrder(false);
     } else {
-      // router.navigate(['/'])
+      router.navigate(['/'])
     }
   }
 
