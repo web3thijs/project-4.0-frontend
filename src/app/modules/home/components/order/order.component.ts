@@ -42,6 +42,9 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   orderForm = new FormGroup({
+    firstname: new FormControl(''),
+    lastname: new FormControl(''),
+    email: new FormControl(''),
     country: new FormControl(''),
     postal: new FormControl(''),
     address: new FormControl('')
@@ -55,26 +58,21 @@ export class OrderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.cart$.unsubscribe();
+
   }
 
   getCart() {
     this.cart = this.cartService.getCart().pipe(
       map(result => result)
     );
-
-    this.products = this.cart.pipe(
-      map(result => result.cartProductDTOS)
-    )
-
-    this.donations = this.cart.pipe(
-      map(result => result.cartDonationDTOS)
-    )
   }
 
   getCustomer(){
     this.customer$ = this.customerService.getCustomerById(parseInt(this.authService.getUser()!.id)).subscribe(result => {
       this.orderForm.setValue({
+        firstname: result.firstName,
+        lastname: result.lastName,
+        email: result.email,
         country: result.country,
         postal: result.postalCode,
         address: result.address

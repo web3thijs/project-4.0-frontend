@@ -10,16 +10,16 @@
   </div>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/">Home</a>
-      <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/producten">Producten</a>
-      <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/organisaties">Vzw's</a>
-      <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/contact">Contact</a>
+      <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/producten" [routerLinkActive]="['active']">Producten</a>
+      <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/organisaties" [routerLinkActive]="['active']">Vzw's</a>
+      <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/contact" [routerLinkActive]="['active']">Contact</a>
       <div *ngIf="!this.authService.isLoggedIn()">
-        <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/inloggen"><i class="fas fa-user mr-2"></i>Inloggen</a>
+        <a class="nav-link mr-4" data-toggle="collapse" data-target="#navbarNavAltMarkup" routerLink="/inloggen" [routerLinkActive]="['active']"><i class="fas fa-user mr-2"></i>Inloggen</a>
       </div>
 
       <!-- CUSTOMER -->
-      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'CUSTOMER'" class="d-flex">
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'CUSTOMER'" class="d-flex justify-content-center justify-content-lg-end">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user mr-2"></i>
@@ -33,7 +33,7 @@
       </div>
 
       <!-- ORGANIZATION -->
-      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ORGANIZATION'" class="d-flex">
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ORGANIZATION'" class="d-flex justify-content-center justify-content-lg-end">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user mr-2"></i>
@@ -46,7 +46,7 @@
       </div>
 
       <!-- ADMIN -->
-      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ADMIN'" class="d-flex">
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ADMIN'" class="d-flex justify-content-center justify-content-lg-end">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user mr-2"></i>

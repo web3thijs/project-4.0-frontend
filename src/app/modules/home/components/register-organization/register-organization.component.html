@@ -80,7 +80,7 @@
             <div class="form-group mb-4 col-4">
               <label for="wachtwoordRepeat">Wachtwoord (herhaling)</label>
               <input type="password" class="form-control" name="wachtwoordRepeat" id="wachtwoordRepeat" required
-                [(ngModel)]="organization.password">
+                [(ngModel)]="this.passwordRepeat">
             </div>
             <div class="btn-group" role=group>
               <app-button-back [buttonText]="'Vorige stap'" (click)="goPrev(progress)" ngClass="pr-3"></app-button-back>

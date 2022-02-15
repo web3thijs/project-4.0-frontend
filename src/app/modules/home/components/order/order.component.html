@@ -1,14 +1,14 @@
 <div class="container mt-5">
   <form [formGroup]="orderForm" (ngSubmit)="completeOrder()">
-  <div class="row">
-    <div class="col-12">
-      <div class="row">
-        <div class="col-12">
-          <app-title [titleText]="'Bestellen'"></app-title>
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12">
+            <app-title [titleText]="'Bestellen'"></app-title>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-12 col-lg-7 mt-4">
+      <div class="col-12 col-lg-7 mt-4">
         <div class="row">
           <div class="col-12 text-left font-weight-bold d-flex mb-4">
             <div class="subtitle">
@@ -17,28 +17,31 @@
           </div>
         </div>
         <div class="row">
-          <div class="form-group mb-4 col-12 col-md-8">
-            <label for="country">Land</label>
+          <div class="form-group mb-4 col-12 col-md-8 col-lg-6">
+            <label for="firstname">Voornaam</label>
             <input
               type="text"
               class="form-control"
-              id="country"
-              formControlName="country"
-              name="country" [(ngModel)]="this.completeOrderDTO.country"
-            />
+              id="firstname"
+              name="firstname" [(ngModel)]="this.orderForm.value['firstname']"/>
           </div>
-
-          <div class="form-group mb-4 col-12 col-md-4">
-            <label for="postal">Postcode</label>
+          <div class="form-group mb-4 col-12 col-md-8 col-lg-6">
+            <label for="lastname">Achternaam</label>
             <input
               type="text"
               class="form-control"
-              id="postal"
-              formControlName="postal"
-              name="postal" [(ngModel)]="this.completeOrderDTO.postal"
+              id="lastname"
+              name="lastname" [(ngModel)]="this.orderForm.value['lastname']"/>
+          </div>
+          <div class="form-group mb-4 col-12">
+            <label for="email">E-mail</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email" [(ngModel)]="this.orderForm.value['email']"
             />
           </div>
-
           <div class="form-group mb-4 col-12">
             <label for="address">Adres</label>
             <input
@@ -49,6 +52,17 @@
               name="address" [(ngModel)]="this.completeOrderDTO.address"
             />
           </div>
+          <div class="form-group mb-4 col-12 col-md-8">
+            <label for="country">Land</label>
+            <input type="text" class="form-control" id="country" formControlName="country" name="country"
+              [(ngModel)]="this.completeOrderDTO.country" />
+          </div>
+
+          <div class="form-group mb-4 col-12 col-md-4">
+            <label for="postal">Postcode</label>
+            <input type="text" class="form-control" id="postal" formControlName="postal" name="postal"
+              [(ngModel)]="this.completeOrderDTO.postal" />
+          </div>
         </div>
         <div class="row">
           <div class="col-12 text-left font-weight-bold d-flex mb-3">
@@ -58,135 +72,141 @@
           </div>
         </div>
         <div class="row align-items-center">
-          <div class="col-6 col-md-2 p-3">
+          <div class="col-12 p-3">
             <div class="card bg-light mb-3 clickable selected">
               <div class="card-body">
-                <img
-                  src="assets/visa.jpg"
-                  alt="paymentVisa"
-                  class="img-fluid"
-                />
+                <img src="assets/visa.jpg" alt="paymentVisa" class="img-fluid" />
               </div>
             </div>
+          </div>
+          <div class="col-12">
+            <label for="cardnumber">Kaart number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cardnumber"
+              name="cardnumber"
+            />
+          </div>
+          <div class="col-12 mt-3">
+            <label for="expiredate">Vervaldatum</label>
+            <input
+              type="date"
+              class="form-control"
+              id="expiredate"
+              name="expiredate"
+            />
+          </div>
+          <div class="col-12 mt-3 mb-3">
+            <label for="cvc">CVC code</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cvc"
+              name="cvc"
+            />
           </div>
         </div>
         <div class="row">
           <div class="col-12 d-flex justify-content-end">
-            <app-button
-              buttonText="Afrekenen"
-              data-toggle="modal"
-              data-target="#modal"
-            ></app-button>
+            <app-button buttonText="Afrekenen" data-toggle="modal" data-target="#modal"></app-button>
           </div>
         </div>
-    </div>
-    <div class="d-none d-lg-inline overview mt-4 col-5">
-      <h6>Producten</h6>
-      <div class="row">
-        <div class="col-12 mt-3" *ngFor="let product of products | async">
-          <div class="row align-items-center">
-            <div class="col-8">
+      </div>
+      <ng-container *ngIf="cart | async as cartDTO">
+        <div class="d-none d-lg-inline overview mt-4 col-5">
+          <h6>Producten</h6>
+          <div class="row">
+            <div class="col-12 mt-3" *ngFor="let product of cartDTO.cartProductDTOS">
               <div class="row align-items-center">
-                <div class="col-3">
-                  <img
-                    src="{{ product.imgUrl[0] }}"
-                    alt="productImg"
-                    class="img-fluid product-img"
-                  />
+                <div class="col-8">
+                  <div class="row align-items-center">
+                    <div class="col-3">
+                      <img src="{{ product.imgUrl[0] }}" alt="productImg" class="img-fluid product-img" />
+                    </div>
+                    <div class="col-9">
+                      <p>{{ product.productName }}</p>
+                      <span>{{ product.sizeName }}</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-9">
-                  <p>{{ product.productName }}</p>
-                  <span>{{ product.sizeName }}</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="row">
-                <div class="col-12 col-md-3 d-flex align-items-center">
-                  <span>{{ product.amount }}</span>
-                </div>
-                <div class="col-12 col-md-9 d-flex justify-content-end">
-                  <span
-                    >€
-                    {{
+                <div class="col-4">
+                  <div class="row">
+                    <div class="col-12 col-md-3 d-flex align-items-center">
+                      <span>{{ product.amount }}</span>
+                    </div>
+                    <div class="col-12 col-md-9 d-flex justify-content-end">
+                      <span>€
+                        {{
                       product.productPrice * product.amount | number: "1.2-2"
-                    }}</span
-                  >
+                    }}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-12 mt-5">
-          <h6>Vrije giften</h6>
-        </div>
+            <div class="col-12 mt-5">
+              <h6>Vrije giften</h6>
+            </div>
 
-        <div class="col-12 mt-3" *ngFor="let donation of donations | async">
-          <div class="row align-items-center">
-            <div class="col-8">
+            <div class="col-12 mt-3" *ngFor="let donation of cartDTO.cartDonationDTOS">
               <div class="row align-items-center">
-                <div class="col-3">
-                  <img
-                    src="{{ donation.organizationImg }}"
-                    alt="productImg"
-                    class="img-fluid product-img"
-                  />
+                <div class="col-8">
+                  <div class="row align-items-center">
+                    <div class="col-3">
+                      <img src="{{ donation.organizationImg }}" alt="productImg" class="img-fluid product-img" />
+                    </div>
+                    <div class="col-9">
+                      <p>{{ donation.organizationName }}</p>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-9">
-                  <p>{{ donation.organizationName }}</p>
+                <div class="col-4 d-flex justify-content-end">
+                  <span>€ {{ donation.amount | number: "1.2-2" }}</span>
                 </div>
               </div>
             </div>
-            <div class="col-4 d-flex justify-content-end">
-              <span>€ {{ donation.amount | number: "1.2-2" }}</span>
+            <div class="col-12 mt-5">
+              <div class="row">
+                <div class="col-6">
+                  <h6>Verzending</h6>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                  <h6 class="text-success">Gratis</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 mt-3">
+              <div class="row">
+                <div class="col-6">
+                  <h6>Totaal</h6>
+                </div>
+                <div class="col-6 d-flex justify-content-end">
+                  <h6>€ {{ cartDTO.total | number: "1.2-2" }}</h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-12 mt-5">
-          <div class="row">
-            <div class="col-6">
-              <h6>Verzending</h6>
-            </div>
-            <div class="col-6 d-flex justify-content-end">
-              <h6 class="text-success">Gratis</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 mt-3">
-          <div class="row">
-            <div class="col-6">
-              <h6>Totaal</h6>
-            </div>
-            <div class="col-6 d-flex justify-content-end">
-              <h6>€ {{ (cart | async)?.total | number: "1.2-2" }}</h6>
-            </div>
-          </div>
-        </div>
-      </div>
+      </ng-container>
     </div>
-  </div>
 
-  <!-- Modal -->
-  <div
-    class="modal fade"
-    id="modal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p>Zijn de gegevens correct?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn" data-dismiss="modal">Terug</button>
-          <button type="button"  (click)="completeOrder()" data-dismiss="modal" class="btn btn-primary">Bevestigen</button>
+    <!-- Modal -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <p>Zijn de gegevens correct?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Terug</button>
+            <button type="button" (click)="completeOrder()" data-dismiss="modal"
+              class="btn btn-primary">Bevestigen</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </form>
 </div>
