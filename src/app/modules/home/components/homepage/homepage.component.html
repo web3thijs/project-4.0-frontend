@@ -63,10 +63,10 @@
 
 <div class="container mt-5">
   <section id="organizations" class="mt-5">
-    <app-title [titleText]="'Organisaties'"></app-title>
+    <app-title [titleText]="'Vzw´s'"></app-title>
     <div class="container my-3 mb-5">
       <div class="row">
-        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 "
+        <div class="col-sm-12 col-lg-4 col-xl-3 "
         *ngFor="let organization of (organizations | async) | slice:0:displayNumOrg">
           <app-organization-view [organizationImg]="organization.imageUrl" [organizationTitle]="organization.organizationName" (click)="onClickOrganization(organization.id)"></app-organization-view>
         </div>
