@@ -19,7 +19,7 @@
       </div>
 
       <!-- CUSTOMER -->
-      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'CUSTOMER'" class="d-flex">
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'CUSTOMER'" class="d-flex justify-content-center justify-content-lg-end">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user mr-2"></i>
@@ -33,7 +33,7 @@
       </div>
 
       <!-- ORGANIZATION -->
-      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ORGANIZATION'" class="d-flex">
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ORGANIZATION'" class="d-flex justify-content-center justify-content-lg-end">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user mr-2"></i>
@@ -46,7 +46,7 @@
       </div>
 
       <!-- ADMIN -->
-      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ADMIN'" class="d-flex">
+      <div *ngIf="this.authService.isLoggedIn() && this.authService.getRole() == 'ADMIN'" class="d-flex justify-content-center justify-content-lg-end">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user mr-2"></i>

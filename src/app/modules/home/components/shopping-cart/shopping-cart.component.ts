@@ -21,17 +21,22 @@ import { StockService } from 'src/app/shared/services/stock.service';
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss']
 })
-export class ShoppingCartComponent implements OnInit, OnDestroy {
+export class ShoppingCartComponent implements OnInit {
   orders: Observable<Order[]>;
   orders$: Subscription = new Subscription;
   updateDonation$: Subscription = new Subscription();
   currentOrder: Order
 
-  cart: Observable<CartDTO>;
-  cart$: Subscription = new Subscription;
+  cart$: Observable<CartDTO>;
   products: Observable<CartProductDTO[]>;
   donations: Observable<CartDonationDTO[]>;
   organizations: Observable<Organization[]>;
+
+  cartDTO: CartDTO = {
+    cartProductDTOS: [],
+    cartDonationDTOS: [],
+    total: 0
+  }
 
   updateOrderDetailDTO: UpdateOrderDetailDTO = {
     productId: 0,
@@ -56,23 +61,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.getOrganizations();
   }
 
-
-  ngOnDestroy(): void {
-    this.cart$.unsubscribe();
-  }
-
   getCart() {
-    this.cart = this.cartService.getCart().pipe(
+    this.cart$ = this.cartService.getCart().pipe(
       map(result => result)
     );
-
-    this.products = this.cart.pipe(
-      map(result => result.cartProductDTOS)
-    )
-
-    this.donations = this.cart.pipe(
-      map(result => result.cartDonationDTOS)
-    )
   }
 
   getOrganizations() {

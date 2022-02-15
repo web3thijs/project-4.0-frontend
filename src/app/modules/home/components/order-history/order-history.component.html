@@ -28,7 +28,7 @@
                       />
                     </div>
                     <div class="col-9">
-                      <p class="font-weight-bold mb-1">{{ product.productName }}</p>
+                      <p class="mb-1">{{ product.productName }}</p>
                       <span>{{ product.sizeName }}</span>
                     </div>
                   </div>
@@ -94,7 +94,7 @@
                   <h6 class="font-weight-bold">Totaal</h6>
                 </div>
                 <div class="col-6 d-flex justify-content-end">
-                  <h6>€ {{ orderHistoryDTO.total | number: "1.2-2" }}</h6>
+                  <h6>€ {{ orderHistory.total | number: "1.2-2" }}</h6>
                 </div>
               </div>
             </div>

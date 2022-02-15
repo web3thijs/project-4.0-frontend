@@ -2,13 +2,13 @@
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <app-title [titleText]="'Winkelmandje'"></app-title>
         </div>
-        <div class="col-6 text-right d-flex align-items-center justify-content-end">
+        <div class="col-12 col-md-6 text-right d-flex align-items-center justify-content-start justify-content-md-end">
           <h6 class="mr-2">Totaal</h6>
           <h6 class="mr-2 font-weight-bold">€</h6>
-          <h3>{{ (cart | async)?.total | number : '1.2-2'}}</h3>
+          <h3>{{ cartDTO.total| number : '1.2-2'}}</h3>
         </div>
       </div>
       <div class="row mt-5">
@@ -20,137 +20,142 @@
               </div>
             </div>
           </div>
-          <div class="row products">
-            <div class="col-12" *ngIf="!(products | async)?.length">
-              <p class="ml-3">Geen producten gevonden.</p>
-            </div>
-            <div class="col-12" *ngFor="let product of (products | async)">
-              <div class="row align-items-center">
-                <div class="col-6">
-                  <div class="row align-items-center">
-                    <div class="col-3">
-                      <img src="{{ product.imgUrl[0] }}" alt="productImg" class="img-fluid product-img">
-                    </div>
-                    <div class="col-9">
-                      <h6>{{ product.productName }}</h6>
-                      <span>{{ product.sizeName }}</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="row">
-                    <div class="col-12 col-md-6 d-flex align-items-center">
-                      <a class="page-link mr-3 clickable"
-                      (click)="reduceAmount(product.productId, product.sizeId, product.amount)" aria-label="Previous">
-                      <span aria-hidden="true">-</span>
-                      <span class="sr-only">Reduce</span>
-                    </a>
-
-                    <span>{{ product.amount }}</span>
-
-                    <a class="page-link ml-3 clickable"
-                      (click)="addAmount(product.productId, product.sizeId, product.amount)" aria-label="Previous">
-                      <span aria-hidden="true">+</span>
-                      <span class="sr-only">Add</span>
-                    </a>
-
-                    <i class="far fa-trash-alt ml-4 clickable" (click)="removeProduct(product.productId, product.sizeId)"></i>
-                    </div>
-                    <div class="col-12 col-md-6 d-flex justify-content-end">
-                      <span>€ {{ (product.productPrice * product.amount) | number : '1.2-2'}}</span>
-                    </div>
-                  </div>
-                </div>
+          <ng-container *ngIf="cart$ | async as cartDTO">
+            <div class="row products">
+              <div class="col-12" *ngIf="!cartDTO.cartProductDTOS.length">
+                <p class="ml-3">Geen producten gevonden.</p>
               </div>
-              <hr class="mt-4">
-          </div>
-        </div>
-        <div class="col-12 mt-4" id="total_card">
-          <div class="row">
-            <div class="col-12 text-left font-weight-bold d-flex mb-4 p-0">
-              <div class="subtitle">
-                <div class="row">
+              <div class="col-12" *ngFor="let product of cartDTO.cartProductDTOS">
+                <div class="row align-items-center">
                   <div class="col-6">
-                    <h6>Vrije giften</h6>
-                  </div>
-                  <div class="col-6 text-right d-flex align-items-center justify-content-end">
-                    <i class="fas fa-plus clickable" data-toggle="modal" data-target="#modal"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12" *ngIf="!(donations | async)?.length">
-              <p>Geen vrije giften gevonden.</p>
-            </div>
-            <div class="col-12 bg-white" *ngFor="let donation of (donations | async)">
-              <div class="row align-items-center">
-                <div class="col-2 d-flex pl-0">
-                  <img src="{{ donation.organizationImg }}" alt="" class="img-fluid donation-img">
-                </div>
-                <div class="col-6">
-                  <h6 class="mt-2">{{ donation.organizationName }}</h6>
-                </div>
-                <div class="col-3">
-                  <div class="input-group">
-                    <span class="input-group-addon d-flex align-items-center mr-2">€ {{ donation.amount | number : '1.2-2'}}</span>
-                  </div>
-                </div>
-                <div class="col-1 clickable" (click)="removeDonation(donation.organizationId)">
-                  <i class="far fa-trash-alt"></i>
-                </div>
-              </div>
-              <hr class="mt-4">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 d-flex justify-content-end">
-              <app-button buttonText="Bestellen" routerLink="/bestellen"></app-button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <form (ngSubmit)="submitDonation()" #donationForm="ngForm">
-              <div class="modal-header">
-                <h6 class="modal-title" id="exampleModalLongTitle">Vrije gift</h6>
-                <button type="button" class="close" data-dismiss="modal" #closeModal aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="organization">VZW</label>
-                  <select class="custom-select" name="organization" id="organization"
-                    [(ngModel)]="updateDonationDTO.organizationId">
-                    <option *ngFor="let organization of (organizations | async)" [ngValue]="organization.id">
-                      {{ organization.organizationName }}</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="amount">Bedrag</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">€</span>
+                    <div class="row align-items-center">
+                      <div class="col-3">
+                        <img src="{{ product.imgUrl[0] }}" alt="productImg" class="img-fluid product-img">
+                      </div>
+                      <div class="col-9">
+                        <h6>{{ product.productName }}</h6>
+                        <span>{{ product.sizeName }}</span>
+                      </div>
                     </div>
-                    <input type="number" class="form-control" [(ngModel)]="updateDonationDTO.amount">
+                  </div>
+                  <div class="col-6">
+                    <div class="row">
+                      <div class="col-12 col-md-6 d-flex align-items-center">
+                        <a class="page-link mr-3 clickable"
+                          (click)="reduceAmount(product.productId, product.sizeId, product.amount)"
+                          aria-label="Previous">
+                          <span aria-hidden="true">-</span>
+                          <span class="sr-only">Reduce</span>
+                        </a>
+
+                        <span>{{ product.amount }}</span>
+
+                        <a class="page-link ml-3 clickable"
+                          (click)="addAmount(product.productId, product.sizeId, product.amount)" aria-label="Previous">
+                          <span aria-hidden="true">+</span>
+                          <span class="sr-only">Add</span>
+                        </a>
+
+                        <i class="far fa-trash-alt ml-4 clickable"
+                          (click)="removeProduct(product.productId, product.sizeId)"></i>
+                      </div>
+                      <div class="col-12 col-md-6 d-flex justify-content-end">
+                        <span>€ {{ (product.productPrice * product.amount) | number : '1.2-2'}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="mt-4">
+              </div>
+            </div>
+            <div class="col-12 mt-4" id="total_card">
+              <div class="row">
+                <div class="col-12 text-left font-weight-bold d-flex mb-4 p-0">
+                  <div class="subtitle">
+                    <div class="row">
+                      <div class="col-6">
+                        <h6>Vrije giften</h6>
+                      </div>
+                      <div class="col-6 text-right d-flex align-items-center justify-content-end">
+                        <i class="fas fa-plus clickable" data-toggle="modal" data-target="#modal"></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal">Sluiten</button>
-                <button type="submit" class="btn btn-primary">Opslaan</button>
+              <div class="row">
+                <div class="col-12" *ngIf="!cartDTO.cartDonationDTOS.length">
+                  <p>Geen vrije giften gevonden.</p>
+                </div>
+                <div class="col-12 bg-white" *ngFor="let donation of cartDTO.cartDonationDTOS">
+                  <div class="row align-items-center">
+                    <div class="col-2 d-flex pl-0">
+                      <img src="{{ donation.organizationImg }}" alt="" class="img-fluid donation-img">
+                    </div>
+                    <div class="col-6">
+                      <h6 class="mt-2">{{ donation.organizationName }}</h6>
+                    </div>
+                    <div class="col-3">
+                      <div class="input-group">
+                        <span class="input-group-addon d-flex align-items-center mr-2">€
+                          {{ donation.amount | number : '1.2-2'}}</span>
+                      </div>
+                    </div>
+                    <div class="col-1 clickable" (click)="removeDonation(donation.organizationId)">
+                      <i class="far fa-trash-alt"></i>
+                    </div>
+                  </div>
+                  <hr class="mt-4">
+                </div>
               </div>
-            </form>
+              <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                  <app-button buttonText="Bestellen" routerLink="/bestellen"></app-button>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <form (ngSubmit)="submitDonation()" #donationForm="ngForm">
+                <div class="modal-header">
+                  <h6 class="modal-title" id="exampleModalLongTitle">Vrije gift</h6>
+                  <button type="button" class="close" data-dismiss="modal" #closeModal aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="organization">VZW</label>
+                    <select class="custom-select" name="organization" id="organization"
+                      [(ngModel)]="updateDonationDTO.organizationId">
+                      <option *ngFor="let organization of (organizations | async)" [ngValue]="organization.id">
+                        {{ organization.organizationName }}</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="amount">Bedrag</label>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">€</span>
+                      </div>
+                      <input type="number" class="form-control" [(ngModel)]="updateDonationDTO.amount">
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn" data-dismiss="modal">Sluiten</button>
+                  <button type="submit" class="btn btn-primary">Opslaan</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
