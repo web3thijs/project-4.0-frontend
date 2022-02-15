@@ -54,4 +54,8 @@ export class ProductService {
   getSimilarProducts(id: number): Observable<SimilarProduct[]> {
     return this.httpClient.get<SimilarProduct[]>("https://project-4-0-ai.herokuapp.com/" + "product?productId=" + id);
   }
+
+  getRecomendedProducts(id: number): Observable<SimilarProduct[]> {
+    return this.httpClient.get<SimilarProduct[]>("https://project-4-0-ai.herokuapp.com/" + "userrecommendation?customerId=" + id);
+  }
 }

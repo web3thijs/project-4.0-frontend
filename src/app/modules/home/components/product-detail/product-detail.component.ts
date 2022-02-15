@@ -84,6 +84,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
 
   products: Observable<CartProductDTO[]>;
   similarProducts: Observable<SimilarProduct[]>;
+  recomendedProducts: Observable<SimilarProduct[]>;
 
   amount = 1;
   id: number = 0;
@@ -104,6 +105,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
 
 
     this.product$ = this.productService.getProductById(this.id).subscribe(result => (this.product = result));
+    this.getRecomendedProducts();
     this.getSimilarProducts();
   }
 
@@ -123,6 +125,12 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
   getCart() {
     this.products = this.cartService.getCart().pipe(
       map(result => result.cartProductDTOS)
+    )
+  }
+
+  getRecomendedProducts(){
+    this.recomendedProducts = this.productService.getRecomendedProducts(parseInt(this.authService.getUser()!.id)).pipe(
+      map(result => result)
     )
   }
 
