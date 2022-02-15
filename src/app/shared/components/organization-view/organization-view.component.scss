@@ -7,7 +7,7 @@ p{
   margin: 0;
 
   &#product-title{
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
   }
 }
@@ -32,10 +32,15 @@ p{
   }
 
   .card-image-top {
-    height: 75px;
-    width: 75px;
+    height: 85px;
+    width: 85px;
     object-fit: contain;
     border: 2px solid #eee;
+
+    @media only screen and (min-width: 470px) {
+      height: 125px;
+      width: 125px;
+    }
 
     @media only screen and (min-width: 576px) {
       height: 200px;
@@ -57,3 +62,4 @@ p{
     color: #92c1dc;
   }
 }
+

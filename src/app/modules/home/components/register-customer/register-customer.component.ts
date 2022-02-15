@@ -28,6 +28,8 @@ export class RegisterCustomerComponent implements OnInit {
     token: ''
   }
 
+  passwordRepeat: string = '';
+
   isSubmitted: boolean = false;
   errorMessage: string = '';
 

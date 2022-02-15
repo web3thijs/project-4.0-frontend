@@ -30,6 +30,8 @@ export class RegisterOrganizationComponent implements OnInit {
     token: ''
   }
 
+  passwordRepeat: string = '';
+
   isSubmitted: boolean = false;
   errorMessage: string = '';
 
