@@ -139,7 +139,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy{
     }
 
     if(this.authService.getRole() !=  "CUSTOMER"){
-      //WARNING FOR ORGANIZATION AND ADMIN
+      //WARNING FOR ORGANIZATION AND ADMIN!
       return
     }
 
