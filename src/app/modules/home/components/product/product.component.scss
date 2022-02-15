@@ -3,3 +3,28 @@
     width: 100% !important;
   }
  }
+
+ button{
+  background-color: #031c29;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  width: 290px;
+  height: 38px;
+
+  &:hover{
+    background-color: #184964;
+  }
+}
+
+a {
+  color: #031c29;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #184964 !important;
+  cursor: pointer;
+}

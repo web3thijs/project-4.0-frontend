@@ -58,10 +58,10 @@ import { OrderRetourComponent } from './components/order-retour/order-retour.com
     CommonModule,
     FormsModule,
     RouterModule,
-    HomeRoutingModule,
     SharedModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HomeRoutingModule,
   ]
 })
 export class HomeModule { }

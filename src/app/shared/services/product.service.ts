@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Product } from 'src/app/core/models/Product';
 import { SimilarProduct } from 'src/app/core/models/SimilarProduct';
+import { ProductListPaginationDTO } from 'src/app/core/models/ProductListPaginationDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class ProductService {
 
   getProducts(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "products");
+  }
+
+  getProductsDTO(): Observable<ProductListPaginationDTO> {
+    return this.httpClient.get<ProductListPaginationDTO>(this.baseUrl + "products");
   }
 
   getProductById(id: number): Observable<Product> {

@@ -32,14 +32,14 @@ import { OrganizationPagenotfoundComponent } from './components/organization-pag
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
     SharedModule,
     CoreModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    DashboardRoutingModule,
   ]
 })
 export class DashboardModule { }

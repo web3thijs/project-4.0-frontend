@@ -20,7 +20,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { OrderRetourComponent } from './components/order-retour/order-retour.component';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent},
+  { path: '', pathMatch:'full', component: HomepageComponent},
   { path: 'producten', component: ProductComponent },
   { path: 'producten/:id', component: ProductDetailComponent },
   { path: 'winkelmandje', component: ShoppingCartComponent},
@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'besteld', component: OrderConfirmationComponent},
   { path: 'bestellingen', component: OrderOverviewCustomerComponent},
   { path: 'retour', component: OrderRetourComponent},
-  //{ path: '**', component: PagenotfoundComponent},
+  //{ path: '**', pathMatch:'full', component: PagenotfoundComponent},
 ];
 
 @NgModule({

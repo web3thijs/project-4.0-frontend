@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'dashboard-admin/producten', component: DashboardProductComponent},
   { path: 'dashboard-admin/categorieën', component: DashboardCategoryComponent},
   { path: 'dashboard-admin/categorieën/form', component: DashboardCategoryFormComponent},
-  //{ path: '**', component: DashboardPagenotfoundComponent},
+  //{ path: '**', pathMatch:'full', component: DashboardPagenotfoundComponent},
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ import { AuthService } from 'src/app/modules/security/auth.service';
 import { Review } from 'src/app/core/models/Review';
 import { HttpClient } from '@angular/common/http';
 import { AddToInteractionDTO } from 'src/app/core/models/AddToInteractionDTO';
+import { ProductListPaginationDTO } from 'src/app/core/models/ProductListPaginationDTO';
 
 @Component({
   selector: 'app-product',
@@ -25,12 +26,19 @@ import { AddToInteractionDTO } from 'src/app/core/models/AddToInteractionDTO';
 })
 export class ProductComponent implements OnInit {
   //BRENT zijn manier
-  products$: Observable<Product[]>;
+  products$: Observable<ProductListPaginationDTO>;
   categories$: Observable<Category[]>;
   organizations$: Observable<Organization[]>;
   errorMessage: string = '';
   searchTerm: string = "";
   searchKey: string = "";
+  isFilter: boolean = false;
+  isPagination: boolean = true;
+  totalPagesPagination: number = 1;
+  productListPaginationDTO: ProductListPaginationDTO = {
+    content: [],
+    totalPages: 0
+  }
 
   postAddClick$: Subscription = new Subscription();
 
@@ -118,12 +126,13 @@ export class ProductComponent implements OnInit {
     this.getProducts();
     this.getCategories();
     this.getOrganizations();
+    this.products$.subscribe(console.log);
   }
 
   //BRENT zijn manier
   getProducts() {
-    this.products$ = this.productService.getProducts().pipe(
-      map(response => response.content)
+    this.products$ = this.productService.getProductsDTO().pipe(
+      map(response => response)
     );
   }
 
@@ -139,6 +148,32 @@ export class ProductComponent implements OnInit {
     )
   }
 
+  onClickMore(){
+    this.totalPagesPagination+=1;
+    this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?page=" + (this.totalPagesPagination - 1)).pipe(
+      map(response => response)
+    );
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+    console.log("more" + this.totalPagesPagination);
+  }
+
+  onClickLess(){
+    this.totalPagesPagination-=1;
+    this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?page=" + (this.totalPagesPagination - 1)).pipe(
+      map(response => response)
+    );
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+    console.log("less " + this.totalPagesPagination);
+  }
+
   async onClick(productId: number) {
     if(this.authService.getRole() ==  "CUSTOMER"){
       this.addToInteractionDTO.customerId = parseInt(this.authService.getUser()!.id);
@@ -151,10 +186,12 @@ export class ProductComponent implements OnInit {
 
 
   search(event:any){
+    this.isFilter = true;
+    this.isPagination = false;
     this.searchTerm = (event.target as HTMLInputElement).value;
     console.log(this.searchTerm)
     this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?naam=" + this.searchTerm).pipe(
-      map(response => response.content)
+      map(response => response)
     );
   }
 
@@ -165,19 +202,25 @@ export class ProductComponent implements OnInit {
   onOrganizationChanged(event: any) {
     console.log(event.target.value);
     if(event.target.value > 0) {
+      this.isFilter = true;
+      this.isPagination = false;
       this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?vzw=" + event.target.value).pipe(
-      map(response => response.content)
+      map(response => response)
     );
     } else {
-      this.getProducts();
+      this.products$ = this.productService.getProductsDTO().pipe(
+        map(response => response)
+      );
     }
   }
 
   onCategorieChanged(event: any) {
     console.log(event.target.value);
     if(event.target.value > 0) {
+      this.isFilter = true;
+      this.isPagination = false;
       this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?categorie=" + event.target.value).pipe(
-        map(response => response.content)
+        map(response => response)
       );
     } else {
       this.getProducts();
@@ -188,16 +231,28 @@ export class ProductComponent implements OnInit {
     console.log(event.target.value);
     if(event.target.value > 0) {
       if(event.target.value == 1) {
+        this.isFilter = true;
+        this.isPagination = false;
         this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?sort=price&order=desc").pipe(
-          map(response => response.content)
+          map(response => response)
         );
       } else {
+        this.isFilter = true;
+        this.isPagination = false;
         this.products$ = this.httpClient.get<any>("https://project-4-0-backend.herokuapp.com/api/products?sort=price&order=asc").pipe(
-          map(response => response.content)
+          map(response => response)
         );
       }
     } else {
       this.getProducts();
     }
+  }
+
+  removeFilter() {
+    this.products$ = this.productService.getProductsDTO().pipe(
+      map(response => response)
+    );
+    this.isFilter = false;
+    this.isPagination = true;
   }
 }
