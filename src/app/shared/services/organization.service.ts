@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Organization } from 'src/app/core/models/Organization';
 import { Product } from 'src/app/core/models/Product';
 import { environment } from 'src/environments/environment';
+import { OrganizationListPaginationDTO } from 'src/app/core/models/OrganizationListPaginationDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class OrganizationService {
 
   getOrganizations(): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + "organizations");
+  }
+
+  getOrganizationsDTO(): Observable<OrganizationListPaginationDTO> {
+    return this.httpClient.get<OrganizationListPaginationDTO>(this.baseUrl + "organizations");
   }
 
   getProductsByOrganization(id: number): Observable<any> {

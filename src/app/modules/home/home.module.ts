@@ -54,10 +54,10 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
     CommonModule,
     FormsModule,
     RouterModule,
-    HomeRoutingModule,
     SharedModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HomeRoutingModule,
   ]
 })
 export class HomeModule { }

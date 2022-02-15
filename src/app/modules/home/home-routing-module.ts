@@ -19,7 +19,7 @@ import { OrderHistoryComponent } from './components/order-history/order-history.
 import { CustomerAuthGuard } from 'src/app/core/guards/customer-auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent},
+  { path: '', pathMatch:'full', component: HomepageComponent},
   { path: 'producten', component: ProductComponent },
   { path: 'producten/:id', component: ProductDetailComponent },
   { path: 'winkelmandje', component: ShoppingCartComponent, canActivate: [CustomerAuthGuard], canActivateChild: [CustomerAuthGuard]},
@@ -34,7 +34,6 @@ const routes: Routes = [
   { path: 'besteld', component: OrderConfirmationComponent, canActivate: [CustomerAuthGuard], canActivateChild: [CustomerAuthGuard]},
   { path: 'bestellingen', component: OrderHistoryComponent, canActivate: [CustomerAuthGuard], canActivateChild: [CustomerAuthGuard]},
   { path: 'retour', component: OrderRetourComponent, canActivate: [CustomerAuthGuard], canActivateChild: [CustomerAuthGuard]},
-  //{ path: '**', component: PagenotfoundComponent},
 ];
 
 @NgModule({

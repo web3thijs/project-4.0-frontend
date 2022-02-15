@@ -17,17 +17,7 @@ const routes: Routes = [
   { path: 'vrije-giften', component: OrganizationDonationComponent},
   { path: 'stocks/form', component: OrganizationStockFormComponent},
   { path: 'account', component: OrganizationAccountComponent},
-  //{ path: '**', component: OrganizationPagenotfoundComponent},
 ];
-
-/*{
-    path: 'page-not-found',
-    component: PagenotfoundComponent
-},
-{
-    path: '**',
-    redirectTo: '/page-not-found'
-},*/
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
