@@ -66,7 +66,7 @@ export class DashboardCategoryFormComponent implements OnInit {
     if (this.isAdd) {
       this.category.name = this.categoryForm.controls['name'].value;
       this.postCategory$ = this.categoryService.postCategory(this.category).subscribe(result => {
-                this.router.navigateByUrl("/dashboard-admin/categorieën");
+                this.router.navigateByUrl("/admin/categorieën");
               },
               error => {
                 this.errorMessage = error.message;
@@ -77,7 +77,7 @@ export class DashboardCategoryFormComponent implements OnInit {
       this.putCategory.id = this.categoryId;
       this.putCategory$ = this.categoryService.putCategory(this.putCategory).subscribe(result => {
                 //all went well
-                this.router.navigateByUrl("/dashboard-admin/categorieën");
+                this.router.navigateByUrl("/admin/categorieën");
               },
               error => {
                 this.errorMessage = error.message;

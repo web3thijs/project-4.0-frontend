@@ -17,7 +17,6 @@
 
 .sidebar a.active {
   color: #b6d5e7;
-  font-weight: bold;
 }
 
 .sidebar a:hover:not(.active) {
@@ -46,4 +45,8 @@
     text-align: center;
     float: none;
   }
+}
+
+.clickable{
+  cursor: pointer;
 }

@@ -16,19 +16,19 @@ export class DashboardComponent implements OnInit {
   }
 
   toAdminOrganization() {
-    this.router.navigate(['dashboard-admin/organisaties']);
+    this.router.navigate(['admin/organisaties']);
   }
 
   toAdminCustomer() {
-    this.router.navigate(['dashboard-admin/klanten']);
+    this.router.navigate(['admin/klanten']);
   }
 
   toAdminProduct() {
-    this.router.navigate(['dashboard-admin/producten']);
+    this.router.navigate(['admin/producten']);
   }
 
   toAdminCategory() {
-    this.router.navigate(['dashboard-admin/categorieën']);
+    this.router.navigate(['admin/categorieën']);
   }
 
   logOut() {
