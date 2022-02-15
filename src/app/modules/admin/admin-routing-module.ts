@@ -9,13 +9,13 @@ import { DashboardProductComponent } from './components/dashboard-product/dashbo
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: 'dashboard-admin', component: DashboardComponent },
-  { path: 'dashboard-admin/organisaties', component: DashboardOrganizationComponent},
-  { path: 'dashboard-admin/klanten', component: DashboardCustomerComponent},
-  { path: 'dashboard-admin/producten', component: DashboardProductComponent},
-  { path: 'dashboard-admin/categorieën', component: DashboardCategoryComponent},
-  { path: 'dashboard-admin/categorieën/form', component: DashboardCategoryFormComponent},
-  //{ path: '**', pathMatch:'full', component: DashboardPagenotfoundComponent},
+  { path: '', component: DashboardComponent },
+  { path: 'organisaties', component: DashboardOrganizationComponent},
+  { path: 'klanten', component: DashboardCustomerComponent},
+  { path: 'producten', component: DashboardProductComponent},
+  { path: 'categorieën', component: DashboardCategoryComponent},
+  { path: 'categorieën/form', component: DashboardCategoryFormComponent},
+  //{ path: '**', component: DashboardPagenotfoundComponent},
 ];
 
 @NgModule({

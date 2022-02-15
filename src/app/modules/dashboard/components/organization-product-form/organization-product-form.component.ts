@@ -135,7 +135,7 @@ export class OrganizationProductFormComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.router.navigate(['organisatie/stock/form'], {state: {id: id, mode: 'edit'}});
+    this.router.navigate(['organisatie/stocks/form'], {state: {id: id, mode: 'edit'}});
   }
 
   delete(id: number) {
@@ -177,7 +177,7 @@ export class OrganizationProductFormComponent implements OnInit {
     this.productPut.organization = this.organization;
     console.log(this.productId);
     this.putProduct$ = await this.productService.putProduct(this.productPut).subscribe(result => {
-        this.router.navigateByUrl("/organisatie/product");
+        this.router.navigateByUrl("/organisatie/producten");
       },
       error => {
         this.errorMessage = error.message;
@@ -195,7 +195,7 @@ export class OrganizationProductFormComponent implements OnInit {
     this.product.category = this.category;
     this.product.organization = this.organization;
     this.postProduct$ = await this.productService.postProduct(this.product).subscribe(result => {
-        this.router.navigateByUrl("/organisatie/product");
+        this.router.navigateByUrl("/organisatie/producten");
       },
       error => {
         this.errorMessage = error.message;
@@ -261,6 +261,6 @@ hideShowPhoto() {
 }
 
 addStock() {
-  this.router.navigate(['organisatie/stock/form'], {state: {mode: 'add'}});
+  this.router.navigate(['organisatie/stocks/form'], {state: {mode: 'add'}});
 }
 }

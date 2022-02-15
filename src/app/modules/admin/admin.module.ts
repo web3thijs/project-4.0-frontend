@@ -27,12 +27,11 @@ import { DashboardPagenotfoundComponent } from './components/dashboard-pagenotfo
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    CoreModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AdminRoutingModule,
+    SharedModule,
   ]
 })
 export class AdminModule { }

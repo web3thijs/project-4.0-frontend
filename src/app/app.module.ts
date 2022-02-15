@@ -25,13 +25,10 @@ import { AdminModule } from './modules/admin/admin.module';
     HttpClientModule,
     FormsModule,
     RouterModule,
-    ReactiveFormsModule,
     CoreModule,
-    HomeModule,
-    DashboardModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
