@@ -52,6 +52,6 @@ export class ProductService {
   }
 
   getSimilarProducts(id: number): Observable<SimilarProduct[]> {
-    return this.httpClient.get<SimilarProduct[]>("https://project-4-0-ai.herokuapp.com/product?productId=" + id);
+    return this.httpClient.get<SimilarProduct[]>(this.baseUrl + "product?productId=" + id);
   }
 }
