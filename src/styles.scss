@@ -7,3 +7,13 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 
 //custom code/partials
+
+::-moz-selection { /* Code for Firefox */
+  color: white;
+  background: #031c29;
+}
+
+::selection {
+  color: white;
+  background: #031c29;
+}

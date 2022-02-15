@@ -50,6 +50,7 @@ export class OrganizationProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    console.log(parseInt(this.authService.getUser()!.id));
   }
 
   /*ngOnDestroy(): void {
