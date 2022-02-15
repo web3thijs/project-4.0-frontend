@@ -89,19 +89,19 @@
       *ngIf="isPagination && productListPaginationDTO.totalPages > 1"
     >
       <button
-        class="btn btn-dark mt-2 mt-md-0"
-        *ngIf="currentPage < productListPaginationDTO.totalPages"
-        (click)="onClickMore()"
-      >
-        Toon volgende
-      </button>
-      <button
         class="btn btn-dark mr-md-2"
         *ngIf="currentPage > 1"
         (click)="onClickLess()"
       >
         Toon vorige
       </button>
+      <button
+      class="btn btn-dark mt-2 mt-md-0"
+      *ngIf="currentPage < productListPaginationDTO.totalPages"
+      (click)="onClickMore()"
+    >
+      Toon volgende
+    </button>
     </div>
   </div>
 </ng-container>
