@@ -15,6 +15,11 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: development
+    
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
   
       - name: Deploy to Heroku
         uses: AkhileshNS/heroku-deploy@v3.12.12
